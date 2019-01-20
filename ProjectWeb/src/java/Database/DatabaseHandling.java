@@ -18,121 +18,140 @@ public class DatabaseHandling {
   
   static public void main(String[] args) throws Exception
   {
+      try {
        String jdbcUrl = "jdbc:mysql://silva.computing.dundee.ac.uk/18agileteam3db?user=18agileteam3&password=7854.at3.4587";
-        
        con = DriverManager.getConnection(jdbcUrl);
-       System.out.println("Connected!");
-    
        //runs a statement using the connection
+      }
+      catch(Exception e){
+          System.out.println("Failed to connect");
+      }
+     
   }
-  
-  //kills self
-   public void killCon() throws Exception
-    {
-        con.close();
-    }
   
    //Staff Methods
    //Add, remove, edit specific records
-  static public void addStaff() throws Exception
+   public void addStaff(int id, String name, String role, String pswd) throws Exception
     {
         Statement stmt=con.createStatement();  
-        boolean rs=stmt.execute("insert into Staff (StaffID, StaffName, Role, StaffPassword) values (1, 'James Vara','Admin', 'German Wife');");
+        stmt.execute("insert into Staff (StaffID, StaffName, Role, StaffPassword) values ('"+id+"', '"+name+"','"+role+"', '"+pswd+"');");
     }
 
-  static public void removeStaff() throws Exception
+  public void removeStaff(int id) throws Exception
   {
-      
+       Statement stmt=con.createStatement();  
+       stmt.execute("delete from Staff where StaffID = "+id+";");
   }
   
-  static public void editStaffName() throws Exception
+  public void editStaffName(int id, String newName) throws Exception
   {
-      
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Staff set StaffName = '"+newName+"' where StaffID = "+id+";");
   }
   
-  static public void editStaffRole() throws Exception
+  public void editStaffRole(int id, String newRole) throws Exception
   {
-      
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Staff set Role = '"+newRole+"' where StaffID = "+id+";");
   }
 
-  static public void editStaffPassword() throws Exception
+  public void editStaffPassword(int id, String newPswd) throws Exception
   {
-      
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Staff set StaffPassword = "+newPswd+" where StaffID = "+id+";");
   }
   
   //Exam methods
   //Create, Delete, Edits, Sign
-  static public void createExam() throws Exception
+  public void createExam(int id, String name, String code, String place, String school, String year) throws Exception
   {
-        
+      Statement stmt=con.createStatement();  
+      stmt.execute("insert into Exam (ExamID, ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values("+id+",'"+name+"','"+code+"','"+place+"','"+school+"','"+year+"',1);");
   }
   
-  static public void deleteExam() throws Exception
+  public void deleteExam(int id) throws Exception
   {
-        
+      Statement stmt=con.createStatement();  
+      stmt.execute("delete from Exam where ExamID = "+id+";");
   }
   
-  static public void editExamStatus() throws Exception
+  public void editExamStatus(int id, String newStatus) throws Exception
   {
-        
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Exam set ExamStatus = '"+newStatus+"' where ExamID = "+id+";");  
   }
    
-  static public void editExamModuleName() throws Exception
+  public void editExamModuleName(int id, String newName) throws Exception
   {
-        
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Exam set ModuleName = '"+newName+"' where ExamID = "+id+";"); 
   }
     
-  static public void editExamModuleCode() throws Exception
+  public void editExamModuleCode(int id, String newCode) throws Exception
   {
-        
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set ModuleCode = '"+newCode+"' where ExamID = "+id+";");   
   }
      
-  static public void editExamInstitution() throws Exception
+  public void editExamInstitution(int id, String newIN) throws Exception
   {
-        
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set Institution = '"+newIN+"' where ExamID = "+id+";");    
   }
       
-  static public void editExamSchool() throws Exception
+  public void editExamSchool(int id, String newSchool) throws Exception
   {
-        
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set School = '"+newSchool+"' where ExamID = "+id+";");  
   }
        
-  static public void editExamAcedmeicYear() throws Exception
+  public void editExamAcademicYear(int id, String newYear) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set AcademicYear = '"+newYear+"' where ExamID = "+id+";");   
+  }
+   
+  public void internalSignExam(int id, int signid) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set InternalSign = true where ExamID = "+id+";"); 
+     stmt.execute("update Exam set InternalSignID = "+signid+" where ExamID = "+id+";");
+  }
+  
+  public void internalDateEdit() throws Exception
   {
         
   }
    
-  static public void internalSignExam() throws Exception
+  public void examCommiteeSignExam(int id, int signid) throws Exception
   {
-        
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set CommiteeSign = true where ExamID = "+id+";"); 
+     stmt.execute("update Exam set CommiteeSignID = "+signid+" where ExamID = "+id+";");; 
   }
   
-  static public void internalDateEdit() throws Exception
-  {
-        
-  }
-   
-  static public void examCommiteeSignExam() throws Exception
-  {
-        
-  }
-  
-  static public void examCommiteeDateEdit() throws Exception
+  public void examCommiteeDateEdit() throws Exception
   {
         
   }
     
-  static public void externalSignExam() throws Exception
+  public void externalSignExam(int id, int signid) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Exam set ExternalSign = true where ExamID = "+id+";"); 
+     stmt.execute("update Exam set ExternalSignID = "+signid+" where ExamID = "+id+";");    
+  }
+  
+  public void externalDateEdit() throws Exception
   {
         
   }
   
-  static public void externalDateEdit() throws Exception
-  {
-        
-  }
-  
-  
+  //kills self
+   static public void killCon() throws Exception
+    {
+        con.close();
+    }
 
 }
 
