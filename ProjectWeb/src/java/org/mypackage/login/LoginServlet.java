@@ -5,8 +5,11 @@
  */
 package org.mypackage.login;
 
+import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,26 +46,48 @@ public class LoginServlet extends HttpServlet {
         System.out.println("password: " + password);
         
         
-        boolean valid = processUsername(username);
-        if (valid == true){
-            out.print("YAY");
+        DatabaseHandling conn = new DatabaseHandling();
+        
+        boolean flag = false;
+        try{
+
+            ResultSet rs = conn.listStaff();
+            while(rs.next())
+            {
+                boolean validU = processUsername(rs.getString("StaffName"), username);
+                if(validU == true){
+                    boolean validP = processPassword(rs.getString("StaffPassword"), password);
+                    if(validP == true){
+                        out.print("YAAY");
+                        flag = true;
+                        break;
+                    }
+                    flag = false;
+                    break;
+                }
+            }
+            
+            if(flag == false){
+                out.print("Wrong credentials, idiot");
+            }
+            
         }
+        catch (Exception e){
+            
+        }
+        
         }
     }
-    public boolean processUsername(String username){
-        String expected = "lenfam";
+    public boolean processUsername(String data, String username){
         
-        if(username.equals(expected)){
+        if (data.equals(username)){
             return true;
         }
-        
         return false;
     }
     
-    public boolean processPassword(String password){
-        String expected = "password";
-        
-        if(password.equals(expected)){
+    public boolean processPassword(String data, String password){
+        if (data.equals(password)){
             return true;
         }
         return false;
