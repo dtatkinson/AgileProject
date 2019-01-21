@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package FileHandling;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Class to handle all things related to files
@@ -11,42 +18,41 @@ package FileHandling;
  */
 public class FileHandling {
     
-    public void createFile(){
-        return;
+    public boolean createFile(String fileName) throws IOException{
+        File f = new File(fileName);
+        return f.createNewFile();
     }
     
-    public void writeToFile(){
-        return;    
+    public String writeToFile(String fileName) throws IOException{
+        String str = "hello";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            
+            writer.write(str);
+        }
+        return str;
     }
     
     public void appendToFile(){
         return;
     }
     
-    public void checkIfFileExists(){
-        return;
+    public boolean checkIfFileExists(String path){
+        File f = new File(path);
+        return f.exists();
     }
     
-    public void readFromFile(){
-        return;
+    public String readFromFile(String fileName) throws FileNotFoundException, IOException{
+        String line;
+        try (BufferedReader read = new BufferedReader(new FileReader(fileName))) {
+            line = read.readLine();
+        }
+        System.out.println("line is this " + " " + line);
+        return line;
     }
     
-    //to check what level of comments the user can read?
-    public void compareFiles(){
-        return;
-    }
-    
-    //download/upload functions will just 'move' files to/from the server
-    public void downloadFile(){
-        return;
-    }
-    
-    public void uploadFile(){
-        return;
-    }
-    
-    public void deleteFile(){
-        return;
+    public boolean deleteFile(String fileName){
+        File f = new File(fileName);
+        return f.delete();
     }
     
 }
