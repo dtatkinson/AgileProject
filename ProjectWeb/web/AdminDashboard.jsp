@@ -30,6 +30,11 @@
         </form>
            
            
-        </div>    
+    </div>
+        <div align="center" class="plain">
+    <form  name="logoutForm" action="index.jsp">
+        <input type="submit" value="Logout" name="logoutbtn"  />
+    </form>
+        </div>
     </body>
 </html>
