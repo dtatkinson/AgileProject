@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -46,17 +47,15 @@ public class FileHandling {
     }
     
     public String[] readFromFile(String fileName) throws FileNotFoundException, IOException{
-        String[] doc = {""};
-        int counter = 0;
-        String line;
-        try (Scanner scan = new Scanner(new File(fileName))) {
-            while(scan.hasNextLine()){
-            line = scan.nextLine();
-            doc[counter] = line;
-            counter ++;
-            }
+       BufferedReader in = new BufferedReader(new FileReader(fileName));
+        String str = null;
+        ArrayList<String> lines = new ArrayList<String>();
+        while((str = in.readLine()) != null){
+            lines.add(str);
         }
-        return doc;
+        String[] linesArray = lines.toArray(new String[lines.size()]);
+        return linesArray;
+        
     }
     
     public boolean deleteFile(String fileName){

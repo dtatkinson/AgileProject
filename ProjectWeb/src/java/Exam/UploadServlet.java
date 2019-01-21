@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "UploadServlet", urlPatterns = {"/UploadServlet"})
 public class UploadServlet extends HttpServlet {
-    private String FilePath;
+    private final String FilePath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\kk.txt";;
     private File file;
     
     
