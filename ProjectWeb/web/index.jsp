@@ -6,12 +6,12 @@ and open the template in the editor.
 -->
 <%@ page import="Users.Admin" %>
 <html>
-    <%!
-        void testing(){
-            Admin test = new Admin();
-            out.println(test.test());
-    }
-        %>
+    <script type="text/>javascript">
+        function callServlet(){
+            document.forms[0].action = "AAA";
+            document.forms[0].submit();
+        }
+    </script>
     
     <head>
         <title>Login</title>
@@ -35,7 +35,7 @@ and open the template in the editor.
         
         <form name="Lenard form" action ="#">
             
-            <input type="submit" value="Lenard Button" onclick="testing()"/>
+            <input type="submit" value="Lenard Button" onclick="callSerlvet()"/>
           
         </form>
         
