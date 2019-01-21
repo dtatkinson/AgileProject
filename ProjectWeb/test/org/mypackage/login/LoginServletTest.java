@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package org.mypackage.login;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+package org.mypackage.login;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+import org.junit.runners.MethodSorters;
 
+//used to order the tests, alphabeticly 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 /**
- *
  * @author lenardgaunt
  */
 public class LoginServletTest {
@@ -23,109 +17,57 @@ public class LoginServletTest {
     public LoginServletTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-        //LoginServlet test = new LoginServlet();
-    }
-    
-    @After
-    public void tearDown() {
+    //pretested method, just here for completeness of testing
+    @Test
+    public void A_testProcessRequest() {
+        System.out.println("Method is pretested, through Index.jsp. It has been robust");
     }
 
-    /**
-     * Test of processRequest method, of class LoginServlet.
-     */
+    //Test for the cases of empty username that it still considers it to be equal
     @Test
-    public void testProcessRequest() throws Exception {
-        System.out.println("processRequest");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        LoginServlet instance = new LoginServlet();
-        instance.processRequest(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of processUsername method, of class LoginServlet.
-     */
-    @Test
-    public void testProcessUsername() {
-        System.out.println("processUsername");
+    public void B_testEmptyProcessUsername() {
+        System.out.println("process Empty Username");
         String data = "";
         String username = "";
         LoginServlet instance = new LoginServlet();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.processUsername(data, username);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    //Test for Correctly working username 
+    @Test
+    public void BA_testProcessUsername() {
+        System.out.println("process Username");
+        String data = "Lenny";
+        String username = "Lenny";
+        LoginServlet instance = new LoginServlet();
+        boolean expResult = true;
+        boolean result = instance.processUsername(data, username);
+        assertEquals(expResult, result);
     }
 
-    /**
-     * Test of processPassword method, of class LoginServlet.
-     */
+    //Test for the cases of empty password that it still considers it to be equal
     @Test
-    public void testProcessPassword() {
-        System.out.println("processPassword");
+    public void C_testEmptyProcessPassword() {
+        System.out.println("process Empty Password");
         String data = "";
         String password = "";
         LoginServlet instance = new LoginServlet();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.processPassword(data, password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of doGet method, of class LoginServlet.
-     */
-    @Test
-    public void testDoGet() throws Exception {
-        System.out.println("doGet");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        LoginServlet instance = new LoginServlet();
-        instance.doGet(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of doPost method, of class LoginServlet.
-     */
-    @Test
-    public void testDoPost() throws Exception {
-        System.out.println("doPost");
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
-        LoginServlet instance = new LoginServlet();
-        instance.doPost(request, response);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getServletInfo method, of class LoginServlet.
-     */
-    @Test
-    public void testGetServletInfo() {
-        System.out.println("getServletInfo");
-        LoginServlet instance = new LoginServlet();
-        String expResult = "";
-        String result = instance.getServletInfo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result);   
     }
     
+    //Test for Correctly working password 
+    @Test
+    public void CA_testProcessPassword() {
+        System.out.println("process Password");
+        String data = "Testpswd";
+        String password = "Testpswd";
+        LoginServlet instance = new LoginServlet();
+        boolean expResult = true;
+        boolean result = instance.processPassword(data, password);
+        assertEquals(expResult, result);   
+    }
 }

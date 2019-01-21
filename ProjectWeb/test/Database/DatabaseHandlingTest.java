@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Database;
 
 import org.junit.After;
@@ -17,9 +13,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+//Fixes so test go alphabetically
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/**
- *
+/*
  * @author oliversimpson
  */
 
@@ -27,37 +23,20 @@ public class DatabaseHandlingTest {
     
     public DatabaseHandlingTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-        
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-        
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
+ 
+    //rule allows us to check for thrown exceptions
     @Rule
     public ExpectedException exception = ExpectedException.none();
     
-
-    @Test //Tests that inserting into the database works
+    
+    @Test //Tests that inserting into the database works, throws exception is two same are found
     public void B_testAddStaff() throws Exception {
         System.out.println("Add staff");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Testrole", "Testpswd");
+        instance.addStaff("Testname", "Admin", "Testpswd");
     }
     
-    @Test
+    @Test //Tests remove staff does not throw exception when done correctly, throws exception if doesnt exist
     public void C_testRemoveStaff() throws Exception {
         System.out.println("Remove Staff");
         DatabaseHandling instance = new DatabaseHandling();
@@ -65,7 +44,7 @@ public class DatabaseHandlingTest {
         instance.removeStaff(2);
     }
 
-    @Test
+    @Test 
     public void D_testEditStaffName() throws Exception {
         System.out.println("Edit staff Name");
         DatabaseHandling instance = new DatabaseHandling();
@@ -73,11 +52,11 @@ public class DatabaseHandlingTest {
         instance.editStaffName(3,"Sausage");
     }
 
-    @Test
+    @Test 
     public void E_testEditStaffRole() throws Exception {
         System.out.println("Edit staff Role");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Testrole", "Testpswd");
+        instance.addStaff("Lenard", "IM", "Testpswd");
         instance.editStaffRole(4,"Pie");
     }
 
