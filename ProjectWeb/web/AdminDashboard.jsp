@@ -5,6 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"  %>
+
+<%
+    if(session.getAttribute("username") == null){
+        session.invalidate();
+        response.sendRedirect("index.jsp");
+    }
+    if(!session.getAttribute("role").equals("Admin")){
+        response.sendRedirect("index.jsp");
+    }
+ %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,6 +45,7 @@
         <div align="center" class="plain">
     <form  name="logoutForm" action="index.jsp">
         <input type="submit" value="Logout" name="logoutbtn"  />
+        <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
     </form>
         </div>
     </body>
