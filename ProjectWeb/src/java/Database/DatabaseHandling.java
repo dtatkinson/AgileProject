@@ -6,7 +6,7 @@ public class DatabaseHandling {
     static private Connection con;
     
     //Constructor, sets up connection for the methods
-    DatabaseHandling()
+    public DatabaseHandling()
     {
      try {
        String jdbcUrl = "jdbc:mysql://silva.computing.dundee.ac.uk/18agileteam3db?user=18agileteam3&password=7854.at3.4587";
@@ -27,7 +27,21 @@ public class DatabaseHandling {
          System.err.println("Unable to find driver");
       }
     }
-  
+  /* Method to return a list of all usernames
+  // 
+  */
+  public ResultSet listStaff(){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Staff");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
    //Staff Methods
    //Add, remove, edit specific records
    //After multiple testing we discovered we need to have staff id generate a acceptable id
