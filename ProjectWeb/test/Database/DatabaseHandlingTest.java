@@ -50,7 +50,7 @@ public class DatabaseHandlingTest {
     public void D_testEditStaffName() throws Exception {
         System.out.println("Edit staff Name");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname3", "Testrole", "Testpswd");
+        instance.addStaff("Testname3", "IM", "Testpswd");
         instance.editStaffName("Testname3","Sausage");
     }
 
@@ -59,14 +59,14 @@ public class DatabaseHandlingTest {
         System.out.println("Edit staff Role");
         DatabaseHandling instance = new DatabaseHandling();
         instance.addStaff("Lenard", "IM", "Testpswd");
-        instance.editStaffRole("Lenard","Pie");
+        instance.editStaffRole("Lenard","EC");
     }
 
     @Test
     public void F_testEditStaffPassword() throws Exception {
         System.out.println("Edit staff Password");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname5", "Testrole", "Testpswd");
+        instance.addStaff("Testname5", "EX", "Testpswd");
         instance.editStaffPassword("Testname5","Fish");
     }
 
