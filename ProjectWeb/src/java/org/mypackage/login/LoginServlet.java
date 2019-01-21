@@ -64,6 +64,18 @@ public class LoginServlet extends HttpServlet {
                         else if(rs.getString("Role").equals("IM")){
                             response.sendRedirect("StaffDashboard.jsp");
                         }
+                        else if(rs.getString("Role").equals("ES")){
+                            response.sendRedirect("#");
+                        }
+                        else if(rs.getString("Role").equals("EM")){
+                            response.sendRedirect("StaffDashboard.jsp");
+                        }
+                        else if(rs.getString("Role").equals("EC")){
+                            response.sendRedirect("StaffDashboard.jsp");
+                        }
+                        else if(rs.getString("Role").equals("SO")){
+                            response.sendRedirect("#");
+                        }
                         flag = true;
                         break;
                     }
