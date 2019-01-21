@@ -58,7 +58,9 @@ public class LoginServlet extends HttpServlet {
                 if(validU == true){
                     boolean validP = processPassword(rs.getString("StaffPassword"), password);
                     if(validP == true){
-                        out.print("YAAY");
+                        if(rs.getString("Role").equals("Admin")){
+                            response.sendRedirect("AdminDashboard.jsp");
+                        }
                         flag = true;
                         break;
                     }
@@ -77,6 +79,7 @@ public class LoginServlet extends HttpServlet {
         }
         
         }
+        
     }
     public boolean processUsername(String data, String username){
         
@@ -91,6 +94,10 @@ public class LoginServlet extends HttpServlet {
             return true;
         }
         return false;
+    }
+    
+    public void redirectToDash(String role){
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
