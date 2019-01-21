@@ -31,9 +31,22 @@ public class DatabaseHandling {
   
    //Staff Methods
    //Add, remove, edit specific records
-   public void addStaff(int id, String name, String role, String pswd) throws Exception
+   //After multiple testing we discovered we need to have staff id generate a acceptable id
+   //As to stop insertion errors
+   //same fix for createExam
+   public void addStaff(String name, String role, String pswd) throws Exception
     {
-        Statement stmt=con.createStatement();  
+        Statement stmt=con.createStatement(); 
+        ResultSet rs = stmt.executeQuery("select StaffID from Staff where StaffID = (select max(StaffID) from Staff)");
+        int id = 0;
+        while(rs.next())
+        {
+            id = rs.getInt("StaffID")+1;
+        }
+        if(id == 0)
+        {
+            id = 1;
+        }
         stmt.execute("insert into Staff (StaffID, StaffName, Role, StaffPassword) values ('"+id+"', '"+name+"','"+role+"', '"+pswd+"');");
     }
 
@@ -58,14 +71,24 @@ public class DatabaseHandling {
   public void editStaffPassword(int id, String newPswd) throws Exception
   {
       Statement stmt=con.createStatement();  
-      stmt.execute("update Staff set StaffPassword = "+newPswd+" where StaffID = "+id+";");
+      stmt.execute("update Staff set StaffPassword = '"+newPswd+"' where StaffID = "+id+";");
   }
   
   //Exam methods
   //Create, Delete, Edits, Sign
-  public void createExam(int id, String name, String code, String place, String school, String year) throws Exception
+  public void createExam(String name, String code, String place, String school, String year) throws Exception
   {
       Statement stmt=con.createStatement();  
+      ResultSet rs = stmt.executeQuery("select ExamID from Exam where ExamID = (select max(ExamID) from Exam)");
+      int id = 0;
+      while(rs.next())
+      {
+        id = rs.getInt("ExamID")+1;
+      }
+      if(id == 0)
+      {
+        id = 1;
+      }
       stmt.execute("insert into Exam (ExamID, ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values("+id+",'"+name+"','"+code+"','"+place+"','"+school+"','"+year+"',1);");
   }
   
