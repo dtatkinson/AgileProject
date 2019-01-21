@@ -6,12 +6,6 @@ and open the template in the editor.
 -->
 <%@ page import="Users.Admin" %>
 <html>
-    <script type="text/>javascript">
-        function callServlet(){
-            document.forms[0].action = "AAA";
-            document.forms[0].submit();
-        }
-    </script>
     
     <head>
         <title>Login</title>
@@ -20,7 +14,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Login</h1>
-        <form name="Details Input Form" action="response.jsp">
+        <form name="Details Input Form" action="LoginServlet" method="POST">
             
             Enter your Staff ID:
             <input type="text" name="staffID" value="" />
@@ -33,9 +27,9 @@ and open the template in the editor.
             
         </form>
         
-        <form name="Lenard form" action ="#">
+        <form name="Lenard form" method="POST" action ="TestServlet">
             
-            <input type="submit" value="Lenard Button" onclick="callSerlvet()"/>
+            <input type="submit" value="Lenard Button"/>
           
         </form>
         
