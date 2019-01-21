@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mypackage.login;
+package Login;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,7 +14,9 @@ package org.mypackage.login;
 public class DetailHandler {
     private String staffID;
     private String passwd;
-    
+   
+   
+       
     public String IDHandler()
     {
         setstaffID(null);
@@ -54,5 +58,15 @@ public class DetailHandler {
      */
     public void setpasswd(String passwd) {
         this.passwd = passwd;
+    }
+    
+    public String compareDetails(){
+         System.out.println("hello");
+        if(staffID == "user" && passwd == "pass"){
+          System.out.println("afsadgda");
+            return("response.jsp");
+           
+        }
+        return "null";
     }
 }
