@@ -5,6 +5,8 @@
  */
 package FileHandling;
 
+import java.io.IOException;
+import java.util.Objects;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,7 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * testDirectory   \\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\
  * @author matthewmchale
  */
 public class FileHandlingTest {
@@ -41,24 +43,31 @@ public class FileHandlingTest {
      * Test of createFile method, of class FileHandling.
      */
     @Test
-    public void testCreateFile() {
-        System.out.println("createFile");
+    public void testCreateFile() throws IOException {
         FileHandling instance = new FileHandling();
-        instance.createFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\Create.txt";
+        
+        boolean create = instance.createFile(newFile);
+        assertTrue("the File is created",create);
+     }
 
     /**
      * Test of writeToFile method, of class FileHandling.
+     * @throws java.io.IOException
      */
     @Test
-    public void testWriteToFile() {
-        System.out.println("writeToFile");
-        FileHandling instance = new FileHandling();
-        instance.writeToFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testWriteToFile() throws IOException {
+         FileHandling instance = new FileHandling();
+         String path;
+         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\kk.txt";
+         String write = instance.writeToFile(path);
+         boolean check =false;
+         if (Objects.equals(instance.readFromFile(path),write)){
+             check = true;
+         }
+         assertTrue("The file is write",check);    
+         
+         
     }
 
     /**
@@ -66,59 +75,29 @@ public class FileHandlingTest {
      */
     @Test
     public void testCheckIfFileExists() {
-        System.out.println("checkIfFileExists");
         FileHandling instance = new FileHandling();
-        instance.checkIfFileExists();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test";
+        boolean exist = instance.checkIfFileExists(path);
+        assertTrue("The file is Exist", exist);
     }
 
     /**
+     * 
      * Test of readFromFile method, of class FileHandling.
+     * @throws java.io.IOException
      */
     @Test
-    public void testReadFromFile() {
-        System.out.println("readFromFile");
-        FileHandling instance = new FileHandling();
-        instance.readFromFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of compareFiles method, of class FileHandling.
-     */
-    @Test
-    public void testCompareFiles() {
-        System.out.println("compareFiles");
-        FileHandling instance = new FileHandling();
-        instance.compareFiles();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of downloadFile method, of class FileHandling.
-     */
-    @Test
-    public void testDownloadFile() {
-        System.out.println("downloadFile");
-        FileHandling instance = new FileHandling();
-        instance.downloadFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of uploadFile method, of class FileHandling.
-     */
-    @Test
-    public void testUploadFile() {
-        System.out.println("uploadFile");
-        FileHandling instance = new FileHandling();
-        instance.uploadFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testReadFromFile() throws IOException {
+         FileHandling instance = new FileHandling();
+         String path;
+         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\kk.txt";
+         String check = instance.readFromFile(path);
+         boolean read = false;
+         if(Objects.equals(check,instance.writeToFile(path))){
+             read = true;
+         }
+         assertTrue("The file is read",read);
+         
     }
 
     /**
@@ -126,11 +105,10 @@ public class FileHandlingTest {
      */
     @Test
     public void testDeleteFile() {
-        System.out.println("deleteFile");
         FileHandling instance = new FileHandling();
-        instance.deleteFile();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\Create.txt";
+        boolean delete = instance.deleteFile(newFile);
+        assertTrue("the File is created",delete);
     }
     
 }
