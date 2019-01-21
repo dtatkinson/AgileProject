@@ -41,6 +41,7 @@ public class FileHandlingTest {
 
     /**
      * Test of createFile method, of class FileHandling.
+     * @throws java.io.IOException
      */
     @Test
     public void testCreateFile() throws IOException {
@@ -59,16 +60,21 @@ public class FileHandlingTest {
     public void testWriteToFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
-         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\kk.txt";
-         String write = instance.writeToFile(path);
-         boolean check =false;
-         if (Objects.equals(instance.readFromFile(path),write)){
-             check = true;
+         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\write.txt";
+         String write = "write test";
+         instance.writeToFile(path,write);
+         String check[] = instance.readFromFile(path);
+         boolean checkW =false;
+         String checks = "";
+         for(int i=0;i<check.length;i++){
+             checks = checks + check[i];
          }
-         assertTrue("The file is write",check);    
-         
-         
-    }
+         if(Objects.equals(checks,write)){
+             checkW = true;
+         } else {
+         }
+         assertTrue("The file is write",checkW);    
+   }
 
     /**
      * Test of checkIfFileExists method, of class FileHandling.
@@ -80,7 +86,36 @@ public class FileHandlingTest {
         boolean exist = instance.checkIfFileExists(path);
         assertTrue("The file is Exist", exist);
     }
-
+    
+    @Test
+    /**
+     * 
+     * Test of appendToFile method, of class FileHandling
+     */
+    public void testAppendToFile() throws IOException{
+        FileHandling instance = new FileHandling();
+        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\append.txt";
+       // boolean created = instance.createFile(path);
+        String written = "test";
+        String appended = "appended string";
+        instance.writeToFile(path,written);
+        instance.appendToFile(path,appended);
+        String[] check = instance.readFromFile(path);
+        boolean append = false;
+        String checks = "";
+        for(int i=0;i<check.length;i++){
+             checks = checks + check[i];
+             System.out.println(checks);
+         }
+         if(Objects.equals(checks,written+appended)){
+             append = true;
+         } else {
+         }
+        assertTrue("The file has been appended to", append);
+        
+        
+    }
+    
     /**
      * 
      * Test of readFromFile method, of class FileHandling.
@@ -90,11 +125,18 @@ public class FileHandlingTest {
     public void testReadFromFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
-         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\kk.txt";
-         String check = instance.readFromFile(path);
+         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\read.txt";
+         String l ="hello";
+         instance.writeToFile(path,l);
+         String[] check = instance.readFromFile(path);
          boolean read = false;
-         if(Objects.equals(check,instance.writeToFile(path))){
+         String checks = "";
+         for(int i=0;i<check.length;i++){
+             checks = checks + check[i];
+         }
+         if(Objects.equals(checks,l)){
              read = true;
+         } else {
          }
          assertTrue("The file is read",read);
          

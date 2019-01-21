@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Class to handle all things related to files
@@ -23,17 +24,20 @@ public class FileHandling {
         return f.createNewFile();
     }
     
-    public String writeToFile(String fileName) throws IOException{
-        String str = "hello";
+    public void writeToFile(String fileName,String strToWrite) throws IOException{
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             
-            writer.write(str);
+            writer.write(strToWrite);
         }
-        return str;
+      
     }
     
-    public void appendToFile(){
-        return;
+    public void appendToFile(String path, String strToAppend) throws IOException{
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path,true));
+        writer.newLine();
+        writer.write(strToAppend);
+        writer.close();
     }
     
     public boolean checkIfFileExists(String path){
@@ -41,13 +45,18 @@ public class FileHandling {
         return f.exists();
     }
     
-    public String readFromFile(String fileName) throws FileNotFoundException, IOException{
+    public String[] readFromFile(String fileName) throws FileNotFoundException, IOException{
+        String[] doc = {""};
+        int counter = 0;
         String line;
-        try (BufferedReader read = new BufferedReader(new FileReader(fileName))) {
-            line = read.readLine();
+        try (Scanner scan = new Scanner(new File(fileName))) {
+            while(scan.hasNextLine()){
+            line = scan.nextLine();
+            doc[counter] = line;
+            counter ++;
+            }
         }
-        System.out.println("line is this " + " " + line);
-        return line;
+        return doc;
     }
     
     public boolean deleteFile(String fileName){
