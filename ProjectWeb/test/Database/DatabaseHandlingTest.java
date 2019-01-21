@@ -49,14 +49,7 @@ public class DatabaseHandlingTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
     
-    
-    
-    @Test(expected = Test.None.class) //Test that a connection has been established i.e no exception thrown
-    public void A_testMain() throws Exception {
-        String[] args = null;
-        DatabaseHandling.main(args);    
-    }
-    
+
     @Test //Tests that inserting into the database works
     public void B_testAddStaff() throws Exception {
         System.out.println("Add staff");
@@ -159,53 +152,58 @@ public class DatabaseHandlingTest {
         instance.createExam("Comp","AC130","Scumdee","Biz","1984");
         instance.editExamAcademicYear(8,"2019");
     }
-
+    
     @Test
-    public void O_testInternalSignExam() throws Exception {
+     public void O_testInternalAssignExam() throws Exception {
+         System.out.println("Internal Exam Assigned");
+         DatabaseHandling instance = new DatabaseHandling();
+         instance.createExam("Comp","AC130","Scumdee","Biz","1984");
+         instance.internalAssignExam(9,1);
+     }
+    
+    @Test
+    public void Oa_testInternalSignExam() throws Exception {
         System.out.println("Internal Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC130","Scumdee","Biz","1984");
-        instance.internalSignExam(9,2);
+        instance.internalSignExam(9);
     }
-
+    
+     @Test
+     public void P_testInternalAssignExam() throws Exception {
+         System.out.println("Commitee Exam Assigned");
+         DatabaseHandling instance = new DatabaseHandling();
+         instance.createExam("Comp","AC130","Scumdee","Biz","1984");
+         instance.examCommiteeAssignExam(10,1);
+     }
+    
     @Test
-    public void P_testInternalDateEdit() throws Exception {
-        fail("not done");
-    }
-
-    @Test
-    public void Q_testExamCommiteeSignExam() throws Exception {
+    public void Pa_testExamCommiteeSignExam() throws Exception {
         System.out.println("Commitee Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC130","Scumdee","Biz","1984");
-        instance.examCommiteeSignExam(10,2);
+        instance.examCommiteeSignExam(10);
     }
 
+     @Test
+     public void Q_testExternalAssignExam() throws Exception {
+         System.out.println("External Exam Assigned");
+         DatabaseHandling instance = new DatabaseHandling();
+         instance.createExam("Comp","AC130","Scumdee","Biz","1984");
+         instance.externalAssignExam(11,1);
+     }
+    
     @Test
-    public void R_testExamCommiteeDateEdit() throws Exception {
-        fail("not done");
-    }
-
-    @Test
-    public void S_testExternalSignExam() throws Exception {
+    public void Qa_testExternalSignExam() throws Exception {
         System.out.println("External Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC130","Scumdee","Biz","1984");
-        instance.externalSignExam(11,2);
+        instance.externalSignExam(11);
     }
 
     @Test
-    public void T_testExternalDateEdit() throws Exception {
-       fail("not done");
-    }
-    /*
-    @Test
-    public void testKillCon() throws Exception {
+    public void R_testKillCon() throws Exception {
         System.out.println("killCon");
         DatabaseHandling instance = new DatabaseHandling();
         instance.killCon();
     }
-**/
 }
   
 
