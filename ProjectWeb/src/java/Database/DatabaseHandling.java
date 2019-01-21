@@ -50,41 +50,31 @@ public class DatabaseHandling {
    public void addStaff(String name, String role, String pswd) throws Exception
     {
         Statement stmt=con.createStatement(); 
-        ResultSet rs = stmt.executeQuery("select StaffID from Staff where StaffID = (select max(StaffID) from Staff)");
-        int id = 0;
-        while(rs.next())
-        {
-            id = rs.getInt("StaffID")+1;
-        }
-        if(id == 0)
-        {
-            id = 1;
-        }
-        stmt.execute("insert into Staff (StaffID, StaffName, Role, StaffPassword) values ('"+id+"', '"+name+"','"+role+"', '"+pswd+"');");
+        stmt.execute("insert into Staff (StaffName, Role, StaffPassword) values ('"+name+"','"+role+"', '"+pswd+"');");
     }
 
-  public void removeStaff(int id) throws Exception
+  public void removeStaff(String name) throws Exception
   {
        Statement stmt=con.createStatement();  
-       stmt.execute("delete from Staff where StaffID = "+id+";");
+       stmt.execute("delete from Staff where StaffName = '"+name+"';");
   }
   
-  public void editStaffName(int id, String newName) throws Exception
+  public void editStaffName(String name, String newName) throws Exception
   {
       Statement stmt=con.createStatement();  
-      stmt.execute("update Staff set StaffName = '"+newName+"' where StaffID = "+id+";");
+      stmt.execute("update Staff set StaffName = '"+newName+"' where StaffName = '"+name+"';");
   }
   
-  public void editStaffRole(int id, String newRole) throws Exception
+  public void editStaffRole(String name, String newRole) throws Exception
   {
       Statement stmt=con.createStatement();  
-      stmt.execute("update Staff set Role = '"+newRole+"' where StaffID = "+id+";");
+      stmt.execute("update Staff set Role = '"+newRole+"' where StaffName = '"+name+"';");
   }
 
-  public void editStaffPassword(int id, String newPswd) throws Exception
+  public void editStaffPassword(String name, String newPswd) throws Exception
   {
       Statement stmt=con.createStatement();  
-      stmt.execute("update Staff set StaffPassword = '"+newPswd+"' where StaffID = "+id+";");
+      stmt.execute("update Staff set StaffPassword = '"+newPswd+"' where StaffName = '"+name+"';");
   }
   
   //Exam methods
@@ -93,16 +83,12 @@ public class DatabaseHandling {
   {
       Statement stmt=con.createStatement();  
       ResultSet rs = stmt.executeQuery("select ExamID from Exam where ExamID = (select max(ExamID) from Exam)");
-      int id = 0;
+      int id = 1;
       while(rs.next())
       {
         id = rs.getInt("ExamID")+1;
       }
-      if(id == 0)
-      {
-        id = 1;
-      }
-      stmt.execute("insert into Exam (ExamID, ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values("+id+",'"+name+"','"+code+"','"+place+"','"+school+"','"+year+"',1);");
+      stmt.execute("insert into Exam (ExamID, ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values("+id+",'"+name+"','"+code+"','"+place+"','"+school+"','"+year+"','Lenard');");
   }
   
   public void deleteExam(int id) throws Exception

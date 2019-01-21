@@ -29,27 +29,29 @@ public class DatabaseHandlingTest {
     public ExpectedException exception = ExpectedException.none();
     
     
+    //Must Run off clean database, do to name collsion as StaffName is unqiue, if unique collison is found no update is made
+    
     @Test //Tests that inserting into the database works, throws exception is two same are found
     public void B_testAddStaff() throws Exception {
         System.out.println("Add staff");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Admin", "Testpswd");
+        instance.addStaff("Testname1", "Admin", "Testpswd");
     }
     
     @Test //Tests remove staff does not throw exception when done correctly, throws exception if doesnt exist
     public void C_testRemoveStaff() throws Exception {
         System.out.println("Remove Staff");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Testrole", "Testpswd");
-        instance.removeStaff(2);
+        instance.addStaff("Testname2", "Testrole", "Testpswd");
+        instance.removeStaff("Testname2");
     }
 
     @Test 
     public void D_testEditStaffName() throws Exception {
         System.out.println("Edit staff Name");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Testrole", "Testpswd");
-        instance.editStaffName(3,"Sausage");
+        instance.addStaff("Testname3", "IM", "Testpswd");
+        instance.editStaffName("Testname3","Sausage");
     }
 
     @Test 
@@ -57,15 +59,15 @@ public class DatabaseHandlingTest {
         System.out.println("Edit staff Role");
         DatabaseHandling instance = new DatabaseHandling();
         instance.addStaff("Lenard", "IM", "Testpswd");
-        instance.editStaffRole(4,"Pie");
+        instance.editStaffRole("Lenard","EC");
     }
 
     @Test
     public void F_testEditStaffPassword() throws Exception {
         System.out.println("Edit staff Password");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname", "Testrole", "Testpswd");
-        instance.editStaffPassword(5,"Fish");
+        instance.addStaff("Testname5", "EX", "Testpswd");
+        instance.editStaffPassword("Testname5","Fish");
     }
 
     @Test
