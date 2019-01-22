@@ -46,9 +46,9 @@ public class FileHandlingTest {
     @Test
     public void testCreateFile() throws IOException {
         FileHandling instance = new FileHandling();
-        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\Create.txt";
-        
-        boolean create = instance.createFile(newFile);
+        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\";
+        String fileName = "testdir";
+        boolean create = instance.createFile(newFile,fileName);
         assertTrue("the File is created",create);
      }
 
@@ -144,12 +144,14 @@ public class FileHandlingTest {
 
     /**
      * Test of deleteFile method, of class FileHandling.
+     * @throws java.io.IOException
      */
     @Test
-    public void testDeleteFile() {
+    public void testDeleteFile() throws IOException {
         FileHandling instance = new FileHandling();
-        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\Create.txt";
-        boolean delete = instance.deleteFile(newFile);
+        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\";
+        instance.createFile(newFile, "delete.txt");
+        boolean delete = instance.deleteFile(newFile,"delete.txt");
         assertTrue("the File is created",delete);
     }
     

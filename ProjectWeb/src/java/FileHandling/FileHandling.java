@@ -20,14 +20,23 @@ import java.util.Scanner;
  */
 public class FileHandling {
     
-    public boolean createFile(String fileName) throws IOException{
-        File f = new File(fileName);
+    public boolean createFile(String filePath,String fileName) throws IOException{
+        String fullPath = filePath + fileName;
+        
+        if(checkIfFileExists(fullPath)){
+            return true;
+        }
+        else
+        {
+        System.out.println(fullPath);
+        File f = new File(fullPath);
         return f.createNewFile();
+        }
     }
     
-    public void writeToFile(String fileName,String strToWrite) throws IOException{
+    public void writeToFile(String filePath,String strToWrite) throws IOException{
         
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             
             writer.write(strToWrite);
         }
@@ -48,7 +57,7 @@ public class FileHandling {
     
     public String[] readFromFile(String fileName) throws FileNotFoundException, IOException{
        BufferedReader in = new BufferedReader(new FileReader(fileName));
-        String str = null;
+        String str = "";
         ArrayList<String> lines = new ArrayList<String>();
         while((str = in.readLine()) != null){
             lines.add(str);
@@ -58,8 +67,9 @@ public class FileHandling {
         
     }
     
-    public boolean deleteFile(String fileName){
-        File f = new File(fileName);
+    public boolean deleteFile(String filePath, String fileName){
+        String fullPath = filePath + fileName;
+        File f = new File(fullPath);
         return f.delete();
     }
     
