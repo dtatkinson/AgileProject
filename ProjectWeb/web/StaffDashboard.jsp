@@ -1,5 +1,5 @@
 <%-- 
-    Document   : AdminDasboard
+    Document   : StaffDasboard
     Created on : 21-Jan-2019, 11:50:10
     Author     : David Atkinson
 --%>
@@ -20,8 +20,7 @@
         <form name="newButton" action="tempstaff.jsp">
         <input type="submit" value="Create a new exam" name="newbtn" />
         </form>
-        
-        <div></div>
+  
         
         <h2 align="center">My exams </h2>
         <form name="viewForm" action="will go somewhere.jsp">

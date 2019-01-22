@@ -6,6 +6,7 @@
 package FileHandling;
 
 import java.io.IOException;
+
 import java.util.Objects;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -155,4 +156,11 @@ public class FileHandlingTest {
         assertTrue("the File is created",delete);
     }
     
+    @Test
+    public void testCreateDirectory() throws IOException{
+        FileHandling instance = new FileHandling();
+        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\BIGTESTIEBOY";
+        instance.createDirectory(path);
+    }
+   
 }
