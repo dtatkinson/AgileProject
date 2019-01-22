@@ -23,7 +23,7 @@
     <body>
     <div align="center" >
         <h1>Staff</h1>
-        <form name="StaffButton" action="tempstaff.jsp">
+        <form name="StaffButton" action="ManagementPage.jsp">
         <input type="submit" value="Manage Staff" name="staffbtn" />
         </form>
         

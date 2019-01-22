@@ -13,8 +13,7 @@ public class Admin {
     public void Admin(){
         
     }
-    public String test(){
-        return "AAAA";
+    public void addStaff(String name, String password, String role){
         
     }
 }

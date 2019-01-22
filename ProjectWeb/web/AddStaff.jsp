@@ -15,7 +15,7 @@
     <body>
         <div align ="center"> <u><h1>Add Staff</u></h1><div>
             
-            
+         <form name="Details Input Form" action="AdminServlet" method="POST">
             <div align ="center">
             <h4>Enter Staff Name</h4>
             <input type="text" name="StaffName" value="" />
@@ -30,5 +30,8 @@
             <h4>Enter Role</h4>
             <input type="text" name="Role" value="" />
             </div>
+            <input type="submit" value="Submit" />
+             
+         </form>
     </body>
 </html>

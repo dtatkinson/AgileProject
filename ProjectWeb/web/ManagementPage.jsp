@@ -14,7 +14,7 @@
     </head>
     <body>
         <div align ="center">
-        <form name="Add Staff" action="AddTemp">
+        <form name="Add Staff" action="AddStaff.jsp">
         <input type="submit" value="Add Staff" name="AddStaffbtn" />
         </form>
         </div>
