@@ -12,8 +12,12 @@
         <title>View Staff</title>
     </head>
     <body>
-        <h1>do this later 2</h1>
-    
+        <h1>Staff Members:</h1>
+        
+        <form name="SearchForm" action="AdminViewStaffServlet" method="POST">
+            <input type="submit" value="Search"/>
+        </form>
+        
         <form action="ManagementPage.jsp">
             <input type="submit" value="<-Back" />
         </form>
