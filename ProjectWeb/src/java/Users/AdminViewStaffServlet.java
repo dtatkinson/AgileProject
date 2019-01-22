@@ -34,11 +34,14 @@ public class AdminViewStaffServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
+        String search = request.getParameter("SearchT");
+        
         DatabaseHandling conn = new DatabaseHandling();
         
         try (PrintWriter out = response.getWriter()) {
+            
             try{
-                ResultSet staffList  = conn.listTable("Staff");
+                ResultSet staffList  = conn.searchTable(search,"Staff");
                 while(staffList.next()){
                         
                         out.print("Name: ");
