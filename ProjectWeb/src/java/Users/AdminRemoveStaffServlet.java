@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Users;
 
 import Database.DatabaseHandling;
@@ -20,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author oliversimpson
  */
 @WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
-public class AdminAddStaffServlet extends HttpServlet {
+public class AdminRemoveStaffServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +31,15 @@ public class AdminAddStaffServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String username = request.getParameter("StaffName");
-        String name = request.getParameter("Name");
-        String password = request.getParameter("StaffPassword");
-        String role = request.getParameter("Role");
-        
-        addStaff(username, name, password,role);
-        
+      
+        removeStaff(username);      
     }
     
     //Method that calls the add staff method in the database handling class
-    public void addStaff(String username, String name, String password, String role){
+    public void removeStaff(String name){
         DatabaseHandling conn = new DatabaseHandling();
         try{
-            conn.addStaff(username, name, role, password);
+            conn.removeStaff(name);
         }
         catch(Exception e){
             
@@ -94,3 +85,4 @@ public class AdminAddStaffServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

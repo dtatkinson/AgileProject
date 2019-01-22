@@ -50,22 +50,28 @@ public class DatabaseHandling {
    //After multiple testing we discovered we need to have staff id generate a acceptable id
    //As to stop insertion errors
    //same fix for createExam
-   public void addStaff(String name, String role, String pswd) throws Exception
+   public void addStaff(String username, String name, String role, String pswd) throws Exception
     {
         Statement stmt=con.createStatement(); 
-        stmt.execute("insert into Staff (StaffName, Role, StaffPassword) values ('"+name+"','"+role+"', '"+pswd+"');");
+        stmt.execute("insert into Staff (StaffName, Name, Role, StaffPassword) values ('"+username+"','"+name+"','"+role+"', '"+pswd+"');");
     }
 
-  public void removeStaff(String name) throws Exception
+  public void removeStaff(String username) throws Exception
   {
        Statement stmt=con.createStatement();  
-       stmt.execute("delete from Staff where StaffName = '"+name+"';");
+       stmt.execute("delete from Staff where StaffName = '"+username+"';");
+  }
+  
+  public void editStaffUserName(String username, String newName) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Staff set StaffName = '"+newName+"' where StaffName = '"+username+"';");
   }
   
   public void editStaffName(String name, String newName) throws Exception
   {
       Statement stmt=con.createStatement();  
-      stmt.execute("update Staff set StaffName = '"+newName+"' where StaffName = '"+name+"';");
+      stmt.execute("update Staff set Name = '"+newName+"' where StaffName = '"+name+"';");
   }
   
   public void editStaffRole(String name, String newRole) throws Exception

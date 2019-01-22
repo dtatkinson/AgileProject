@@ -35,30 +35,38 @@ public class DatabaseHandlingTest {
     public void B_testAddStaff() throws Exception {
         System.out.println("Add staff");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname1", "Admin", "Testpswd");
+        instance.addStaff("Testname1","Owen Kelbie", "Admin", "Testpswd");
     }
     
     @Test //Tests remove staff does not throw exception when done correctly, throws exception if doesnt exist
     public void C_testRemoveStaff() throws Exception {
         System.out.println("Remove Staff");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname2", "Testrole", "Testpswd");
+        instance.addStaff("Testname2", "remove me", "Testrole", "Testpswd");
         instance.removeStaff("Testname2");
     }
 
     @Test 
-    public void D_testEditStaffName() throws Exception {
-        System.out.println("Edit staff Name");
+    public void D_testEditStaffUserName() throws Exception {
+        System.out.println("Edit staff UserName");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname3", "IM", "Testpswd");
-        instance.editStaffName("Testname3","Sausage");
+        instance.addStaff("Testname4","edit my username", "IM", "Testpswd");
+        instance.editStaffUserName("Testname3","Sausage");
     }
 
+      @Test 
+    public void Da_testEditStaffName() throws Exception {
+        System.out.println("Edit staff Name");
+        DatabaseHandling instance = new DatabaseHandling();
+        instance.addStaff("Testname3","Campell Krud", "IM", "Testpswd");
+        instance.editStaffName("Testname3","Sausage");
+    }
+    
     @Test 
     public void E_testEditStaffRole() throws Exception {
         System.out.println("Edit staff Role");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Lenard", "IM", "Testpswd");
+        instance.addStaff("Lenard", "Lenard", "IM", "Testpswd");
         instance.editStaffRole("Lenard","EC");
     }
 
@@ -66,7 +74,7 @@ public class DatabaseHandlingTest {
     public void F_testEditStaffPassword() throws Exception {
         System.out.println("Edit staff Password");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname5", "EX", "Testpswd");
+        instance.addStaff("Testname5", "Worng password fool", "EX", "Testpswd");
         instance.editStaffPassword("Testname5","Fish");
     }
 
@@ -190,8 +198,8 @@ public class DatabaseHandlingTest {
     public void S_createAdditionalStaffFoFurther() throws Exception {
        System.out.println("killCon");
        DatabaseHandling instance = new DatabaseHandling();
-       instance.addStaff("Testname6", "ES", "Testpswd");
-       instance.addStaff("Testname7", "SO", "Testpswd");
+       instance.addStaff("Testname6", "Same exam as last year", "ES", "Testpswd");
+       instance.addStaff("Testname7", "Get yer letter", "SO", "Testpswd");
     }
 }
   
