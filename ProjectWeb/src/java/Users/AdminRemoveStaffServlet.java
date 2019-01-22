@@ -35,7 +35,7 @@ public class AdminRemoveStaffServlet extends HttpServlet {
         removeStaff(username);      
     }
     
-    //Method that calls the add staff method in the database handling class
+    //Method that calls the remove staff method in the database handling class
     public void removeStaff(String name){
         DatabaseHandling conn = new DatabaseHandling();
         try{

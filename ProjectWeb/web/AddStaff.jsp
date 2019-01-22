@@ -17,10 +17,15 @@
             
          <form name="Details Input Form" action="AdminServlet" method="POST">
             <div align ="center">
-            <h4>Enter Staff Name</h4>
+            <h4>Enter Staff Username</h4>
             <input type="text" name="StaffName" value="" />
             </div>
             
+             <div align ="center">
+            <h4>Enter Staff Name</h4>
+            <input type="text" name="Name" value="" />
+            </div>
+             
             <div align ="center">
                 <h4>Enter Staff Password</h4>
             <input type="text" name="StaffPassword" value="" />
