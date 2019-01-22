@@ -45,7 +45,7 @@ public class AdminViewStaffServlet extends HttpServlet {
                 while(staffList.next()){
                         
                         out.print("Name: ");
-                        out.print(staffList.getString("Name"));
+                        out.print(staffList.getString("StaffName"));
                         out.print(" Role: ");
                         out.println(staffList.getString("Role"));
 
