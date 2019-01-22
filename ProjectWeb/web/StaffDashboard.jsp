@@ -18,7 +18,7 @@
            <h1 align ="center">Staff Dashboard</h1>
     <div align="center" >
         <h2>New</h2>
-        <form name="newButton" action="CreateExam.jsp">
+        <form name="newButton" action="CreateExamUPLD.jsp">
         <input type="submit" value="Create a new exam" name="newbtn" />
         </form>
   

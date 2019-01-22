@@ -105,7 +105,7 @@ public class DatabaseHandling {
   {
       Statement stmt=con.createStatement();  
       ResultSet rs = stmt.executeQuery("select ExamID from Exam where ExamID = (select max(ExamID) from Exam)");
-      stmt.execute("insert into Exam (ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values('"+name+"','"+code+"','"+place+"','"+school+"','"+year+"','Lenard');");
+      stmt.execute("insert into Exam (ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values('"+name+"','"+code+"','"+place+"','"+school+"','"+year+"','"+pubBy+"');");
   }
   
   public void deleteExam(int id) throws Exception

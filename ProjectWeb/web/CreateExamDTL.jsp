@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.http.HttpSession"  %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,11 +40,7 @@
             <h4>Academic Year:</h4>
             <input type="text" name="Year" value="" />
             </div>
-             
-            <div align ="center">
-            <h4>Published By:</h4>
-            <input type="text" name="PubBy" value="" />
-            </div>
+        
             <input type="submit" value="Submit" name="examSubmit" />
            
          </form>

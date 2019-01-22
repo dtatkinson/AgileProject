@@ -14,12 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author camerontaylor
  */
 @WebServlet(name = "CreateExamServlet", urlPatterns = {"/CreateExamServlet"})
+  
+ 
 public class CreateExamServlet extends HttpServlet {
 
     /**
@@ -31,28 +33,35 @@ public class CreateExamServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
+        
+        HttpSession session = request.getSession();
         
         String moduleName = request.getParameter("ModName");
         String moduleCode = request.getParameter("ModCode");
         String institution = request.getParameter("Inst");
         String school = request.getParameter("School");
         String academicYear = request.getParameter("Year");
-        String publishedBy = request.getParameter("PubBy");
+        String publishedBy = (String)session.getAttribute("username");
         
-        createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+            createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+        
+       
     }
     
     public void createExam(String moduleName, String moduleCode, String institution, String school, String academicYear, String publishedBy){
         DatabaseHandling conn = new DatabaseHandling();
-        try{
+            //conn.addStaff("12", "12", "12", "12");
+            try{
             conn.createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
-        }
-        catch(Exception e){
+         }
+        catch(Exception e)
+        {
             
         }
+       
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
