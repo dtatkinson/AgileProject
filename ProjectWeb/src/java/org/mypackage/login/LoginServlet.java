@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         boolean flag = false;
         try{
 
-            ResultSet rs = conn.listStaff();
+            ResultSet rs = conn.listTable("Staff");
             while(rs.next())
             {
                 boolean validU = processUsername(rs.getString("StaffName"), username);
