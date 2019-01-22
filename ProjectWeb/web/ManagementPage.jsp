@@ -19,25 +19,25 @@
         </form>
         </div>
         <div align ="center">
-        <form name="Delete Staff" action="DeleteTemp">
+        <form name="Delete Staff" action="DeleteStaff.jsp">
              <input type="submit" value="Delete Staff" name="DeleteStaffbtn" />
         </form>
          </div>
         
         <div align ="center">
-        <form name="Assign Staff" action="AssignTemp">
+        <form name="Assign Staff" action="AssignStaff.jsp">
         <input type="submit" value="Assign Staff" name="AssignStaffbtn" />
         </form>
          </div>
         
         <div align ="center">
-        <form name="View Staff" action="ViewTemp">
+        <form name="View Staff" action="ViewStaff.jsp">
         <input type="submit" value="View Staff" name="ViewStaffbtn" />
         </form>
         </div>
         
         <div align ="center">
-        <form name="Set Deadlines" action="DeadlineTemp">
+        <form name="Set Deadlines" action="SetDeadline.jsp">
         <input type="submit" value="Set Deadlines" name="deadlinebtn" />
         </div>
         </form>
