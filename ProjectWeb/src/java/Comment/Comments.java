@@ -7,19 +7,18 @@ package Comment;
 
 import FileHandling.FileHandling;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  *
  * @author matthewmchale
  */
 public class Comments {
-    public String getComment(){
-        return "aids";
-    }
+   
     public void writeComment(String modCode, String resitCode, String comment) throws IOException{
         FileHandling instance = new FileHandling();
         String commentFile = "comment"+resitCode+".txt" ;
-        String path = modCode + "\\2019";
+        String path = modCode + "\\2019\\";
         String fullPath = path+commentFile;
         if(instance.checkIfFileExists(fullPath))
         {         
@@ -31,7 +30,18 @@ public class Comments {
         }
         //need to create servlet to get session, and hence get the username, to get access rights or somethign please send big HELP
         }
-    public String[] readComment(){
-     return null;
+    public void readComment(String modCode, String resitCode) throws IOException{
+        String[] comment;
+        FileHandling instance = new FileHandling();
+        String commentFile = "comment"+resitCode+".txt" ;
+        String path = modCode + "\\2019\\";
+        String fullPath = path+commentFile;
+        if(instance.checkIfFileExists(fullPath))
+        {
+            comment = instance.readFromFile(path, commentFile);
+            System.out.println(Arrays.toString(comment));
+        }
+    
+        
     }
 }

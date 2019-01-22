@@ -38,20 +38,7 @@ public class CommentsTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getComment method, of class Comments.
-     */
-    @Test
-    public void testGetComment() {
-        System.out.println("getComment");
-        Comments instance = new Comments();
-        String expResult = "";
-        String result = instance.getComment();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+  
     /**
      * Test of writeComment method, of class Comments.
      */
@@ -72,14 +59,11 @@ public class CommentsTest {
      * Test of readComment method, of class Comments.
      */
     @Test
-    public void testReadComment() {
-        System.out.println("readComment");
+    public void testReadComment() throws IOException {
+        String modCode = "AC3007";
+        String resitCode = "";
         Comments instance = new Comments();
-        String[] expResult = null;
-        String[] result = instance.readComment();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.readComment(modCode, resitCode);
     }
     
 }
