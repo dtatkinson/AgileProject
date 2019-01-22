@@ -101,7 +101,7 @@ public class DatabaseHandling {
   
   //Exam methods
   //Create, Delete, Edits, Sign
-  public void createExam(String name, String code, String place, String school, String year) throws Exception
+  public void createExam(String name, String code, String place, String school, String year, String pubBy) throws Exception
   {
       Statement stmt=con.createStatement();  
       ResultSet rs = stmt.executeQuery("select ExamID from Exam where ExamID = (select max(ExamID) from Exam)");
