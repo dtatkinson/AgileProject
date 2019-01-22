@@ -5,6 +5,7 @@
  */
 package Comment;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -55,13 +56,16 @@ public class CommentsTest {
      * Test of writeComment method, of class Comments.
      */
     @Test
-    public void testWriteComment() {
-        
+    public void testWriteComment() throws IOException {
+        String modCode = "AC3007";
+        String resitCode = "";
+        String comment = "test comment";
         System.out.println("writeComment");
         Comments instance = new Comments();
-        instance.writeComment();
+        instance.writeComment(modCode,resitCode,comment);
+        
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
