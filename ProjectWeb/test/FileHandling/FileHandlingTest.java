@@ -135,9 +135,10 @@ public class FileHandlingTest {
          String[] check = instance.readFromFile(path,fileName);
          boolean read = false;
          String checks = "";
-         for(int i=0;i<check.length;i++){
-             checks = checks + check[i];
-         }
+        for (String check1 : check) {
+            checks = checks + check1;
+            System.out.println(checks);
+        }
          if(Objects.equals(checks,toWrite)){
              read = true;
          } else {

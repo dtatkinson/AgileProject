@@ -31,7 +31,7 @@ public class DatabaseHandling {
     public ResultSet searchTable(String search, String tableName){
       try{
         java.sql.Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM"  + tableName); //+ "WHERE StaffName LIKE '%" + search + "%'");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM "  + tableName + " WHERE StaffName LIKE '%" + search + "%'");
         return rs;
       }
       catch(Exception e){
