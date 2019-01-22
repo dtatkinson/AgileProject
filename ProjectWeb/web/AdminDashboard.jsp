@@ -40,10 +40,11 @@
            
     </div>
         <div align="center" class="plain">
-    <form  name="logoutForm" action="index.jsp">
+    <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn"  />
-        <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
+        
     </form>
+            <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
         </div>
     </body>
 </html>
