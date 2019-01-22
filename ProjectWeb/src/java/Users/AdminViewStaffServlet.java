@@ -35,21 +35,28 @@ public class AdminViewStaffServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
        
         DatabaseHandling conn = new DatabaseHandling();
-        ResultSet staffList  = conn.listTable("Staff");
         
-        try{
-            while(staffList.next()){
-                try (PrintWriter out = response.getWriter()) {
-                    out.print(staffList.getString("Name"));
-                }
-                catch(Exception e){
+        try (PrintWriter out = response.getWriter()) {
+            try{
+                ResultSet staffList  = conn.listTable("Staff");
+                while(staffList.next()){
+                        
+                        out.print("Name: ");
+                        out.print(staffList.getString("Name"));
+                        out.print(" Role: ");
+                        out.println(staffList.getString("Role"));
+
                     
                 }
             }
-        }
-        catch(Exception e){
+            catch(Exception e){
             
         }
+        }
+        catch(Exception e){
+
+                    }
+        
         
     }
 
