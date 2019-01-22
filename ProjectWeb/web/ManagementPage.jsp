@@ -13,6 +13,7 @@
         <title>Management Page</title>
     </head>
     <body>
+        <div align = "center" ><h1><u> Management</u> <h1> </div>
         <div align ="center">
         <form name="Add Staff" action="AddStaff.jsp">
         <input type="submit" value="Add Staff" name="AddStaffbtn" />

@@ -33,5 +33,9 @@
             <input type="submit" value="Submit" />
              
          </form>
+            <form action="ManagementPage.jsp">
+                <input type="submit" value="<-Back" />
+            </form>
+            
     </body>
 </html>
