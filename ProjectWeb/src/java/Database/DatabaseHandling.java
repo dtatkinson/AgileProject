@@ -27,13 +27,16 @@ public class DatabaseHandling {
          System.err.println("Unable to find driver");
       }
     }
-  /* Method to return a list of all usernames
+  /* Method to return a resultset of the contents of a table
   // 
+  //@param String containing the name of a table to list
+  //@return Result set of the table 
+  //@Author Lenard Gaunt
   */
-  public ResultSet listStaff(){
+  public ResultSet listTable(String tableName){
       try{
         java.sql.Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM Staff");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
         return rs;
       }
       catch(Exception e){
