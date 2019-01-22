@@ -23,28 +23,29 @@
     </head>
     <body>
     <div align="center" >
-        <h1>Staff</h1>
+        <h1><u>Staff</u></h1>
         <form name="StaffButton" action="ManagementPage.jsp">
         <input type="submit" value="Manage Staff" name="staffbtn" />
         </form>
         
         <div></div>
         
-        <h1 align="center">Exams </h1>
+        
+        <h1 align="center"><u>Exams </u></h1>
         <form name="ipExamForm" action="ipExam.jsp"> 
         <input type="submit" value="New" name="ExamBtn" />
         </form>
+        <br>
         <form name="compExmForm" action="compExams.jsp">
             <input type="submit" value="In Progress" name="compExambtn" />
         </form>
-           
-           
-    </div>
+        <br>
         <div align="center" class="plain">
     <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn"  />
-        
+      
     </form>
+            <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
         </div>
     </body>
