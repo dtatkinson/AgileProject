@@ -21,11 +21,14 @@ import java.util.Scanner;
  * @author matthewmchale
  */
 public class FileHandling {
+    String defaultPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
     
+   
     public boolean createFile(String filePath,String fileName) throws IOException{
-        String fullPath = filePath + fileName;
+        String fullPath = defaultPath + filePath + fileName;
+        String path = filePath + fileName;
         
-        if(checkIfFileExists(fullPath)){
+        if(checkIfFileExists(path)){
             return true;
         }
         else
@@ -36,29 +39,33 @@ public class FileHandling {
         }
     }
     
-    public void writeToFile(String filePath,String strToWrite) throws IOException{
+    public void writeToFile(String filePath, String fileName, String strToWrite) throws IOException{
         
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+        String fullPath = defaultPath + filePath + fileName;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath))) {
             
             writer.write(strToWrite);
         }
       
     }
     
-    public void appendToFile(String path, String strToAppend) throws IOException{
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path,true));
+    public void appendToFile(String path, String fileName, String strToAppend) throws IOException{
+        String fullPath = defaultPath + path + fileName;
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath,true));
         writer.newLine();
         writer.write(strToAppend);
         writer.close();
     }
     
     public boolean checkIfFileExists(String path){
-        File f = new File(path);
+        String fullPath = defaultPath + path;
+        File f = new File(fullPath);
         return f.exists();
     }
     
-    public String[] readFromFile(String fileName) throws FileNotFoundException, IOException{
-       BufferedReader in = new BufferedReader(new FileReader(fileName));
+    public String[] readFromFile(String path, String fileName) throws FileNotFoundException, IOException{
+       String fullPath = defaultPath + path + fileName;
+        BufferedReader in = new BufferedReader(new FileReader(fullPath));
         String str = "";
         ArrayList<String> lines = new ArrayList<String>();
         while((str = in.readLine()) != null){
@@ -70,14 +77,15 @@ public class FileHandling {
     }
     
     public boolean deleteFile(String filePath, String fileName){
-        String fullPath = filePath + fileName;
+        String fullPath = defaultPath + filePath + fileName;
         File f = new File(fullPath);
         return f.delete();
     }
     
-     public void createDirectory(String path) throws IOException
+     public void createDirectory(String path, String folderName) throws IOException
     {
-        Files.createDirectories(Paths.get(path));
+        String fullPath = defaultPath + path + folderName;
+        Files.createDirectories(Paths.get(fullPath));
     }
     
 }

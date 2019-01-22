@@ -47,8 +47,8 @@ public class FileHandlingTest {
     @Test
     public void testCreateFile() throws IOException {
         FileHandling instance = new FileHandling();
-        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\";
-        String fileName = "testdir";
+        String newFile = "test\\";
+        String fileName = "testcreate.txt";
         boolean create = instance.createFile(newFile,fileName);
         assertTrue("the File is created",create);
      }
@@ -61,10 +61,11 @@ public class FileHandlingTest {
     public void testWriteToFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
-         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\write.txt";
+         path = "test\\";
+         String fileName = "write.txt";
          String write = "write test";
-         instance.writeToFile(path,write);
-         String check[] = instance.readFromFile(path);
+         instance.writeToFile(path,fileName,write);
+         String check[] = instance.readFromFile(path,fileName);
          boolean checkW =false;
          String checks = "";
          for(int i=0;i<check.length;i++){
@@ -83,7 +84,7 @@ public class FileHandlingTest {
     @Test
     public void testCheckIfFileExists() {
         FileHandling instance = new FileHandling();
-        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test";
+        String path = "test";
         boolean exist = instance.checkIfFileExists(path);
         assertTrue("The file is Exist", exist);
     }
@@ -95,13 +96,14 @@ public class FileHandlingTest {
      */
     public void testAppendToFile() throws IOException{
         FileHandling instance = new FileHandling();
-        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\append.txt";
+        String path = "test\\";
+        String fileName = "append.txt";
        // boolean created = instance.createFile(path);
         String written = "test";
         String appended = "appended string";
-        instance.writeToFile(path,written);
-        instance.appendToFile(path,appended);
-        String[] check = instance.readFromFile(path);
+        instance.writeToFile(path,fileName,written);
+        instance.appendToFile(path,fileName,appended);
+        String[] check = instance.readFromFile(path,fileName);
         boolean append = false;
         String checks = "";
         for(int i=0;i<check.length;i++){
@@ -126,16 +128,17 @@ public class FileHandlingTest {
     public void testReadFromFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
-         path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\read.txt";
-         String l ="hello";
-         instance.writeToFile(path,l);
-         String[] check = instance.readFromFile(path);
+         path = "test\\";
+         String fileName = "read.txt";
+         String toWrite ="hello";
+         instance.writeToFile(path,fileName, toWrite);
+         String[] check = instance.readFromFile(path,fileName);
          boolean read = false;
          String checks = "";
          for(int i=0;i<check.length;i++){
              checks = checks + check[i];
          }
-         if(Objects.equals(checks,l)){
+         if(Objects.equals(checks,toWrite)){
              read = true;
          } else {
          }
@@ -150,7 +153,7 @@ public class FileHandlingTest {
     @Test
     public void testDeleteFile() throws IOException {
         FileHandling instance = new FileHandling();
-        String newFile = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\";
+        String newFile = "test\\";
         instance.createFile(newFile, "delete.txt");
         boolean delete = instance.deleteFile(newFile,"delete.txt");
         assertTrue("the File is created",delete);
@@ -159,8 +162,9 @@ public class FileHandlingTest {
     @Test
     public void testCreateDirectory() throws IOException{
         FileHandling instance = new FileHandling();
-        String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\BIGTESTIEBOY";
-        instance.createDirectory(path);
+        String path = "test\\";
+        String folderName = "bigcamobOI";
+        instance.createDirectory(path, folderName);
     }
    
 }
