@@ -178,12 +178,20 @@ public class DatabaseHandlingTest {
         DatabaseHandling instance = new DatabaseHandling();
         instance.externalSignExam(11);
     }
-
+    
     @Test
     public void R_testKillCon() throws Exception {
         System.out.println("killCon");
         DatabaseHandling instance = new DatabaseHandling();
         instance.killCon();
+    }
+    
+    @Test 
+    public void S_createAdditionalStaffFoFurther() throws Exception {
+       System.out.println("killCon");
+       DatabaseHandling instance = new DatabaseHandling();
+       instance.addStaff("Testname6", "ES", "Testpswd");
+       instance.addStaff("Testname7", "SO", "Testpswd");
     }
 }
   

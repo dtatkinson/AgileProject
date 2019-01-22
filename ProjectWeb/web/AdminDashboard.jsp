@@ -10,6 +10,11 @@
 
 <!DOCTYPE html>
 <html>
+    <%
+        if(session.getAttribute("username") == null){
+            response.sendRedirect("index.jsp");
+        }
+        %>
     <head>
          <link rel="stylesheet" href="AdminCSS.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
