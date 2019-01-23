@@ -64,6 +64,19 @@ public class DatabaseHandling {
       
       return null;
   }
+  public ResultSet listTableWhere(String tableName, String columnName, String where){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "=" + where);
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
+  
    //Staff Methods
    //Add, remove, edit specific records
    //After multiple testing we discovered we need to have staff id generate a acceptable id

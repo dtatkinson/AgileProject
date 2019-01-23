@@ -9,6 +9,7 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.time.Year;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,14 +44,16 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             DatabaseHandling conn = new DatabaseHandling();
-
-                ResultSet moduleList = conn.listTable("Exam");
+            String year; 
+                year  = ""+Year.now().getValue();
+                out.print(year);
+                ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
             out.println("<form action='SetDeadlineServlet' method='POST'>");
                 out.println("<select name='Modules' width='150'>");
                 
                 try{
                     while(moduleList.next()){
-                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ">"+ moduleList.getString("ModuleCode") +"</option>");
+                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
                     }
                 }
                 catch(Exception e){
