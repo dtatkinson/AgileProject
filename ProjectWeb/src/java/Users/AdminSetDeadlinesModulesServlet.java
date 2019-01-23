@@ -70,6 +70,10 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
                 out.println("<input type='date' name='EMdeadline'>");
                 out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
+            
+            out.println("<form name='Back' action='ManagementPage.jsp'>");
+               out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
+            out.println("</form>");
             out.println("</body>");
             out.println("</html>");
         }
