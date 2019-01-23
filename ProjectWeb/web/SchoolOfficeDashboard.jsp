@@ -18,7 +18,7 @@
            <h1 align ="center">School Office Dashboard</h1>
     <div align="center" >
         <h2 align="center">View Exams </h2>
-        <form name="viewForm" action="will go somewhere.jsp">
+        <form name="viewForm" action="SchoolOfficeViewExams">
             <input type="submit" value="View my exams" name="viewbtn" />
         </form>
         

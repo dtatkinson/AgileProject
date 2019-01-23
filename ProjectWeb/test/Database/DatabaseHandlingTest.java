@@ -98,7 +98,7 @@ public class DatabaseHandlingTest {
         System.out.println("Edit Exam Status");
         DatabaseHandling instance = new DatabaseHandling();
         instance.createExam("Comp","AC133","Scumdee","Biz","2019", "Testname3");
-        instance.editExamStatus(3,"in progress");
+        instance.editExamStatus(3,"Complete");
     }
 
 
