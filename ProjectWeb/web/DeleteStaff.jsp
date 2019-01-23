@@ -16,19 +16,32 @@
         <title>Delete Staff</title>
     </head>
     <body>
+        <div class ="img">
+        <a href="AdminDashboard.jsp">
+          <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left”    />
+        </a>
+        </div>
         <div align="center">
             <h1><u>REMOVE STAFF MEMBER</u></h1>
                 <h3>Enter Staff Username:</h3>
                 <form name="Gerald" action="AdminRemoveStaffServlet" method="POST">
                     <input type="text" name="staffName"/>
-                    <input type="submit" value="OK" name="Davids" />
+                    <input type="submit" value="OK"  onclick="myFunction()"/>
                
                 </form>
-                
+                <script>
+
+                    function myFunction() {
+
+                    alert("Are you sure you want to delete this member of staff!");
+
+                    }
+
+</script>
 
                   
         </div>
-        <div>
+        <div align = "center">
             <form action="ManagementPage.jsp">
                        <input type="submit" value="<-Back" />
                    </form>
