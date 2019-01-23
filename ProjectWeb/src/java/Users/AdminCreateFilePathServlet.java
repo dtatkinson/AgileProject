@@ -6,22 +6,23 @@
 package Users;
 
 import Database.DatabaseHandling;
+import FileHandling.FileHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.time.Year;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
- * @author lenardgaunt
+ * @author matthewmchale
  */
-@WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
-public class AdminSetDeadlinesModulesServlet extends HttpServlet {
+@WebServlet(name = "AdminCreateFilePathServlet", urlPatterns = {"/AdminCreateFilePathServlet"})
+public class AdminCreateFilePathServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,42 +36,26 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-                       
-            out.println("</head>");
-            out.println("<body>");
-            DatabaseHandling conn = new DatabaseHandling();
-            String year; 
-                year  = ""+Year.now().getValue();
-                out.print(year);
-                ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-            out.println("<form action='SetDeadlineServlet' method='POST'>");
-                out.println("<select name='Modules' width='150'>");
+        //String search = request.getParameter("Search");
+        DatabaseHandling conn = new DatabaseHandling();
+        FileHandling file = new FileHandling();
+        String modCode;
+        String year = "\\2019";
+        try{
+            ResultSet moduleList = conn.listTable("Exam");
+            while(moduleList.next()){
+                modCode = moduleList.getString("ModuleCode");
+                if(!file.checkIfFileExists(modCode)){
+                    file.createDirectory(modCode,year);
+                }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
+                    file.createDirectory(modCode, year);
+                }
                 
-                try{
-                    while(moduleList.next()){
-                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
-                    }
-                }
-                catch(Exception e){
-
-                }
-                out.println("</select>");
-                out.println(" Internal:");
-                out.println("<input type='date' name='IMdeadline'>");
-                out.println(" Commitee:");
-                out.println("<input type='date' name='ECdeadline'>");
-                out.println(" External:");
-                out.println("<input type='date' name='EMdeadline'>");
-                out.println("<input type='submit' value='Select' name='select'>");
-            out.println("</form>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            }
+       
+        }catch(Exception e){}
+            
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

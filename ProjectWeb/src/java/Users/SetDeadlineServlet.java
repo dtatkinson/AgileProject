@@ -5,9 +5,10 @@
  */
 package Users;
 
+import Database.DatabaseHandling;
+import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +36,26 @@ public class SetDeadlineServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String Module = request.getParameter("Modules");
-            String deadline = request.getParameter("deadline");
-            out.print(deadline);
+         
+            String[] output = request.getParameter("Modules").split(":");
+            
+            String Module = output[0];
+            String IMdeadline = request.getParameter("IMdeadline");
+            String ECdeadline = request.getParameter("ECdeadline");
+            String EMdeadline = request.getParameter("EMdeadline");
+            int id = Integer.parseInt(output[1]);
+            DatabaseHandling conn = new DatabaseHandling();
+            
+            //out.print(deadline);
+            try{
+            conn.internalAssignExamDeadline(id, IMdeadline);
+            conn.examCommiteeAssignExamDeadline(id, ECdeadline);
+            conn.externalAssignExamDeadline(id, EMdeadline);
+            }
+            catch(Exception e){
+                
+            }
+            //ResultSet exam = conn.listTableWhere(deadline, Module, Module)
         }
     }
 

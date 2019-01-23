@@ -6,10 +6,9 @@
 package Users;
 
 import Database.DatabaseHandling;
+import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.time.Year;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lenardgaunt
  */
-@WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
-public class AdminSetDeadlinesModulesServlet extends HttpServlet {
+@WebServlet(name = "AssignToExamServlet", urlPatterns = {"/AssignToExamServlet"})
+public class AssignToExamServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,39 +36,25 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-                       
-            out.println("</head>");
-            out.println("<body>");
+         
+            String[] output = request.getParameter("Modules").split(":");
+            
+            String Module = output[0];
+            String IMStaffName = request.getParameter("IMStaffName");
+            String ECStaffName = request.getParameter("ECStaffName");
+            String EMStaffName = request.getParameter("EMStaffName");
+            int id = Integer.parseInt(output[1]);
             DatabaseHandling conn = new DatabaseHandling();
-            String year; 
-                year  = ""+Year.now().getValue();
-                out.print(year);
-                ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-            out.println("<form action='SetDeadlineServlet' method='POST'>");
-                out.println("<select name='Modules' width='150'>");
+            
+            try{
+            conn.internalAssignExam(id, IMStaffName);
+            conn.examCommiteeAssignExam(id, ECStaffName);
+            conn.externalAssignExam(id, EMStaffName);
+            }
+            catch(Exception e){
                 
-                try{
-                    while(moduleList.next()){
-                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
-                    }
-                }
-                catch(Exception e){
-
-                }
-                out.println("</select>");
-                out.println(" Internal:");
-                out.println("<input type='date' name='IMdeadline'>");
-                out.println(" Commitee:");
-                out.println("<input type='date' name='ECdeadline'>");
-                out.println(" External:");
-                out.println("<input type='date' name='EMdeadline'>");
-                out.println("<input type='submit' value='Select' name='select'>");
-            out.println("</form>");
-            out.println("</body>");
-            out.println("</html>");
+            }
+            //ResultSet exam = conn.listTableWhere(deadline, Module, Module)
         }
     }
 
@@ -113,3 +98,4 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lenardgaunt
  */
-@WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
-public class AdminSetDeadlinesModulesServlet extends HttpServlet {
+@WebServlet(name = "AdminAssignToExam", urlPatterns = {"/AdminAssignToExam"})
+public class AdminAssignToExam extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,7 +48,7 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
                 year  = ""+Year.now().getValue();
                 out.print(year);
                 ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-            out.println("<form action='SetDeadlineServlet' method='POST'>");
+            out.println("<form action='AssignToExamServlet' method='POST'>");
                 out.println("<select name='Modules' width='150'>");
                 
                 try{
@@ -61,11 +61,51 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
                 }
                 out.println("</select>");
                 out.println(" Internal:");
-                out.println("<input type='date' name='IMdeadline'>");
+                out.println("<select name='IMStaffName' width='150'>");
+                
+                ResultSet StaffList = conn.listTable("Staff");
+               
+                try{
+                    while(StaffList.next()){
+                        out.println("<option name='IMStaffName' value=" + StaffList.getString("StaffName")+">" + StaffList.getString("Name")+ "</option>");
+                    }
+                }
+                catch(Exception e){
+                    
+                }
+                out.println("</select>");
+                
                 out.println(" Commitee:");
-                out.println("<input type='date' name='ECdeadline'>");
+                out.println("<select name='ECStaffName' width='150'>");
+                
+                ResultSet StaffList2 = conn.listTable("Staff");
+               
+                try{
+                    while(StaffList2.next()){
+                        out.println("<option name='ECStaffName' value=" + StaffList2.getString("StaffName")+">" + StaffList2.getString("Name")+ "</option>");
+                    }
+                }
+                catch(Exception e){
+                    
+                }
+                out.println("</select>");
+
+                
                 out.println(" External:");
-                out.println("<input type='date' name='EMdeadline'>");
+                out.println("<select name='EMStaffName' width='150'>");
+                
+                ResultSet StaffList3 = conn.listTable("Staff");
+               
+                try{
+                    while(StaffList3.next()){
+                        out.println("<option name='EMStaffName' value=" + StaffList3.getString("StaffName")+">" + StaffList3.getString("Name")+ "</option>");
+                    }
+                }
+                catch(Exception e){
+                    
+                }
+                out.println("</select>");
+
                 out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
             out.println("</body>");
@@ -113,3 +153,4 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+

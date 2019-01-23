@@ -147,7 +147,7 @@ public class DatabaseHandlingTest {
          System.out.println("Internal Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC130","Scumdee","Biz","1984", "Lenard");
-         instance.internalAssignExam(9,1);
+         instance.internalAssignExam(9,"Lenard");
      }
     
     @Test
@@ -169,7 +169,7 @@ public class DatabaseHandlingTest {
          System.out.println("Commitee Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC130","Scumdee","Biz","1984", "Lenard");
-         instance.examCommiteeAssignExam(10,1);
+         instance.examCommiteeAssignExam(10,"Lenard");
      }
     
     @Test
@@ -191,7 +191,7 @@ public class DatabaseHandlingTest {
          System.out.println("External Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC130","Scumdee","Biz","1984", "Lenard");
-         instance.externalAssignExam(11,1);
+         instance.externalAssignExam(11,"Lenard");
      }
     
     @Test
