@@ -39,7 +39,7 @@
         </div>
         
         <div align ="center">
-        <form name="Set Deadlines" action="SetDeadline.jsp">
+        <form name="Set Deadlines" action="AdminSetDeadlinesServlet">
         <input type="submit" value="Set Deadlines" name="deadlinebtn" />
         </div>
         </form>

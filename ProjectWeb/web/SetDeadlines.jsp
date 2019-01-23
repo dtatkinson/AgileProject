@@ -13,7 +13,7 @@
         <title>Set Deadlines</title>
     </head>
     <body>
-        <h1>Do this later 3</h1>
+        
         
         <form action="ManagementPage.jsp">
             <input type="submit" value="<-Back" />
