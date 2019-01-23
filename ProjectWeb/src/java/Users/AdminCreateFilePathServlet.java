@@ -40,7 +40,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         DatabaseHandling conn = new DatabaseHandling();
         FileHandling file = new FileHandling();
         String modCode;
-        String year = "\\2019";
+        String year = "\\2019\\";
         try{
             ResultSet moduleList = conn.listTable("Exam");
             while(moduleList.next()){
@@ -51,7 +51,10 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                 }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
                     file.createDirectory(modCode, year);
                     file.createFile(modCode+year, "comments.txt");
+                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"\\comments.txt")){
+                    file.createFile(modCode+year, "comments.txt");
                 }
+                       
                 
             }
        
