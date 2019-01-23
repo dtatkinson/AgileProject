@@ -157,6 +157,13 @@ public class DatabaseHandlingTest {
         instance.internalSignExam(9);
     }
     
+    @Test
+    public void Ob_testInternalSignExamDeadline() throws Exception {
+        System.out.println("Internal Exam Deadline set");
+        DatabaseHandling instance = new DatabaseHandling();
+        instance.internalAssignExamDeadline(9, "2019-01-29");
+    }
+    
      @Test
      public void P_testInternalAssignExam() throws Exception {
          System.out.println("Commitee Exam Assigned");
@@ -170,6 +177,13 @@ public class DatabaseHandlingTest {
         System.out.println("Commitee Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
         instance.examCommiteeSignExam(10);
+    }
+    
+     @Test
+    public void Pb_testCommiteeSignExamDeadline() throws Exception {
+        System.out.println("Commitee Exam Deadline set");
+        DatabaseHandling instance = new DatabaseHandling();
+        instance.examCommiteeAssignExamDeadline(10, "2019-01-29");
     }
 
      @Test
@@ -185,6 +199,13 @@ public class DatabaseHandlingTest {
         System.out.println("External Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
         instance.externalSignExam(11);
+    }
+    
+     @Test
+    public void Qb_testExternalSignExamDeadline() throws Exception {
+        System.out.println("External Exam Deadline set");
+        DatabaseHandling instance = new DatabaseHandling();
+        instance.externalAssignExamDeadline(11, "2019-01-29");
     }
     
     @Test

@@ -162,6 +162,12 @@ public class DatabaseHandling {
       stmt.execute("update Exam set InternalSignID = "+signid+" where ExamID = "+id+";");
   }
   
+   public void internalAssignExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Exam set InternalSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
+  }
+  
   public void internalSignExam(int id) throws Exception
   {
      Statement stmt=con.createStatement();  
@@ -181,6 +187,12 @@ public class DatabaseHandling {
      stmt.execute("update Exam set CommiteeSign = true where ExamID = "+id+";"); 
      stmt.execute("update Exam set CommiteeSignDate = CURDATE() where ExamID = "+id+";");
   }
+  
+    public void examCommiteeAssignExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Exam set CommiteeSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
+  }
     
    public void externalAssignExam(int id, int signid) throws Exception
   {
@@ -193,6 +205,12 @@ public class DatabaseHandling {
      Statement stmt=con.createStatement();  
      stmt.execute("update Exam set ExternalSign = true where ExamID = "+id+";");   
      stmt.execute("update Exam set ExternalSignDate = CURDATE() where ExamID = "+id+";");
+  }
+  
+    public void externalAssignExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Exam set ExternalSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
   }
   
   //kills self
