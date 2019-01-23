@@ -40,13 +40,17 @@ public class SetDeadlineServlet extends HttpServlet {
             String[] output = request.getParameter("Modules").split(":");
             
             String Module = output[0];
-            String deadline = request.getParameter("deadline");
+            String IMdeadline = request.getParameter("IMdeadline");
+            String ECdeadline = request.getParameter("ECdeadline");
+            String EMdeadline = request.getParameter("EMdeadline");
             int id = Integer.parseInt(output[1]);
             DatabaseHandling conn = new DatabaseHandling();
             
             //out.print(deadline);
             try{
-            conn.internalAssignExamDeadline(id, deadline);
+            conn.internalAssignExamDeadline(id, IMdeadline);
+            conn.examCommiteeAssignExamDeadline(id, ECdeadline);
+            conn.externalAssignExamDeadline(id, EMdeadline);
             }
             catch(Exception e){
                 
