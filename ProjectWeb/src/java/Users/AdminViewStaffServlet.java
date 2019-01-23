@@ -42,15 +42,43 @@ public class AdminViewStaffServlet extends HttpServlet {
             
             try{
                 ResultSet staffList  = conn.searchTable(search, "Staff");
-                while(staffList.next()){
-                        
-                        out.print("Name: ");
-                        out.print(staffList.getString("StaffName"));
-                        out.print(" Role: ");
-                        out.println(staffList.getString("Role"));
+                out.println("<HTML>");
+                out.println("<BODY>");
 
+                out.println("<table style='width:100%' border='1'");
+
+                out.println("<tr>");
+                    out.println("<th>");
+                    out.println("Staff Username");
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println("Staff Role");
+                    out.println("</th>");
+                out.println("</tr>");
+                        
+                while(staffList.next()){
+                        response.setContentType("text/html");
+                        //out.print("Name: \n");
+                        //out.print(staffList.getString("StaffName"));
+                        //out.print(" Role: ");
+                        //out.println(staffList.getString("Role"));
+                        
+                       
+                        out.println("<tr>");
+                            out.println("<td>");
+                            out.println(staffList.getString("StaffName"));
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println(staffList.getString("Role"));
+                            out.println("</td>");
+                        out.println("</tr>");
+                        
+                        
                     
                 }
+                out.println("</table>");
+                out.println("</BODY>");
+                out.println("</HTML>");
             }
             catch(Exception e){
             
