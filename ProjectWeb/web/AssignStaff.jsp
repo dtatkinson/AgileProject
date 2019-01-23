@@ -22,15 +22,12 @@
      </div>
         <h1 align = "center"><u>Assign Staff</u></h1>
        <div align ="center">
-            <form name="Details Input Form" action="CreateExamServlet" method="POST">
-         <form name="Details Input Form" action="CreateExamServlet" method="POST">
+  
+           
+         
+         <form name="Details Input Form" action="AdminChangeStaffRole" method="POST">
             <h4>Enter Staff Name:</h4>
             <input type="text" name="StaffName" value="" />
-            </div>
-            
-            <div align ="center">
-                <h4>Enter Current Staff Role:</h4>
-            <input type="text" name="OldStaffRole" value="" />
             </div>
             
             <div align ="center">
@@ -44,5 +41,9 @@
              </div>
            
          </form>
+           
+           <form name="Back " action="AdminDashboard.jsp">
+                <input type="submit" value="<- Go Back" name="backBtn" />   
+            </form>
     </body>
 </html>

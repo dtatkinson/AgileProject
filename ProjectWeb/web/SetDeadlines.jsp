@@ -18,5 +18,9 @@
         <form action="ManagementPage.jsp">
             <input type="submit" value="<-Back" />
         </form>
+        
+        <form name="Back " action="AdminDashboard.jsp">
+                <input type="submit" value="<- Go Back" name="backBtn" />   
+            </form>
     </body>
 </html>
