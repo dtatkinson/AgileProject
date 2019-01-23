@@ -5,22 +5,7 @@
 --%>
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@page import="javax.servlet.http.HttpSession"  %>
-<%@page import="javax.servlet.http.HttpSession"  %>
-<%
-        
-        String moduleName = request.getParameter("ModName");
-        String moduleCode = request.getParameter("ModCode");
-        String institution = request.getParameter("Inst");
-        String school = request.getParameter("School");
-        String academicYear = request.getParameter("Year");
-        String publishedBy = (String)session.getAttribute("username");
-        session.setAttribute("MN",moduleName);
-        session.setAttribute("MC",moduleCode );
-        session.setAttribute("I",institution);
-        session.setAttribute("S",school);
-        session.setAttribute("AY",academicYear);
-        session.setAttribute("PB",publishedBy);
-    %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 

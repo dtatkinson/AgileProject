@@ -6,6 +6,7 @@
 package Exam;
 
 import Database.DatabaseHandling;
+import FileHandling.FileHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -40,14 +41,19 @@ public class CreateExamServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         
-        String moduleName = (String)session.getAttribute("MN");
-        String moduleCode = (String)session.getAttribute("MC");
-        String institution = (String)session.getAttribute("I");
-        String school = (String)session.getAttribute("S");
-        String academicYear = (String)session.getAttribute("AY");
+        String moduleName = request.getParameter("ModName");
+        String moduleCode = request.getParameter("ModCode");
+        String institution = request.getParameter("Inst");
+        String school = request.getParameter("School");
+        String academicYear = request.getParameter("Year");
         String publishedBy = (String)session.getAttribute("PB");
         
         createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+        createFile(moduleCode);
+        
+        session.setAttribute("moduleCode", moduleCode);
+        response.sendRedirect("CreateExamUPLD.jsp");
+        
         }
     }
     
@@ -62,8 +68,27 @@ public class CreateExamServlet extends HttpServlet {
         {
             
         }
-       
+        
     }
+    
+    public void createFile(String modCode)
+    {
+        String year = "\\2019";
+    
+        FileHandling file = new FileHandling();
+        try{
+        if(!file.checkIfFileExists(modCode)){
+                    file.createDirectory(modCode,year);
+                }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
+                    file.createDirectory(modCode, year);
+                }
+        }
+        catch(Exception e)
+                {
+                }
+    }
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -102,5 +127,6 @@ public class CreateExamServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

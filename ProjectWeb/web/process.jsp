@@ -1,7 +1,8 @@
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@page import="javax.servlet.http.HttpSession"  %>
 <%
-    MultipartRequest m = new MultipartRequest(request, "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test");
+    String modulecode = (String)session.getAttribute("moduleCode");
+    MultipartRequest m = new MultipartRequest(request, "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modulecode+"\\2019");
 
     out.println("Successfully Uploaded..");
     %> 
@@ -14,7 +15,7 @@
     <body>
         <h1>Do this later 3</h1>
         
-        <form action="CreateExamServlet">
+        <form action="StaffDashboard.jsp">
             <input type="submit" value="Next->" />
         </form>
     </body>
