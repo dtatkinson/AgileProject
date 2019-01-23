@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oliversimpson
  */
-@WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
+@WebServlet(name = "AdminAddStaffServlet", urlPatterns = {"/AdminAddStaffServlet"})
 public class AdminAddStaffServlet extends HttpServlet {
 
     /**
@@ -41,7 +41,7 @@ public class AdminAddStaffServlet extends HttpServlet {
         String role = request.getParameter("Role");
         
         addStaff(username, name, password,role);
-        
+        response.sendRedirect("AdminDashboard.jsp");
     }
     
     //Method that calls the add staff method in the database handling class

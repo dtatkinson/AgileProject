@@ -22,7 +22,7 @@
         <div align="center">
             <h1><u>Add Staff Member</u></h1>
             
-         <form name="Details Input Form" action="AdminServlet" method="POST">
+         <form name="Details Input Form" action="AdminAddStaffServlet" method="POST">
              
             <div align ="center">
                 <h4>Enter Staff Username:</h4>
