@@ -67,7 +67,20 @@ public class DatabaseHandling {
   public ResultSet listTableWhere(String tableName, String columnName, String where){
       try{
         java.sql.Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "=" + where);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "='" + where + "'");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
+  
+  public ResultSet listTableWhereD(String tableName, String columnName, String where){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT DISTINCT * FROM " + tableName + " WHERE " + columnName + "='" + where + "'");
         return rs;
       }
       catch(Exception e){

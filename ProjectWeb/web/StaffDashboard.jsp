@@ -24,7 +24,7 @@
   
         
         <h2 align="center">My exams </h2>
-        <form name="viewForm" action="will go somewhere.jsp">
+        <form name="viewForm" action="BrowseExamS">
             <input type="submit" value="View my exams" name="viewbtn" />
         </form>
            

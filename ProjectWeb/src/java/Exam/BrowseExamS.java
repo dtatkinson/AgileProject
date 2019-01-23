@@ -3,26 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users;
+package Exam;
 
 import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.time.Year;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author lenardgaunt
+ * @author owenkelbie
  */
-@WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
-public class AdminSetDeadlinesModulesServlet extends HttpServlet {
+@WebServlet(name = "BrowseExamS", urlPatterns = {"/BrowseExamS"})
+public class BrowseExamS extends HttpServlet {
 
+    
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,47 +35,46 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
                        
             out.println("</head>");
             out.println("<body>");
-            DatabaseHandling conn = new DatabaseHandling();
-            String year; 
-                year  = ""+Year.now().getValue();
-                out.print(year);
-                ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-            out.println("<form action='SetDeadlineServlet' method='POST'>");
-                out.println("<select name='Modules' width='150'>");
-                
-                try{
-                    while(moduleList.next()){
-                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
-                    }
-                }
-                catch(Exception e){
+            try{
+                HttpSession session = request.getSession();
+                String username = (String) session.getAttribute("username");
+                DatabaseHandling instance = new DatabaseHandling();
 
+                ResultSet setter = instance.listTableWhereD("Exam", "PublishedBy", "Lenard");
+
+                while(setter.next()){
+                    out.println(setter.getString("ModuleCode"));
+                    String moduleCode = setter.getString("ModuleCode");
+                    out.println("<div>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("</div>");
                 }
-                out.println("</select>");
-                out.println(" Internal:");
-                out.println("<input type='date' name='IMdeadline'>");
-                out.println(" Commitee:");
-                out.println("<input type='date' name='ECdeadline'>");
-                out.println(" External:");
-                out.println("<input type='date' name='EMdeadline'>");
-                out.println("<input type='submit' value='Select' name='select'>");
-            out.println("</form>");
+           //out.print("TTTTTTTTTTTT");
+       
+            }catch (Exception e){
+                
+            }
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>");        
+            
+            /* TODO output your page here. You may use following sample code. */
+            
         }
     }
 
