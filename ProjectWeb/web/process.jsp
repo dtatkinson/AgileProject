@@ -1,11 +1,9 @@
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
-
+<%@page import="javax.servlet.http.HttpSession"  %>
 <%
-
     MultipartRequest m = new MultipartRequest(request, "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test");
 
     out.println("Successfully Uploaded..");
-
     %> 
     <html>
     <head>
@@ -16,7 +14,7 @@
     <body>
         <h1>Do this later 3</h1>
         
-        <form action="CreateExamDTL.jsp">
+        <form action="CreateExamServlet">
             <input type="submit" value="Next->" />
         </form>
     </body>

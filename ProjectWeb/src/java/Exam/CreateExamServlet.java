@@ -35,27 +35,28 @@ public class CreateExamServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException{
+        try (PrintWriter out = response.getWriter()) {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
         
-        String moduleName = request.getParameter("ModName");
-        String moduleCode = request.getParameter("ModCode");
-        String institution = request.getParameter("Inst");
-        String school = request.getParameter("School");
-        String academicYear = request.getParameter("Year");
-        String publishedBy = (String)session.getAttribute("username");
+        String moduleName = (String)session.getAttribute("MN");
+        String moduleCode = (String)session.getAttribute("MC");
+        String institution = (String)session.getAttribute("I");
+        String school = (String)session.getAttribute("S");
+        String academicYear = (String)session.getAttribute("AY");
+        String publishedBy = (String)session.getAttribute("PB");
         
-            createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
-        
-       
+        createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+        }
     }
     
     public void createExam(String moduleName, String moduleCode, String institution, String school, String academicYear, String publishedBy){
         DatabaseHandling conn = new DatabaseHandling();
-            //conn.addStaff("12", "12", "12", "12");
+            
             try{
             conn.createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+           
          }
         catch(Exception e)
         {

@@ -15,7 +15,7 @@
     <body>
          <div align ="center"> <u><h1>Create Exam</u></h1><div>
             
-         <form name="Details Input Form" action="CreateExamServlet" method="POST">
+         <form name="Details Input Form" action="CreateExamUPLD.jsp" method="POST">
             <div align ="center">
             <h4>Module Name:</h4>
             <input type="text" name="ModName" value="" />
