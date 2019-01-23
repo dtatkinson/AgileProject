@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author owenkelbie
+ * @author David Atkinson
  */
 @WebServlet(name = "BrowseExamS", urlPatterns = {"/BrowseExamS"})
 public class BrowseExamS extends HttpServlet {
@@ -48,7 +48,6 @@ public class BrowseExamS extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-                       
             out.println("</head>");
             out.println("<body>");
             try{
@@ -56,15 +55,195 @@ public class BrowseExamS extends HttpServlet {
                 String username = (String) session.getAttribute("username");
                 DatabaseHandling instance = new DatabaseHandling();
 
-                ResultSet setter = instance.listTableWhereD("Exam", "PublishedBy", "Lenard");
-
+                ResultSet setter = instance.listTableWhereD("Exam", "PublishedBy", username);
+                
+                out.println("<table style='width: 50%' border='1' align:'center' >");
+                out.println("<tr>");
+                out.println("<th>");
+                out.println("Module code");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Exam paper");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Comments");
+                out.println("</th>");
+               
+                out.println("<th>");
+                out.println("Input comment");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Send Comment");
+                out.println("</th>");
+                 out.println("</tr>");
                 while(setter.next()){
+                    out.println("<tr>");
+                    out.println("<td>");
                     out.println(setter.getString("ModuleCode"));
+                    out.println("</td>");
                     String moduleCode = setter.getString("ModuleCode");
-                    out.println("<div>");
+                   
+                    out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                    out.println("</div>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"text\">");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"button\">");
+                    out.println("</td>");
+                    out.println("</tr>");
+                    
                 }
+                out.println("<h1>Setter</h1>");
+                
+               
+                
+                ResultSet internal = instance.listTableWhereD("Exam", "InternalSignID", username);
+                    
+                
+                out.println("<table style='width:50%' border='1'>");
+                out.println("<tr>");
+                out.println("<th>");
+                out.println("Module code");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Exam paper");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Comments");
+                out.println("</th>");
+               
+                out.println("<th>");
+                out.println("Input comment");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Send Comment");
+                out.println("</th>");
+                 out.println("</tr>");
+                while(internal.next()){
+                    out.println("<tr>");
+                    out.println("<td>");
+                    out.println(internal.getString("ModuleCode"));
+                    out.println("</td>");
+                    String moduleCode = internal.getString("ModuleCode");
+                   
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"text\">");
+                    out.println("</td>");
+                      out.println("<td>");
+                    out.println("<input type=\"button\">");
+                    out.println("</td>");
+                    out.println("</tr>");
+                    
+                }
+
+                out.println("<h1>Internal</h1>");
+                
+                ResultSet commitee = instance.listTableWhereD("Exam", "CommiteeSignID", username);
+
+              
+                out.println("<table style='width:50%' border='1'>");
+                out.println("<tr>");
+                out.println("<th>");
+                out.println("Module code");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Exam paper");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Comments");
+                out.println("</th>");
+               
+                out.println("<th>");
+                out.println("Input comment");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Send Comment");
+                out.println("</th>");
+                out.println("</tr>");
+                 
+                while(commitee.next()){
+                    out.println("<tr>");
+                    out.println("<td>");
+                    out.println(commitee.getString("ModuleCode"));
+                    out.println("</td>");
+                    String moduleCode = commitee.getString("ModuleCode");
+                   
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"text\">");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"button\">");
+                    out.println("</td>");
+                    out.println("</tr>");
+                    
+                }
+
+                  out.println("<h1>Commitee</h1>");
+                
+                ResultSet external = instance.listTableWhereD("Exam", "ExternalSignID", username);
+
+               
+                out.println("<table style='width:50%' border='1'>");
+                out.println("<tr>");
+                out.println("<th>");
+                out.println("Module code");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Exam paper");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Comments");
+                out.println("</th>");
+               
+                out.println("<th>");
+                out.println("Input comment");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Send Comment");
+                out.println("</th>");
+                out.println("</tr>");
+                
+                while(external.next()){
+                    out.println("<tr>");
+                    out.println("<td>");
+                    out.println(external.getString("ModuleCode"));
+                    out.println("</td>");
+                    String moduleCode = external.getString("ModuleCode");
+                   
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"text\"width:'100%'>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"button\">");
+                    out.println("</td>");
+                    out.println("</tr>");  
+                }
+                
+             
+                 out.println("<h1>External</h1>");
            //out.print("TTTTTTTTTTTT");
        
             }catch (Exception e){
@@ -72,12 +251,13 @@ public class BrowseExamS extends HttpServlet {
             }
             out.println("</body>");
             out.println("</html>");        
-            
             /* TODO output your page here. You may use following sample code. */
             
         }
     }
 
+  
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
