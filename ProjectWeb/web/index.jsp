@@ -6,33 +6,58 @@ and open the template in the editor.
 -->
 <%@ page import="Users.Admin" %>
 <html>
-    
+    <style>
+        background-color: red
+    </style>
     <head>
         <title>Login</title>
+       
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/regular.css" integrity="sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4" crossorigin="anonymous">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="CSS.css">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     </head>
-    <body>
-        <h1>Login</h1>
-        <form name="Details Input Form" action="LoginServlet" method="POST">
-            
-            Enter your Staff ID:
-            <input type="text" name="staffID" value="" />
-                        
-            Enter your Password:
-            <input type="password" name="passwd" value="" />
-            
-            <input type="submit" value="OK" />
-            
-            
-        </form>
-        
-        <form name="Lenard form" method="POST" action ="TestServlet">
-            
-            <input type="submit" value="Lenard Button"/>
-          
-        </form>
-        
-    </body>
+ <body>
+  
+<div class="container">
+    <div class="row">
+		<div class="span12">
+                     
+                      <div align ="center">
+			 <form name="Details Input Form" action="LoginServlet" method="POST">
+			  <fieldset>
+			    <div id="legend">
+			      <legend class="" >Login</legend>
+			    </div>
+			    <div class="control-group">
+			      <!-- Username -->
+			      <label class="control-label"  for="username">Staff ID</label>
+			      <div class="controls">
+			        <input type="text" name="staffID" value="" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <!-- Password-->
+			      <label class="control-label" for="password">Password</label>
+			      <div class="controls">
+			       <input type="password" name="passwd" value="" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <!-- Button -->
+			      <div class="controls">
+			        <button>Login</button>
+			      </div>
+			    </div>
+			  </fieldset>
+			</form>
+                          <img src="QMB.jpg" width="100%" height="480" alt="QMB"/>
+
+		</div>
+	</div>
+</div>
+ </body>
 </html>

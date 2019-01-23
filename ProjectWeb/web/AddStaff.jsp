@@ -14,26 +14,33 @@
         <title>Add Staff</title>
     </head>
     <body>
-        <div align ="center"> <u><h1>Add Staff</u></h1><div>
+       <div class ="img">
+       <a href="AdminDashboard.jsp">
+     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left”    />
+    </a>
+     </div>
+        <div align="center">
+            <h1><u>Add Staff Member</u></h1>
             
          <form name="Details Input Form" action="AdminServlet" method="POST">
+             
             <div align ="center">
-            <h4>Enter Staff Username</h4>
+                <h4>Enter Staff Username:</h4>
             <input type="text" name="StaffName" value="" />
             </div>
             
              <div align ="center">
-            <h4>Enter Staff Name</h4>
+            <h4>Enter Staff Name:</h4>
             <input type="text" name="Name" value="" />
             </div>
              
             <div align ="center">
-                <h4>Enter Staff Password</h4>
+                <h4>Enter Staff Password:</h4>
             <input type="text" name="StaffPassword" value="" />
             </div>
             
             <div align ="center">
-            <h4>Enter Role</h4>
+            <h4>Enter Role:</h4>
             <input type="text" name="Role" value="" />
             </div>
             <input type="submit" value="Submit" />
@@ -42,6 +49,6 @@
             <form action="ManagementPage.jsp">
                 <input type="submit" value="<-Back" />
             </form>
-            
+            </div>
     </body>
 </html>

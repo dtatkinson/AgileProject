@@ -16,13 +16,20 @@
         }
         %>
     <head>
+       
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/regular.css" integrity="sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4" crossorigin="anonymous">
-        <link rel="stylesheet" href="AdminCSS.css">
+        <link rel="stylesheet" href="CSS.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Admin Page </title>
     </head>
     <body>
-    <div align="center" >
+        <div class ="img">
+        <a href="AdminDashboard.jsp">
+     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
+        </a>
+     </div>
+ 
+        <div align="center" >
         <h1><u>Staff</u></h1>
         <form name="StaffButton" action="ManagementPage.jsp">
         <input type="submit" value="Manage Staff" name="staffbtn" />
@@ -41,12 +48,17 @@
         </form>
         <br>
         <div align="center" class="plain">
-    <form  name="logoutForm" action="LogoutServlet">
-        <input type="submit" value="Logout" name="logoutbtn"  />
+            <a href="index.jsp">
+            <form  name="logoutForm" action="index.jsp">
+            <img src="Logout.png" width="20" height="20" alt="Logout"/>
+             </a>
       
     </form>
+
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
+            
         </div>
+        
     </body>
 </html>
