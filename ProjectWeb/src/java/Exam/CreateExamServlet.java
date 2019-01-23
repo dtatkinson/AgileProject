@@ -62,6 +62,7 @@ public class CreateExamServlet extends HttpServlet {
             
             try{
             conn.createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
+            
            
          }
         catch(Exception e)

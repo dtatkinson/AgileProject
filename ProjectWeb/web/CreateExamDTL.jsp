@@ -44,5 +44,10 @@
             <input type="submit" value="Submit" name="examSubmit" />
            
          </form>
+             
+             <form name="Back " action="StaffDashboard.jsp">
+                <input type="submit" value="<- Go Back" name="backBtn" />   
+            </form>
+             
     </body>
 </html>
