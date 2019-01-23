@@ -14,6 +14,11 @@
         <title>Management Page</title>
     </head>
     <body>
+        <div class ="img">
+        <a href="AdminDashboard.jsp">
+     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
+        </a>
+     </div>
         <div align = "center" ><h1><u> Management</u> <h1> </div>
         <div align ="center">
         <form name="Add Staff" action="AddStaff.jsp">

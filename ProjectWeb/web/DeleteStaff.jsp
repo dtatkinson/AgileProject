@@ -23,6 +23,8 @@
         </div>
         <div align="center">
             <h1><u>REMOVE STAFF MEMBER</u></h1>
+            <br>
+            <p>Enter the name of the staff member you wish to delete from the system</p><font color ="red">Please note that this action cannot be reverted</font>
                 <h3>Enter Staff Username:</h3>
                 <form name="Gerald" action="AdminRemoveStaffServlet" method="POST">
                     <input type="text" name="staffName"/>
