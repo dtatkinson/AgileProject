@@ -18,10 +18,10 @@
     <body>
         <div align="center">
             <h1><u>REMOVE STAFF MEMBER</u></h1>
-                <h3>Enter Staff ID:</h3>
+                <h3>Enter Staff Username:</h3>
                 <form name="Gerald" action="AdminRemoveStaffServlet" method="POST">
-                <input type="text" name="staffNameToDelete" value=""  />
-                <input type="submit" value="OK" name="Davids" />
+                    <input type="text" name="staffName"/>
+                    <input type="submit" value="OK" name="Davids" />
                
                 </form>
                 

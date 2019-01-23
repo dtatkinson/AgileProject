@@ -3,7 +3,7 @@ package Users;
 import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oliversimpson
  */
-@WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
+@WebServlet(name = "AdminRemoveStaffServlet", urlPatterns = {"/AdminRemoveStaffServlet"})
 public class AdminRemoveStaffServlet extends HttpServlet {
 
     /**
@@ -30,9 +30,69 @@ public class AdminRemoveStaffServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String username = request.getParameter("StaffName");
-      
-        removeStaff(username);      
+        String username = request.getParameter("staffName");
+        DatabaseHandling conn = new DatabaseHandling();
+        try{
+            ResultSet staffList = conn.searchTable(username, "Staff", "StaffName");
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<HTML>");
+                out.println("<BODY>");
+
+                out.println("<table style='width:100%' border='1'");
+
+                out.println("<tr>");
+                    out.println("<th>");
+                    out.println("Staff Username");
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println("Staff Role");
+                    out.println("</th>");
+                    out.println("<th>");
+                    out.println("Delete?");
+                    out.println("</th>");
+                out.println("</tr>");
+                out.println("<form action='RemoveStaffContainerServlet' method='POST'>");
+                while(staffList.next()){
+                        response.setContentType("text/html");
+                        
+                        
+                       
+                        out.println("<tr>");
+                            out.println("<td>");
+                            out.println(staffList.getString("StaffName"));
+                            String name = staffList.getString("StaffName");
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println(staffList.getString("Role"));
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println("<label>");
+                                out.println("<input type='radio' name='user' value=" + name + ">");
+                            out.println("</label>");
+                            out.println("</td>");
+                        out.println("</tr>");
+                        
+                        
+                    
+                }
+                
+                out.println("</table>");
+                out.println("<input type='submit' value='Delete' name='Delete'>");
+                out.println("</form>");
+                out.println("</BODY>");
+                out.println("</HTML>");
+            }
+            catch(Exception e){
+                
+            }
+            
+            
+        }
+        catch(Exception e){
+            
+        }
+        
+        //removeStaff(username);      
     }
     
     //Method that calls the remove staff method in the database handling class

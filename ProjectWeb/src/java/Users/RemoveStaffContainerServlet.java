@@ -4,22 +4,21 @@
  * and open the template in the editor.
  */
 package Users;
-
+import Database.DatabaseHandling;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Database.DatabaseHandling;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
+
 /**
  *
- * @author camerontaylor
+ * @author lenardgaunt
  */
-@WebServlet(name = "AdminViewStaffServlet", urlPatterns = {"/AdminViewStaffServlet"})
-public class AdminViewStaffServlet extends HttpServlet {
+@WebServlet(name = "RemoveStaffContainerServlet", urlPatterns = {"/RemoveStaffContainerServlet"})
+public class RemoveStaffContainerServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,58 +32,22 @@ public class AdminViewStaffServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String search = request.getParameter("SearchT");
         
-        DatabaseHandling conn = new DatabaseHandling();
+        
+        String username = request.getParameter("user");
         
         try (PrintWriter out = response.getWriter()) {
-            
-            try{
-                ResultSet staffList  = conn.searchTable(search, "Staff", "StaffName");
-                out.println("<HTML>");
-                out.println("<BODY>");
-
-                out.println("<table style='width:100%' border='1'");
-
-                out.println("<tr>");
-                    out.println("<th>");
-                    out.println("Staff Username");
-                    out.println("</th>");
-                    out.println("<th>");
-                    out.println("Staff Role");
-                    out.println("</th>");
-                out.println("</tr>");
-                        
-                while(staffList.next()){
-                        response.setContentType("text/html");
-                        
-                        
-                       
-                        out.println("<tr>");
-                            out.println("<td>");
-                            out.println(staffList.getString("StaffName"));
-                            out.println("</td>");
-                            out.println("<td>");
-                            out.println(staffList.getString("Role"));
-                            out.println("</td>");
-                        out.println("</tr>");
-                        
-                        
-                    
-                }
-                out.println("</table>");
-                out.println("</BODY>");
-                out.println("</HTML>");
-            }
-            catch(Exception e){
-            
+            /* TODO output your page here. You may use following sample code. */
+            out.print(username);
         }
+        DatabaseHandling conn = new DatabaseHandling();
+        
+        try{
+            conn.removeStaff(username);
         }
         catch(Exception e){
-
-                    }
-        
+            
+        }
         
     }
 
