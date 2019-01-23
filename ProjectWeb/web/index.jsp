@@ -7,7 +7,7 @@ and open the template in the editor.
 <%@ page import="Users.Admin" %>
 <html>
     <style>
-        background-color: red
+        background-color:red
     </style>
     <head>
         <title>Login</title>
