@@ -11,7 +11,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -41,29 +40,27 @@ public class CommentsTest {
   
     /**
      * Test of writeComment method, of class Comments.
+     * @throws java.io.IOException
      */
     @Test
     public void testWriteComment() throws IOException {
-        String modCode = "AC3007";
-        String resitCode = "";
+        String modCode = "CommentsTestModule";
         String comment = "test comment";
+        String signBy = "Morty";
         System.out.println("writeComment");
         Comments instance = new Comments();
-        instance.writeComment(modCode,resitCode,comment);
-        
-        // TODO review the generated test code and remove the default call to fail.
-        
+        instance.writeComment(modCode,comment,signBy);
     }
 
     /**
      * Test of readComment method, of class Comments.
-     */
+     * @throws java.io.IOException
+     *
     @Test
     public void testReadComment() throws IOException {
-        String modCode = "AC3007";
-        String resitCode = "";
-        Comments instance = new Comments();
-        instance.readComment(modCode, resitCode);
-    }
+        String modCode = "CommentsTestModule";
+         Comments instance = new Comments();
+        instance.readComment(modCode);
+    }**/
     
 }
