@@ -47,8 +47,10 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                 modCode = moduleList.getString("ModuleCode");
                 if(!file.checkIfFileExists(modCode)){
                     file.createDirectory(modCode,year);
+                    file.createFile(modCode+year, "comments.txt");
                 }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
                     file.createDirectory(modCode, year);
+                    file.createFile(modCode+year, "comments.txt");
                 }
                 
             }
