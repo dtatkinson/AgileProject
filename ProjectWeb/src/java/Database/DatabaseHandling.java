@@ -28,10 +28,16 @@ public class DatabaseHandling {
       }
     }
     
-    public ResultSet searchTable(String search, String tableName){
+    /* Method to return a resultset of the contents of a table according to the search term supplied
+  // 
+  //@param String containing the name of a table to list, string containing the search string and a string containing the column to search
+  //@return Result set of the table 
+  //@Author Lenard Gaunt
+  */
+    public ResultSet searchTable(String search, String tableName, String columnName){
       try{
         java.sql.Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM "  + tableName + " WHERE StaffName LIKE '%" + search + "%'");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM "  + tableName + " WHERE " + columnName + " LIKE '%" + search + "%'");
         return rs;
       }
       catch(Exception e){

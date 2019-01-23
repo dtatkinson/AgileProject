@@ -41,7 +41,7 @@ public class AdminViewStaffServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             try{
-                ResultSet staffList  = conn.searchTable(search, "Staff");
+                ResultSet staffList  = conn.searchTable(search, "Staff", "StaffName");
                 out.println("<HTML>");
                 out.println("<BODY>");
 
