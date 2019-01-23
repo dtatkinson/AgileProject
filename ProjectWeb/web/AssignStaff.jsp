@@ -10,15 +10,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+           <link rel="stylesheet" href="CSS.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/regular.css" integrity="sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4" crossorigin="anonymous">
         <title>Assign Staff</title>
     </head>
     <body>
+       <div class ="img">
+        <a href="AdminDashboard.jsp">
+     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left”    />
+        </a>
+     </div>
         <h1 align = "center"><u>Assign Staff</u></h1>
+       <div align ="center">
             <form name="Details Input Form" action="CreateExamServlet" method="POST">
-            <div align ="center">
          <form name="Details Input Form" action="CreateExamServlet" method="POST">
-            <div align ="center">
             <h4>Enter Staff Name:</h4>
             <input type="text" name="StaffName" value="" />
             </div>
@@ -34,7 +39,9 @@
             </div>    
              
              <br>
+             <div align ="center">
             <input type="submit" value="Submit" name="examSubmit" />
+             </div>
            
          </form>
     </body>
