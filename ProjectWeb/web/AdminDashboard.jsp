@@ -42,12 +42,16 @@
         
         <h1 align="center"><u>Exams </u></h1>
          <p>Options to create new exams and keep track of exams that are currently in progress</p>
-        <form name="ipExamForm" action="ipExam.jsp"> 
+        <form name="ipExamForm" action="AdminNewExamDashboard.jsp"> 
         <input type="submit" value="New" name="ExamBtn" />
         </form>
         <br>
-        <form name="compExmForm" action="compExams.jsp">
+        <form name="compExmForm" action="AdminInProgressExamDashboard.jsp">
             <input type="submit" value="In Progress" name="compExambtn" />
+        </form>
+        <br>
+        <form name="compExmForm" action="AdminCompletedExamDashboard.jsp">
+            <input type="submit" value="Completed" name="compExambtn" />
         </form>
         <br>
         <div align="center" class="plain">

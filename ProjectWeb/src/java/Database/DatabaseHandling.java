@@ -213,7 +213,7 @@ public class DatabaseHandling {
      stmt.execute("update Exam set CommiteeSign = true where ExamID = "+id+";"); 
      stmt.execute("update Exam set CommiteeSignDate = CURDATE() where ExamID = "+id+";");
   }
-  
+ 
     public void examCommiteeAssignExamDeadline(int id, String dead) throws Exception
   {
       Statement stmt=con.createStatement();  

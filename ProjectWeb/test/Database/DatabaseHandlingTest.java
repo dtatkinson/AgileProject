@@ -149,7 +149,7 @@ public class DatabaseHandlingTest {
          System.out.println("Internal Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC139","Scumdee","Biz","2019", "Lenard");
-         instance.internalAssignExam(9,"Testname3");
+         instance.internalAssignExam(9,"Lenard");
      }
     
     @Test
