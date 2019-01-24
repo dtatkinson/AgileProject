@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class ="img">
-        <a href="AdminDashboard.jsp">
+        <a href="StaffDashboard.jsp">
           <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left”    />
         </a>
         </div>
