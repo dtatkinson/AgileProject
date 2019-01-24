@@ -16,12 +16,12 @@
     </head>
     <body>
        <div class ="img">
-        <a href="AdminDashboard.jsp">
+        <a href="StaffDashboard.jsp">
      <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
         </a>
      </div>
          <div>
-           <h1 align ="center">Staff Dashboard</h1>
+             <h1 align ="center"><u>Staff Dashboard</u></h1>
     <div align="center" >
         <h2>New</h2>
         <form name="newButton" action="CreateExamDTL.jsp">
@@ -48,6 +48,9 @@
     </form>
         </div>
      </div>
+        <br>
+        <div align = "center">
         <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
+        </div>
     </body>
 </html>
