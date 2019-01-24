@@ -145,6 +145,8 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     String moduleCode = internal.getString("ModuleCode");
                    
+                    int id = internal.getInt("ExamID");
+                    
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -167,6 +169,7 @@ public class BrowseExamS extends HttpServlet {
  
                     
                     out.println("<input type=\"submit\" value='Sign'>");
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                     out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
                     out.println("</form>");
                    out.println("</td>");
@@ -208,7 +211,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println(commitee.getString("ModuleCode"));
                     out.println("</td>");
                     String moduleCode = commitee.getString("ModuleCode");
-                   
+                   int id = commitee.getInt("ExamID");
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -233,6 +236,7 @@ public class BrowseExamS extends HttpServlet {
                     
                     out.println("<input type=\"submit\" value='Sign'>");
                     out.println("<input type='hidden' name ='role'  value ='Exam Commitee'>");
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                     out.println("</form>");
                     out.println("</tr>");
                     
@@ -272,7 +276,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println(external.getString("ModuleCode"));
                     out.println("</td>");
                     String moduleCode = external.getString("ModuleCode");
-                   
+                   int id = external.getInt("ExamID");
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -293,7 +297,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<input type=\"submit\" value='Add Comment'>");
                     out.println("<td>");
                     out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
- 
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                     
                     out.println("<input type=\"submit\" value='Sign'>");
                     out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
