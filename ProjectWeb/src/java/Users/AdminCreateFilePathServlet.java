@@ -41,19 +41,24 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         FileHandling file = new FileHandling();
         String modCode;
         String year = "\\2019\\";
-        //need to add the ability to add additional uploads folder
+        
         try{
             ResultSet moduleList = conn.listTable("Exam");
             while(moduleList.next()){
                 modCode = moduleList.getString("ModuleCode");
                 if(!file.checkIfFileExists(modCode)){
                     file.createDirectory(modCode,year);
+                    file.createDirectory(modCode+year, "additionalUploads");
                     file.createFile(modCode+year, "comments.txt");
                 }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
                     file.createDirectory(modCode, year);
                     file.createFile(modCode+year, "comments.txt");
-                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"\\comments.txt")){
+                    file.createDirectory(modCode+year, "additionalUploads");
+                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"comments.txt")){
                     file.createFile(modCode+year, "comments.txt");
+                }
+                if(file.checkIfFileExists(modCode+year)&& !file.checkIfFileExists(modCode+year+"additionalUploads")){
+                    file.createDirectory(modCode+year, "additionalUploads");
                 }
                        
                 
