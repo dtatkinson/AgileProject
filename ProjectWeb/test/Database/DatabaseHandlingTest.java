@@ -151,14 +151,14 @@ public class DatabaseHandlingTest {
          instance.createExam("Comp","AC139","Scumdee","Biz","2019", "Lenard");
          instance.internalAssignExam(9,"Lenard");
      }
-    
+    /**
     @Test
     public void Oa_testInternalSignExam() throws Exception {
         System.out.println("Internal Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
         instance.internalSignExam(9);
     }
-    
+    **/
     @Test
     public void Ob_testInternalSignExamDeadline() throws Exception {
         System.out.println("Internal Exam Deadline set");
