@@ -42,20 +42,11 @@
         
         <h1 align="center"><u>Exams </u></h1>
         
-        <form name="ipExamForm" action="AdminNewExamDashboard.jsp"> 
-        <input type="submit" value="New" name="ExamBtn" />
+        <form name="ipExamForm" action="ViewNewExams"> 
+        <input type="submit" value="View all exams" name="ExamBtn" />
        
          </form>
-       
-          <br>
-        <form name="compExmForm" action="AdminInProgressExamDashboard.jsp">
-            <input type="submit" value="In Progress" name="compExambtn" />
-        </form>
-         
-        <br>
-        <form name="compExmForm" action="AdminCompletedExamDashboard.jsp">
-            <input type="submit" value="Completed" name="compExambtn" />
-        </form>
+     
         <br>
         <div align="center" class="plain">
             <a href="index.jsp">

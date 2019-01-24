@@ -41,12 +41,21 @@ public class ViewNewExams extends HttpServlet {
                 String username = (String) session.getAttribute("username");
                 DatabaseHandling instance = new DatabaseHandling();
 
-                ResultSet newones = instance.listTableWhere("Exam", "ExamStatus", "new");
+                ResultSet newones = instance.listTable("Exam");
                 
                 out.println("<table style='width: 50%' border='1' align:'center' >");
                 out.println("<tr>");
                 out.println("<th>");
+                out.println("Module Name");
+                out.println("</th>");
+                out.println("<th>");
                 out.println("Module code");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("Institution");
+                out.println("</th>");
+                out.println("<th>");
+                out.println("School");
                 out.println("</th>");
                 out.println("<th>");
                 out.println("Exam paper");
@@ -60,11 +69,21 @@ public class ViewNewExams extends HttpServlet {
                 out.println("</tr>");
                 while(newones.next()){
                     out.println("<tr>");
+                     out.println("<td>");
+                    out.println(newones.getString("ModuleName"));
+                    out.println("</td>");
                     out.println("<td>");
                     out.println(newones.getString("ModuleCode"));
                     out.println("</td>");
                     String moduleCode = newones.getString("ModuleCode");
-                   
+                    out.println("<td>");
+                    out.println(newones.getString("Institution"));
+                    out.println("</td>");
+                     out.println("<td>");
+                    out.println(newones.getString("School"));
+                    out.println("</td>");
+                    
+                    
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -77,9 +96,9 @@ public class ViewNewExams extends HttpServlet {
                     out.println("</tr>");
                     
                 }
-                out.println("<h1>New Exams</h1>");
+                out.println("<h1>All Exams</h1>");
                 
-                out.println("<form name='Back ' action='AdminNewExamDashboard.jsp'>");
+                out.println("<form name='Back ' action='AdminDashboard.jsp'>");
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");  
                 out.println("</form>");
         }
