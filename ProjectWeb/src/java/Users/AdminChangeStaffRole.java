@@ -35,7 +35,7 @@ public class AdminChangeStaffRole extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String name = request.getParameter("StaffName");
-            String role = request.getParameter("NewStaffRole");
+            String role = request.getParameter("NewStaffRoles");
             
             editStaffRole(name, role);
             response.sendRedirect("AdminDashboard.jsp");

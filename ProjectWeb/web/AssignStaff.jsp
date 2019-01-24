@@ -24,25 +24,35 @@
         
        <div align ="center">
            <p>Enter the name of a staff member and which role you wish to assign them to</p>
-         <form name="Details Input Form" action="AdminChangeStaffRole" method="POST">
+        
             <h4>Enter Staff Name:</h4>
-            <input type="text" name="StaffName" value="" />
-            </div>
             
+            </div>
             <div align ="center">
+         <form name="Details Input Form" action="AdminChangeStaffRole" method="POST">
+             <input type="text" name="StaffName" value="" />
+            
             <h4>Enter New Staff Role:</h4>
-            <input type="text" name="NewStaffRole" value="" />
-            </div>    
-             
+            <select name="NewStaffRoles" size="6">
+            <option value="ES">Exam Setter</option>
+            <option value="IM">Internal Moderator</option>
+            <option value="EC">Exam Commitee</option>
+            <option value="EM">External Moderator</option>
+            <option value="SO">School Office</option>
+            <option value="Admin">Admin</option>
+            </select>
+               
+    
              <br>
-             <div align ="center">
-            <input type="submit" value="Submit" name="examSubmit" />
-             </div>
            
+            <input type="submit" value="Submit" name="examSubmit" />
+             
+          
          </form>
+                 </div> 
            <br>
-            <div align ="center"
-           <form name="Back " action="AdminDashboard.jsp">
+           <div align ="center">
+            <form name="Back " action="ManagementPage.jsp">
                 <input type="submit" value="<- Go Back" name="backBtn" />   
             </form>
             </div>
