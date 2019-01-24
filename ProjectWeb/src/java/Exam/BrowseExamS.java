@@ -82,6 +82,9 @@ public class BrowseExamS extends HttpServlet {
                 out.println("<th>");
                 out.println("Send Comment");
                 out.println("</th>");
+                out.println("<th>");
+                out.println("Progress");
+                out.println("</th>");
                  out.println("</tr>");
                 while(setter.next()){
                     out.println("<tr>");
@@ -106,6 +109,7 @@ public class BrowseExamS extends HttpServlet {
                     
                     out.println("<input type=\"submit\" value='Add Comment'>");
                     out.println("</form>");
+                    
                     out.println("</td>");
                     out.println("</tr>");
                     
