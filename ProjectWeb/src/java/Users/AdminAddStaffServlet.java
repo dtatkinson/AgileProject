@@ -35,10 +35,10 @@ public class AdminAddStaffServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String username = request.getParameter("StaffName");
-        String name = request.getParameter("Name");
-        String password = request.getParameter("StaffPassword");
-        String role = request.getParameter("Role");
+        String username = request.getParameter("StaffName"); //Gets the username the was posted to this servlet
+        String name = request.getParameter("Name"); //Gets the name the was posted to this servlet
+        String password = request.getParameter("StaffPassword"); //Gets the password the was posted to this servlet
+        String role = request.getParameter("Role"); //Gets the role the was posted to this servlet
         
         addStaff(username, name, password,role);
         response.sendRedirect("AdminDashboard.jsp");
