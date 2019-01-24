@@ -44,10 +44,9 @@ public class AdminAssignToExam extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             DatabaseHandling conn = new DatabaseHandling();
-            String year; 
-                year  = ""+Year.now().getValue();
-                out.print(year);
-                ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
+           
+               
+                ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new");
             out.println("<form action='AssignToExamServlet' method='POST'>");
                 out.println("<select name='Modules' width='150'>");
                 
