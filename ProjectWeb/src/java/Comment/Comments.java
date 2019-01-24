@@ -12,9 +12,17 @@ import java.util.Arrays;
 /**
  *
  * @author matthewmchale
+ * reviewed by LenardGaunt
  */
 public class Comments {
    
+   /**
+    * Method to write comments
+    * @param modCode 
+    * @param comment
+    * @param signBy
+    * @throws IOException 
+    */
     public void writeComment(String modCode,String comment, String signBy) throws IOException{
         FileHandling instance = new FileHandling();
         String commentFile = "comments.txt" ;
@@ -34,15 +42,22 @@ public class Comments {
         }
         
     }
+   
+    /**
+     * Method to read comments and check if all comments have been acknowledged
+     * @param modCode
+     * @return
+     * @throws IOException 
+     */
     public boolean readComment(String modCode) throws IOException{
         String[] comment = null;
-        FileHandling instance = new FileHandling();
+        FileHandling file = new FileHandling();
         String commentFile = "comments.txt" ;
         String path = modCode + "\\2019\\";
         String fullPath = path+commentFile;
-        if(instance.checkIfFileExists(fullPath))
+        if(file.checkIfFileExists(fullPath))
         {
-            comment = instance.readFromFile(path, commentFile);
+            comment = file.readFromFile(path, commentFile);
             System.out.println(Arrays.toString(comment));
         }
         int cmmt = 0;
@@ -60,7 +75,7 @@ public class Comments {
            }
            }catch(StringIndexOutOfBoundsException e)
            {
-               
+               //do nothing, move on to next line
            }
         }
         if(cmmt == ack){
@@ -69,22 +84,29 @@ public class Comments {
         return false;
     }
     
+   /**
+    * Method to write acknowledgement comments
+    * @param modCode
+    * @param comment
+    * @param signBy
+    * @throws IOException 
+    */
     public void ackComments(String modCode,String comment,String signBy) throws IOException{
-        FileHandling instance = new FileHandling();
+        FileHandling file = new FileHandling();
         String commentFile = "comments.txt" ;
         String path = modCode + "\\2019\\";
         String fullPath = path+commentFile;
         String commentR = "a." + comment;
         
-        if(instance.checkIfFileExists(fullPath))
+        if(file.checkIfFileExists(fullPath))
         {         
-            instance.appendToFile(path, commentFile, commentR);
-            instance.appendToFile(path, commentFile, signBy);
-        }else if(!instance.checkIfFileExists(fullPath))
+            file.appendToFile(path, commentFile, commentR);
+            file.appendToFile(path, commentFile, signBy);
+        }else if(!file.checkIfFileExists(fullPath))
         {
-            instance.createFile(path, commentFile);
-            instance.writeToFile(path, commentFile, commentR);
-            instance.appendToFile(path, commentFile, signBy);
+            file.createFile(path, commentFile);
+            file.writeToFile(path, commentFile, commentR);
+            file.appendToFile(path, commentFile, signBy);
         }
     }
 }
