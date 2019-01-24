@@ -41,6 +41,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         FileHandling file = new FileHandling();
         String modCode;
         String year = "\\2019\\";
+        //need to add the ability to add additional uploads folder
         try{
             ResultSet moduleList = conn.listTable("Exam");
             while(moduleList.next()){

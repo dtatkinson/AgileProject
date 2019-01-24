@@ -50,12 +50,17 @@ public class Comments {
         String line;
         for(int i = 0; i < comment.length; i++)
         {
-           line = Character.toString(comment[i].charAt(0));
+           try{
+            line = Character.toString(comment[i].charAt(0));
            if(line.equals("c")){
                cmmt++;
            }else if (line.equals("a"))
            {
                ack++;
+           }
+           }catch(StringIndexOutOfBoundsException e)
+           {
+               
            }
         }
         if(cmmt == ack){

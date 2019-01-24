@@ -75,7 +75,7 @@ public class CreateExamServlet extends HttpServlet {
     public void createFile(String modCode)
     {
         String year = "\\2019";
-    
+        //need to add the ability to add additional uploads folder
         FileHandling file = new FileHandling();
         try{
             if(!file.checkIfFileExists(modCode)){
