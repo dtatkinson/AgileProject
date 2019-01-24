@@ -74,7 +74,7 @@ public class CreateExamServlet extends HttpServlet {
     
     public void createFile(String modCode)
     {
-        String year = "\\2019";
+        String year = "\\2019\\";
         
         FileHandling file = new FileHandling();
         try{
