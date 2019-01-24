@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author David Atkinson
@@ -89,19 +90,22 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
                     out.println("</td>");
+                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
                     out.println("<td>");
-                    out.println("<input type=\"text\">");
+                    out.println("<input type=\"text\" name = 'inputbox'>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                     out.println("</td>");
                     out.println("<td>");
-                    out.println("<input type=\"button\">");
+                    
+                    out.println("<input type=\"submit\">");
+                    out.println("</form>");
                     out.println("</td>");
                     out.println("</tr>");
                     
                 }
                 out.println("<h1>Setter</h1>");
                 
-               
-                
+           
                 ResultSet internal = instance.listTableWhereD("Exam", "InternalSignID", username);
                     
                 

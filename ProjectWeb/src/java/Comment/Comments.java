@@ -17,7 +17,7 @@ public class Comments {
    
     public void writeComment(String modCode,String comment, String signBy) throws IOException{
         FileHandling instance = new FileHandling();
-        String commentFile = "comment.txt" ;
+        String commentFile = "comments.txt" ;
         String path = modCode + "\\2019\\";
         String fullPath = path+commentFile;
         
