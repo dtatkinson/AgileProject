@@ -47,8 +47,14 @@ public class BrowseExamS extends HttpServlet {
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
+ 
             out.println("<head>");
             out.println("</head>");
+            
+            out.println("<form action='StaffDashboard.jsp'>");
+                out.println("<input type='submit' value='Back'>");
+            out.println("</form>");
+            
             out.println("<body>");
             try{
                 HttpSession session = request.getSession();
@@ -241,21 +247,30 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     out.println("</tr>");  
                 }
-                
+                //printExam(out, "Test");
              
-                 out.println("<h1>External</h1>");
+                 out.println("<h1>External</h1>"); 
            //out.print("TTTTTTTTTTTT");
        
             }catch (Exception e){
                 
             }
+            
             out.println("</body>");
-            out.println("</html>");        
+            
+            
+            out.println("</html>");    
+            
             /* TODO output your page here. You may use following sample code. */
             
         }
+        
+       
     }
-
+    public void printExam(PrintWriter out, String role, String username){
+        DatabaseHandling conn = new DatabaseHandling();
+        ResultSet external = conn.listTableWhereD("Exam", role, username);
+    }
   
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
