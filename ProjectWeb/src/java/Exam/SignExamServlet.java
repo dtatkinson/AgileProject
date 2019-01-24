@@ -45,7 +45,7 @@ public class SignExamServlet extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             //out.print(id);
-        }
+        
         if(role.equals("Internal Moderator")){
             try{
                 conn.internalSignExam(id);
@@ -70,8 +70,9 @@ public class SignExamServlet extends HttpServlet {
                 
             }
         }
-        response.sendRedirect("BrowseExamS");
         
+        response.sendRedirect("BrowseExamS");
+        }
         
     }
 

@@ -163,15 +163,23 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<input type=\"submit\" value='Add Comment'>");
                     out.println("</form>");
-                     out.println("<form action='SignExamServlet' method='POST'>");
                     out.println("<td>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
- 
+                    if(!internal.getBoolean("InternalSign")){
+                        
                     
-                    out.println("<input type=\"submit\" value='Sign'>");
-                    out.println("<input type='hidden' name ='id'  value ="+id+">");
-                    out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
-                    out.println("</form>");
+                        out.println("<form action='SignExamServlet' method='POST'>");
+                       
+                       out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+
+
+                       out.println("<input type=\"submit\" value='Sign'>");
+                       out.println("<input type='hidden' name ='id'  value ="+id+">");
+                       out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
+                       out.println("</form>");
+                    }
+                    else{
+                        out.println("X");
+                    }
                    out.println("</td>");
                     out.println("</tr>");
                     
