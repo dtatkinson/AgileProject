@@ -25,9 +25,9 @@
                                  
         <form action="process.jsp" method="post" enctype="multipart/form-data">
 
-            <b>Upload Exam PDF:</b> <input type="file" name="fname"><br/>
-
-            <input type="submit" value="Upload">
+            <b>Upload Exam PDF:</b> 
+            <input type="file" name="fname" accept="application/pdf"><br/>
+            <input type="submit" value="Upload" onClick="Check_Data()">
 
         </form>
 
