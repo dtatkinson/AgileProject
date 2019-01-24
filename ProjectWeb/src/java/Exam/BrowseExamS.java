@@ -81,10 +81,7 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</th>");
                 out.println("<th>");
                 out.println("Send Comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Progress");
-                out.println("</th>");
+               
                  out.println("</tr>");
                 while(setter.next()){
                     out.println("<tr>");
