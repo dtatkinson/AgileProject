@@ -43,7 +43,7 @@
            
     </div>
         <div align="center" class="plain">
-    <form  name="logoutForm" action="index.jsp">
+    <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn"  />
     </form>
         </div>
