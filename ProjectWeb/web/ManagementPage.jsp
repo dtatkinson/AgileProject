@@ -51,7 +51,7 @@
             
         <div align ="center">
         <form name="Assign Staff to Exam" action="AdminAssignToExam">
-        <input type="submit" value="Set Deadlines" name="deadlinebtn" />
+        <input type="submit" value="Assign Staff to new exam" name="deadlinebtn" />
         </div>
         </form>
       
