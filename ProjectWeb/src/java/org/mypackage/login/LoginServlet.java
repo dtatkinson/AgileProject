@@ -81,7 +81,11 @@ public class LoginServlet extends HttpServlet {
             }
             
             if(flag == false){
-                out.print("Wrong credentials, idiot");
+                out.println("Invalid login, please check you username and password.");
+                out.println("If you can not login please contact your local exams officer.");
+                out.println("<form name='Back' action='index.jsp'>");
+                out.println("<input type='submit' value='<- Go Back to login' name='backBtn' />");  
+                out.println("</form>");
             }   
         }
         catch (Exception e){    
