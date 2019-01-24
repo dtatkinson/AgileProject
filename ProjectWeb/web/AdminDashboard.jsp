@@ -52,11 +52,12 @@
         <br>
         <div align="center" class="plain">
             <a href="index.jsp">
-            <form  name="logoutForm" action="index.jsp">
+            <form  name="logoutForm" action="LogoutServlet">
             <img src="Logout.png" width="20" height="20" alt="Logout"/>
              </a>
       
     </form>
+               
       
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>

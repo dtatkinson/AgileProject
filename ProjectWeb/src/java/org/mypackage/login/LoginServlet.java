@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             
         out.println("<!DOCTYPE html>");
             
-        String username = request.getParameter("staffID");
+        String username = request.getParameter("staffID"); 
         String password = request.getParameter("passwd");
         
         System.out.println("username: " + username);
