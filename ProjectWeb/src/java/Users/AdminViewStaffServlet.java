@@ -74,6 +74,11 @@ public class AdminViewStaffServlet extends HttpServlet {
                     
                 }
                 out.println("</table>");
+                
+                out.println("<form action='ManagementPage.jsp'>");
+                    out.println("<input type='submit' value='Back'>");
+                out.println("</form>");
+                
                 out.println("</BODY>");
                 out.println("</HTML>");
             }
