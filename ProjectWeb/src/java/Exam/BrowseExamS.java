@@ -147,12 +147,15 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
                     out.println("</td>");
+                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
                     out.println("<td>");
-                    out.println("<input type=\"text\">");
+                    out.println("<input type=\"text\" name = 'inputbox'>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                     out.println("</td>");
-                      out.println("<td>");
-                    out.println("<input type=\"button\">");
-                    out.println("</td>");
+                    out.println("<td>");
+                    
+                    out.println("<input type=\"submit\">");
+                    out.println("</form>");
                     out.println("</tr>");
                     
                 }
@@ -195,12 +198,15 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
                     out.println("</td>");
+                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
                     out.println("<td>");
-                    out.println("<input type=\"text\">");
+                    out.println("<input type=\"text\" name = 'inputbox'>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                     out.println("</td>");
                     out.println("<td>");
-                    out.println("<input type=\"button\">");
-                    out.println("</td>");
+                    
+                    out.println("<input type=\"submit\">");
+                    out.println("</form>");
                     out.println("</tr>");
                     
                 }
@@ -243,12 +249,15 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
                     out.println("</td>");
+                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
                     out.println("<td>");
-                    out.println("<input type=\"text\"width:'100%'>");
+                    out.println("<input type=\"text\" name = 'inputbox'>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                     out.println("</td>");
                     out.println("<td>");
-                    out.println("<input type=\"button\">");
-                    out.println("</td>");
+                    
+                    out.println("<input type=\"submit\">");
+                    out.println("</form>");
                     out.println("</tr>");  
                 }
                 //printExam(out, "Test");
