@@ -214,40 +214,48 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</tr>");
                  
                 while(commitee.next()){
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println(commitee.getString("ModuleCode"));
-                    out.println("</td>");
-                    String moduleCode = commitee.getString("ModuleCode");
-                   int id = commitee.getInt("ExamID");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
-                    out.println("</td>");
-                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"text\" name = 'inputbox'>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                    out.println("</td>");
-                    out.println("<td>");
-                    
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                    out.println("</form>");
-                    out.println("<form action='SignExamServlet' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                    out.println("<td>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
- 
-                    
-                    out.println("<input type=\"submit\" value='Sign'>");
-                    out.println("<input type='hidden' name ='role'  value ='Exam Commitee'>");
-                    out.println("<input type='hidden' name ='id'  value ="+id+">");
-                    out.println("</form>");
-                    out.println("</tr>");
-                    
+                    if(commitee.getBoolean(("InternalSign"))){
+                        out.println("<tr>");
+                        out.println("<td>");
+                        out.println(commitee.getString("ModuleCode"));
+                        out.println("</td>");
+                        String moduleCode = commitee.getString("ModuleCode");
+                       int id = commitee.getInt("ExamID");
+                        out.println("<td>");
+                        out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                        out.println("</td>");
+                        out.println("<form action='BrowseExamsSContainer' method='POST'>");
+                        out.println("<td>");
+                        out.println("<input type=\"text\" name = 'inputbox'>");
+                        out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                        out.println("</td>");
+                        out.println("<td>");
+
+                        out.println("<input type=\"submit\" value='Add Comment'>");
+                        out.println("</form>");
+                        out.println("<td>");
+                        if(!commitee.getBoolean("CommiteeSign")){
+                            out.println("<form action='SignExamServlet' method='POST'>");
+                            
+                            
+                            
+                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+
+
+                            out.println("<input type=\"submit\" value='Sign'>");
+                            out.println("<input type='hidden' name ='role'  value ='Exam Commitee'>");
+                            out.println("<input type='hidden' name ='id'  value ="+id+">");
+                            out.println("</form>");
+                        }
+                        else{
+                            out.println("X");
+                        }
+                        out.println("</td>");
+                        out.println("</tr>");
+                    }
                 }
 
                   out.println("<h1>Commitee</h1>");
@@ -279,6 +287,7 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</tr>");
                 
                 while(external.next()){
+                    if(external.getBoolean(("CommiteeSign"))){
                     out.println("<tr>");
                     out.println("<td>");
                     out.println(external.getString("ModuleCode"));
@@ -299,18 +308,29 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     
                     out.println("<input type=\"submit\" value='Add Comment'>");
+                   out.println("</td>");
                     out.println("</form>");
-                    out.println("<form action='SignExamServlet' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                    out.println("<td>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                     
-                    out.println("<input type=\"submit\" value='Sign'>");
-                    out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
-                    out.println("</form>");
+                    out.println("<td>");
+                    if(!external.getBoolean("ExternalSign")){
+                        out.println("<form action='SignExamServlet' method='POST'>");
+                        
+                       
+                        
+                        out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                        out.println("<input type='hidden' name ='id'  value ="+id+">");
+
+                        out.println("<input type=\"submit\" value='Sign'>");
+                        out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
+                        out.println("</form>");
+                    }
+                    else{
+                        out.println("X");
+                    }
+                    out.println("</td>");
                     out.println("</tr>");  
+                    } 
+                    
                 }
                 //printExam(out, "Test");
              
