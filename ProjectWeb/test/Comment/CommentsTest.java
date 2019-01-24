@@ -8,6 +8,8 @@ package Comment;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -52,15 +54,31 @@ public class CommentsTest {
         instance.writeComment(modCode,comment,signBy);
     }
 
-    /**
+    /*
      * Test of readComment method, of class Comments.
      * @throws java.io.IOException
-     *
+     */
     @Test
     public void testReadComment() throws IOException {
         String modCode = "CommentsTestModule";
          Comments instance = new Comments();
-        instance.readComment(modCode);
-    }**/
+         boolean read;
+        read = instance.readComment(modCode);
+        if(read){
+        assertTrue("acknowledged", read);
+        }
+        else{
+           Assert.assertFalse("not acknowledged", read);
+        }
+    }
+    
+    @Test
+    public void testAckComments() throws IOException{
+        String modCode = "CommentsTestModule";
+        String comment = "test ACK comment";
+        String signBy = "BIGarsingGDAVE";
+        Comments instance = new Comments();
+        instance.ackComments(modCode,comment,signBy);
+    }
     
 }

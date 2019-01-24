@@ -40,6 +40,7 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String username = (String) session.getAttribute("username");
                 String modcode = request.getParameter("modcode");
                 String comment = request.getParameter("inputbox");
+                String role = request.getParameter("role");
                 Comments instance = new Comments();
                 instance.writeComment(modcode, comment, username);
                  response.sendRedirect("BrowseExamS");

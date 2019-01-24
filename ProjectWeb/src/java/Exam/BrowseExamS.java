@@ -100,10 +100,11 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<input type=\"text\" name = 'inputbox'>");
                     out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                    out.println("<input type='hidden' name ='role'  value ='Exam setter'>");
                     out.println("</td>");
                     out.println("<td>");
                     
-                    out.println("<input type=\"submit\">");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
                     out.println("</form>");
                     out.println("</td>");
                     out.println("</tr>");
@@ -133,6 +134,9 @@ public class BrowseExamS extends HttpServlet {
                 out.println("<th>");
                 out.println("Send Comment");
                 out.println("</th>");
+                out.println("<th>");
+                out.println("Sign Exam");
+                out.println("</th>");
                  out.println("</tr>");
                 while(internal.next()){
                     out.println("<tr>");
@@ -141,6 +145,8 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     String moduleCode = internal.getString("ModuleCode");
                    
+                    int id = internal.getInt("ExamID");
+                    
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -152,10 +158,21 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<input type=\"text\" name = 'inputbox'>");
                     out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                     out.println("</td>");
-                    out.println("<td>");
                     
-                    out.println("<input type=\"submit\">");
+                   
+                    out.println("<td>");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
                     out.println("</form>");
+                     out.println("<form action='SignExamServlet' method='POST'>");
+                    out.println("<td>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+ 
+                    
+                    out.println("<input type=\"submit\" value='Sign'>");
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
+                    out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
+                    out.println("</form>");
+                   out.println("</td>");
                     out.println("</tr>");
                     
                 }
@@ -183,6 +200,9 @@ public class BrowseExamS extends HttpServlet {
                 out.println("<th>");
                 out.println("Send Comment");
                 out.println("</th>");
+                out.println("<th>");
+                out.println("Sign Exam");
+                out.println("</th>");
                 out.println("</tr>");
                  
                 while(commitee.next()){
@@ -191,7 +211,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println(commitee.getString("ModuleCode"));
                     out.println("</td>");
                     String moduleCode = commitee.getString("ModuleCode");
-                   
+                   int id = commitee.getInt("ExamID");
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -205,7 +225,18 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     out.println("<td>");
                     
-                    out.println("<input type=\"submit\">");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
+                    out.println("</form>");
+                    out.println("<form action='SignExamServlet' method='POST'>");
+                    out.println("<td>");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
+                    out.println("<td>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+ 
+                    
+                    out.println("<input type=\"submit\" value='Sign'>");
+                    out.println("<input type='hidden' name ='role'  value ='Exam Commitee'>");
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                     out.println("</form>");
                     out.println("</tr>");
                     
@@ -234,6 +265,9 @@ public class BrowseExamS extends HttpServlet {
                 out.println("<th>");
                 out.println("Send Comment");
                 out.println("</th>");
+                out.println("<th>");
+                out.println("Sign Exam");
+                out.println("</th>");
                 out.println("</tr>");
                 
                 while(external.next()){
@@ -242,7 +276,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println(external.getString("ModuleCode"));
                     out.println("</td>");
                     String moduleCode = external.getString("ModuleCode");
-                   
+                   int id = external.getInt("ExamID");
                     out.println("<td>");
                     out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
@@ -256,7 +290,17 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     out.println("<td>");
                     
-                    out.println("<input type=\"submit\">");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
+                    out.println("</form>");
+                    out.println("<form action='SignExamServlet' method='POST'>");
+                    out.println("<td>");
+                    out.println("<input type=\"submit\" value='Add Comment'>");
+                    out.println("<td>");
+                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                    out.println("<input type='hidden' name ='id'  value ="+id+">");
+                    
+                    out.println("<input type=\"submit\" value='Sign'>");
+                    out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
                     out.println("</form>");
                     out.println("</tr>");  
                 }

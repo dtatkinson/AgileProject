@@ -44,11 +44,9 @@
          <p>Options to create new exams and keep track of exams that are currently in progress</p>
         <form name="ipExamForm" action="AdminNewExamDashboard.jsp"> 
         <input type="submit" value="New" name="ExamBtn" />
-        </form>
-        <br>
-        <form name="compExmForm" action="AdminInProgressExamDashboard.jsp">
-            <input type="submit" value="In Progress" name="compExambtn" />
-        </form>
+         <p>Options keep track of exams that are currently in progress or completed</p>
+      
+       
         <br>
         <form name="compExmForm" action="AdminCompletedExamDashboard.jsp">
             <input type="submit" value="Completed" name="compExambtn" />
@@ -65,7 +63,7 @@
       
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
-            
+            <img src="admin.jpg" width="100%" height="500" alt="Admin"/>
         </div>
         </div>
            

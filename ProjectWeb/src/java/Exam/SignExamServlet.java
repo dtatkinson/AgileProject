@@ -5,7 +5,7 @@
  */
 package Exam;
 
-import Comment.Comments;
+import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,11 +37,42 @@ public class SignExamServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
         String modcode = request.getParameter("modcode");
+        String role = request.getParameter("role");
+        int id = Integer.parseInt(request.getParameter("id"));
+        DatabaseHandling conn = new DatabaseHandling();
+        
         
         
         try (PrintWriter out = response.getWriter()) {
-            
+            //out.print(id);
         }
+        if(role.equals("Internal Moderator")){
+            try{
+                conn.internalSignExam(id);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        else if(role.equals("Exam Commitee")){
+            try{
+                conn.examCommiteeSignExam(id);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        else if(role.equals("External Moderator")){
+            try{
+                conn.externalSignExam(id);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        response.sendRedirect("BrowseExamS");
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
