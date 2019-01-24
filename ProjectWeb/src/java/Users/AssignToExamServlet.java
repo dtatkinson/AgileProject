@@ -50,10 +50,12 @@ public class AssignToExamServlet extends HttpServlet {
             conn.internalAssignExam(id, IMStaffName);
             conn.examCommiteeAssignExam(id, ECStaffName);
             conn.externalAssignExam(id, EMStaffName);
+            conn.editExamStatus(id, "In Progress");
             }
             catch(Exception e){
                 
             }
+            response.sendRedirect("ManagementPage.jsp");
             //ResultSet exam = conn.listTableWhere(deadline, Module, Module)
         }
     }

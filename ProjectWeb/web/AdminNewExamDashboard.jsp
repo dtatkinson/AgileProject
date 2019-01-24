@@ -24,7 +24,7 @@
              <h1 align ="center"><u>New Exam Dashboard</u></h1>
     <div align="center" >
         
-        <form name="newButton" action="soon">
+        <form name="newButton" action="ViewNewExams">
         <input type="submit" value="View New Exams" name="newbtn" />
         </form>
   
