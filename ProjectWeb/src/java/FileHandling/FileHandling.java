@@ -37,7 +37,7 @@ public class FileHandling {
         String path = filePath + fileName;
         //need to make some sort of catch if file already exists
         if(checkIfFileExists(path)){
-            return true;
+            return false;
         }
         else
         {

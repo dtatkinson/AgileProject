@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author oliversimpson
  */
-@WebServlet(name = "ViewNewExams", urlPatterns = {"/ViewNewExams"})
+@WebServlet(name = "ViewInProgressExams", urlPatterns = {"/ViewInProgressExams"})
 public class ViewInProgressExams extends HttpServlet {
 
     /**

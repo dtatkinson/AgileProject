@@ -50,7 +50,11 @@ public class FileHandlingTest {
         String newFile = "test\\";
         String fileName = "testcreate.txt";
         boolean create = instance.createFile(newFile,fileName);
+        if(instance.checkIfFileExists(newFile+fileName)){
+            assertFalse("The file already Exists",create);
+        }else{
         assertTrue("the File is created",create);
+        }
      }
 
     /**
