@@ -48,5 +48,6 @@
     </form>
         </div>
      </div>
+        <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
     </body>
 </html>
