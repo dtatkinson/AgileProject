@@ -40,12 +40,21 @@
             </div>
             
             <div align ="center">
-            <h4>Enter Role:</h4>
-            <input type="text" name="Role" value="" />
-            </div>
-            <input type="submit" value="Submit" />
+            <h4>Select Role:</h4>
+             <select name="Role" size="6">
+            <option value="ES">Exam Setter</option>
+            <option value="IM">Internal Moderator</option>
+            <option value="EC">Exam Commitee</option>
+            <option value="EM">External Moderator</option>
+            <option value="SO">School Office</option>
+            <option value="Admin">Admin</option>
+            </select>
+             </div>
              
+            <input type="submit" value="Submit" />
          </form>
+            
+           <div align ="center">
             <form action="ManagementPage.jsp">
                 <input type="submit" value="<-Back" />
             </form>
