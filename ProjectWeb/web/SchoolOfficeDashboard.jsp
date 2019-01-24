@@ -17,28 +17,29 @@
     <body>
            <h1 align ="center">School Office Dashboard</h1>
     <div align="center" >
-        <h2 align="center">View Exams </h2>
+        <h2>View Exams </h2>
         <form name="viewForm" action="SchoolOfficeViewExams">
-            <input type="submit" value="View my exams" name="viewbtn" />
+            <input type="submit" value="View complete exams" name="viewbtn" />
         </form>
-        
-        <h2 align="center">Download Exams</h2>
+    </div>
+           <div align ="center">
+        <h2> Download Exams</h2>
         <form name="viewForm" action="will go somewhere.jsp">
-            <input type="submit" value="View my exams" name="viewbtn" />
+            <input type="submit" value="Download exams" name="viewbtn" />
         </form>
-           
-        
-        <h2 align="center"> Options</h2>
+           </div>
+           <div align ="center">
+               <h2 > Options</h2>
         <form name="Optionsbtn" action="compExams.jsp">
             <input type="submit" value="Options" name="Optionsbtn" />
         </form>
-           
-           
-    </div>
-        <div align="center" class="plain">
-    <form  name="logoutForm" action="index.jsp">
+        </div>
+           <<div align ="center">
+           <form  name="logoutForm" action="index.jsp">
         <input type="submit" value="Logout" name="logoutbtn"  />
     </form>
-        </div>
+           
+    </div>
+        
     </body>
 </html>
