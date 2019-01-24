@@ -78,6 +78,8 @@ public class DatabaseHandlingTest {
         instance.editStaffPassword("Testname5","Fish");
     }
 
+    
+
     @Test
     public void G_testCreateExam() throws Exception {
         System.out.println("Create Exam");
