@@ -79,6 +79,11 @@ public class AdminRemoveStaffServlet extends HttpServlet {
                 out.println("</table>");
                 out.println("<input type='submit' value='Delete' name='Delete'>");
                 out.println("</form>");
+                
+                out.println("<form name='Back ' action='DeleteStaff.jsp'>");
+                out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
+                out.println("</form>");
+                
                 out.println("</BODY>");
                 out.println("</HTML>");
             }

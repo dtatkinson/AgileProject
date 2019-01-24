@@ -50,7 +50,7 @@ public class DatabaseHandlingTest {
     public void D_testEditStaffUserName() throws Exception {
         System.out.println("Edit staff UserName");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.addStaff("Testname4","edit my username", "IM", "Testpswd");
+        instance.addStaff("Testname4","edit my username", "EC", "Testpswd");
         instance.editStaffUserName("Testname3","Sausage");
     }
 
@@ -67,7 +67,7 @@ public class DatabaseHandlingTest {
         System.out.println("Edit staff Role");
         DatabaseHandling instance = new DatabaseHandling();
         instance.addStaff("Lenard", "Lenard", "IM", "Testpswd");
-        instance.editStaffRole("Lenard","EC");
+        instance.editStaffRole("Lenard","ES");
     }
 
     @Test
@@ -149,7 +149,7 @@ public class DatabaseHandlingTest {
          System.out.println("Internal Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC139","Scumdee","Biz","2019", "Lenard");
-         instance.internalAssignExam(9,"Lenard");
+         instance.internalAssignExam(9,"Testname3");
      }
     
     @Test
@@ -167,11 +167,11 @@ public class DatabaseHandlingTest {
     }
     
      @Test
-     public void P_testInternalAssignExam() throws Exception {
+     public void P_testCommiteeAssignExam() throws Exception {
          System.out.println("Commitee Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC140","Scumdee","Biz","1984", "Lenard");
-         instance.examCommiteeAssignExam(10,"Lenard");
+         instance.examCommiteeAssignExam(10,"Testname4");
      }
     
     @Test
@@ -193,7 +193,7 @@ public class DatabaseHandlingTest {
          System.out.println("External Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
          instance.createExam("Comp","AC141","Scumdee","Biz","1984", "Lenard");
-         instance.externalAssignExam(11,"Lenard");
+         instance.externalAssignExam(11,"Testname5");
      }
     
     @Test
