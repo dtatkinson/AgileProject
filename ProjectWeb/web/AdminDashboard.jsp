@@ -41,13 +41,13 @@
         
         
         <h1 align="center"><u>Exams </u></h1>
-         <p>Options to create new exams and keep track of exams that are currently in progress</p>
+         <p>Options keep track of exams that are currently in progress or completed</p>
         <form name="ipExamForm" action="ipExam.jsp"> 
-        <input type="submit" value="New" name="ExamBtn" />
+        <input type="submit" value="In progress" name="ExamBtn" />
         </form>
         <br>
         <form name="compExmForm" action="compExams.jsp">
-            <input type="submit" value="In Progress" name="compExambtn" />
+            <input type="submit" value="Completed" name="compExambtn" />
         </form>
         <br>
         <div align="center" class="plain">
@@ -61,7 +61,7 @@
       
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
-            
+            <img src="admin.jpg" width="100%" height="500" alt="Admin"/>
         </div>
         </div>
            
