@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             
         out.println("<!DOCTYPE html>");
             
-        String username = request.getParameter("staffID");
+        String username = request.getParameter("staffID"); 
         String password = request.getParameter("passwd");
         
         System.out.println("username: " + username);
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("StaffDashboard.jsp");
                         }
                         else if(rs.getString("Role").equals("SO")){
-                            response.sendRedirect("#");
+                            response.sendRedirect("SchoolOfficeDashboard.jsp");
                         }
                         flag = true;
                         break;
@@ -81,7 +81,11 @@ public class LoginServlet extends HttpServlet {
             }
             
             if(flag == false){
-                out.print("Wrong credentials, idiot");
+                out.println("Invalid login, please check you username and password.");
+                out.println("If you can not login please contact your local exams officer.");
+                out.println("<form name='Back' action='index.jsp'>");
+                out.println("<input type='submit' value='<- Go Back to login' name='backBtn' />");  
+                out.println("</form>");
             }   
         }
         catch (Exception e){    

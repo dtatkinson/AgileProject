@@ -21,8 +21,8 @@
      </div>
         <div align ="center">
         <h1>Staff Members:</h1>
-         
-        
+        <br>
+        <p>Click search with the search bar empty to get a full list of staff members and their roles, <br> otherwise begin type down name of staff member you wish to view and click search</p>
         <form name="SearchForm" action="AdminViewStaffServlet" method="POST">
             <input type="text" name="SearchT" value="" placeholder="Staff Username"/>
             <input type="submit" value="Search"/>

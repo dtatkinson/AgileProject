@@ -22,6 +22,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Page </title>
     </head>
+ 
     <body>
         <div class ="img">
         <a href="AdminDashboard.jsp">
@@ -31,6 +32,7 @@
  
         <div align="center" >
         <h1><u>Staff</u></h1>
+        <p>Options to edit and view options for all members of staff</p>
         <form name="StaffButton" action="ManagementPage.jsp">
         <input type="submit" value="Manage Staff" name="staffbtn" />
         </form>
@@ -39,6 +41,7 @@
         
         
         <h1 align="center"><u>Exams </u></h1>
+         <p>Options to create new exams and keep track of exams that are currently in progress</p>
         <form name="ipExamForm" action="ipExam.jsp"> 
         <input type="submit" value="New" name="ExamBtn" />
         </form>
@@ -49,16 +52,18 @@
         <br>
         <div align="center" class="plain">
             <a href="index.jsp">
-            <form  name="logoutForm" action="index.jsp">
+            <form  name="logoutForm" action="LogoutServlet">
             <img src="Logout.png" width="20" height="20" alt="Logout"/>
              </a>
       
     </form>
-
+               
+      
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
             
         </div>
-        
+        </div>
+        </div>
     </body>
 </html>
