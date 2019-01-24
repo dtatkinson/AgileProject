@@ -41,12 +41,19 @@
         
         
         <h1 align="center"><u>Exams </u></h1>
-         <p>Options keep track of exams that are currently in progress or completed</p>
-        <form name="ipExamForm" action="ipExam.jsp"> 
-        <input type="submit" value="In progress" name="ExamBtn" />
+        
+        <form name="ipExamForm" action="AdminNewExamDashboard.jsp"> 
+        <input type="submit" value="New" name="ExamBtn" />
+       
+         </form>
+       
+          <br>
+        <form name="compExmForm" action="AdminInProgressExamDashboard.jsp">
+            <input type="submit" value="In Progress" name="compExambtn" />
         </form>
+         
         <br>
-        <form name="compExmForm" action="compExams.jsp">
+        <form name="compExmForm" action="AdminCompletedExamDashboard.jsp">
             <input type="submit" value="Completed" name="compExambtn" />
         </form>
         <br>
@@ -61,7 +68,7 @@
       
             <br>
             <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
-            <img src="admin.jpg" width="100%" height="500" alt="Admin"/>
+            
         </div>
         </div>
            

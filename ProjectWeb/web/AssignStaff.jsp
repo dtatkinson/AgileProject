@@ -3,7 +3,6 @@
     Created on : 22-Jan-2019, 14:06:41
     Author     : camerontaylor
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession"  %>
 <!DOCTYPE html>
@@ -41,13 +40,10 @@
             <option value="SO">School Office</option>
             <option value="Admin">Admin</option>
             </select>
-               
-    
+
              <br>
-           
             <input type="submit" value="Submit" name="examSubmit" />
-             
-          
+   
          </form>
                  </div> 
            <br>
