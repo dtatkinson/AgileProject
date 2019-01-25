@@ -32,7 +32,7 @@
          </div>
         
         <div align ="center">
-        <form name="Assign Staff" action="AssignStaff.jsp">
+        <form name="Assign Staff" action="AdminAssignStaffServlet">
         <input type="submit" value="Assign Staff New Role" name="AssignStaffbtn" />
         </form>
          </div>
