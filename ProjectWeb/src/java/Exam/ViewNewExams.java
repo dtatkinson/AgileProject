@@ -40,10 +40,23 @@ public class ViewNewExams extends HttpServlet {
             HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username");
                 DatabaseHandling instance = new DatabaseHandling();
-
+                
+                out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<!-- Latest compiled and minified CSS -->\n" +
+"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
+            out.println("<title>Servlet Testprogress</title>");            
+            out.println("</head>");
+            out.println("<body>");
                 ResultSet newones = instance.listTable("Exam");
                 
-                out.println("<table style='width: 50%' border='1' align:'center' >");
+                Boolean ExtS;
+                Boolean CmtS;
+                Boolean IntS;
+                
+                
+                out.println("<table style='width: 50%' border='1' align='center' >");
                 out.println("<tr>");
                 out.println("<th>");
                 out.println("Module Name");
@@ -66,10 +79,13 @@ public class ViewNewExams extends HttpServlet {
                 out.println("<th>");
                 out.println("Published By");
                 out.println("</th>");
+                out.println("<th>");
+                out.println("Progress");
+                out.println("</th>");
                 out.println("</tr>");
                 while(newones.next()){
                     out.println("<tr>");
-                     out.println("<td>");
+                    out.println("<td>");
                     out.println(newones.getString("ModuleName"));
                     out.println("</td>");
                     out.println("<td>");
@@ -79,7 +95,7 @@ public class ViewNewExams extends HttpServlet {
                     out.println("<td>");
                     out.println(newones.getString("Institution"));
                     out.println("</td>");
-                     out.println("<td>");
+                    out.println("<td>");
                     out.println(newones.getString("School"));
                     out.println("</td>");
                     
@@ -93,6 +109,47 @@ public class ViewNewExams extends HttpServlet {
                     out.println("<td>");
                     out.println(newones.getString("PublishedBy"));
                     out.println("</td>");
+                    out.println("<td>");
+                    ExtS=newones.getBoolean("ExternalSign");
+                    CmtS=newones.getBoolean("CommiteeSign");
+                    IntS=newones.getBoolean("InternalSign");
+                    if(ExtS){
+                      
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:100%\">\n" +
+                                "    Completed\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }
+                    else if(CmtS){
+                      
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:75%\">\n" +
+                                "    75%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }else if(IntS){
+                       
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:50%\">\n" +
+                                "    50%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }else{
+                        
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:25%\">\n" +
+                                "    25%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }
+                    out.println("</td>");
+                    
+                    
                     out.println("</tr>");
                     
                 }
@@ -101,6 +158,9 @@ public class ViewNewExams extends HttpServlet {
                 out.println("<form name='Back ' action='AdminDashboard.jsp'>");
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");  
                 out.println("</form>");
+                
+                
+                out.print("</body>");
         }
             catch(Exception e)
         {
