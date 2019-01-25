@@ -46,7 +46,7 @@ public class CreateExamServlet extends HttpServlet {
         String institution = request.getParameter("Inst");
         String school = request.getParameter("School");
         String academicYear = request.getParameter("Year");
-        String publishedBy = (String)session.getAttribute("PB");
+        String publishedBy = (String)session.getAttribute("username");
         
         createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
         createFile(moduleCode);
