@@ -84,14 +84,14 @@ public class DatabaseHandlingTest {
     public void G_testCreateExam() throws Exception {
         System.out.println("Create Exam");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC131","Scumdee","Biz","2019", "Lenard");
+        instance.createExam("Comp","AC131","Dundee","Science & Engineering","2019", "Lenard");
     }
 
     @Test
     public void H_testDeleteExam() throws Exception {
         System.out.println("Delete Exam");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC132","Scumdee","Biz","2019", "Testname1");
+        instance.createExam("Comp","AC132","Dundee","Science & Engineering","2019", "Testname1");
         instance.deleteExam(2);
     }
 
@@ -99,7 +99,7 @@ public class DatabaseHandlingTest {
     public void I_testEditExamStatus() throws Exception {
         System.out.println("Edit Exam Status");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC133","Scumdee","Biz","2019", "Testname3");
+        instance.createExam("Comp","AC133","Dundee","Science & Engineering","2019", "Testname3");
         instance.editExamStatus(3,"Complete");
     }
 
@@ -108,7 +108,7 @@ public class DatabaseHandlingTest {
     public void J_testEditExamModuleName() throws Exception {
         System.out.println("Edit Exam Name");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC134","Scumdee","Biz","2019", "Testname4");
+        instance.createExam("Comp","AC134","Dundee","Science & Engineering","2019", "Testname4");
         instance.editExamModuleName(4,"Biznes");
     }
 
@@ -116,7 +116,7 @@ public class DatabaseHandlingTest {
     public void K_testEditExamModuleCode() throws Exception {
         System.out.println("Edit Exam Code");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC135","Scumdee","Biz","2019", "Testname5");
+        instance.createExam("Comp","AC135","Dundee","Science & Engineering","2019", "Testname5");
         instance.editExamModuleCode(5,"AC12");
     }
 
@@ -124,23 +124,23 @@ public class DatabaseHandlingTest {
     public void L_testEditExamInstitution() throws Exception {
         System.out.println("Edit Exam Institution");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC136","Scumdee","Biz","2019", "Lenard");
-        instance.editExamInstitution(6,"Dundee High");
+        instance.createExam("Comp","AC136","Dundee","Science & Engineering","2019", "Lenard");
+        instance.editExamInstitution(6,"Abertay");
     }
 
     @Test
     public void M_testEditExamSchool() throws Exception {
         System.out.println("Edit Exam School");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC137","Scumdee","Biz","2019", "Lenard");
-        instance.editExamSchool(7,"Arts and crafts");
+        instance.createExam("Comp","AC137","Dundee","Science & Engineering","2019", "Lenard");
+        instance.editExamSchool(7,"Law");
     }
     
     @Test
     public void N_testEditExamAcedmeicYear() throws Exception {
         System.out.println("Edit Exam Year");
         DatabaseHandling instance = new DatabaseHandling();
-        instance.createExam("Comp","AC138","Scumdee","Biz","2019", "Lenard");
+        instance.createExam("Comp","AC138","Dundee","Science & Engineering","2019", "Lenard");
         instance.editExamAcademicYear(8,"2019");
     }
     
@@ -148,17 +148,17 @@ public class DatabaseHandlingTest {
      public void O_testInternalAssignExam() throws Exception {
          System.out.println("Internal Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
-         instance.createExam("Comp","AC139","Scumdee","Biz","2019", "Lenard");
+         instance.createExam("Comp","AC139","Dundee","Science & Engineering","2019", "Lenard");
          instance.internalAssignExam(9,"Lenard");
      }
-    /**
+    
     @Test
     public void Oa_testInternalSignExam() throws Exception {
         System.out.println("Internal Exam signed");
         DatabaseHandling instance = new DatabaseHandling();
         instance.internalSignExam(9);
     }
-    **/
+    
     @Test
     public void Ob_testInternalSignExamDeadline() throws Exception {
         System.out.println("Internal Exam Deadline set");
@@ -170,7 +170,7 @@ public class DatabaseHandlingTest {
      public void P_testCommiteeAssignExam() throws Exception {
          System.out.println("Commitee Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
-         instance.createExam("Comp","AC140","Scumdee","Biz","1984", "Lenard");
+         instance.createExam("Comp","AC140","Dundee","Science & Engineering","2019", "Lenard");
          instance.examCommiteeAssignExam(10,"Testname4");
      }
     
@@ -192,7 +192,7 @@ public class DatabaseHandlingTest {
      public void Q_testExternalAssignExam() throws Exception {
          System.out.println("External Exam Assigned");
          DatabaseHandling instance = new DatabaseHandling();
-         instance.createExam("Comp","AC141","Scumdee","Biz","1984", "Lenard");
+         instance.createExam("Comp","AC141","Dundee","Science & Engineering","2019", "Lenard");
          instance.externalAssignExam(11,"Testname5");
      }
     
@@ -222,7 +222,7 @@ public class DatabaseHandlingTest {
        System.out.println("killCon");
        DatabaseHandling instance = new DatabaseHandling();
        instance.addStaff("Testname6", "Same exam as last year", "ES", "Testpswd");
-       instance.addStaff("Testname7", "Get yer letter", "SO", "Testpswd");
+       instance.addStaff("Testname7", "Office bois", "SO", "Testpswd");
     }
 }
   
