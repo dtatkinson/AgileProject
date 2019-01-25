@@ -56,7 +56,7 @@ public class ViewNewExams extends HttpServlet {
                 Boolean IntS;
                 
                 
-                out.println("<table style='width: 50%' border='1' align='center' >");
+                out.println("<table style='width: 50%' border='4' align='center' >");
                 out.println("<tr>");
                 out.println("<th>");
                 out.println("Module Name");
@@ -109,7 +109,7 @@ public class ViewNewExams extends HttpServlet {
                     out.println("<td>");
                     out.println(newones.getString("PublishedBy"));
                     out.println("</td>");
-                    out.println("<td>");
+                    out.println("<td width=25%>");
                     ExtS=newones.getBoolean("ExternalSign");
                     CmtS=newones.getBoolean("CommiteeSign");
                     IntS=newones.getBoolean("InternalSign");
@@ -153,11 +153,13 @@ public class ViewNewExams extends HttpServlet {
                     out.println("</tr>");
                     
                 }
+                out.println("<div align='center'>");
                 out.println("<h1>All Exams</h1>");
                 
                 out.println("<form name='Back ' action='AdminDashboard.jsp'>");
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");  
                 out.println("</form>");
+                out.println("</div>");
                 
                 
                 out.print("</body>");
