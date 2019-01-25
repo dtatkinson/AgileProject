@@ -5,6 +5,7 @@
  */
 package Exam;
 
+import Comment.Comments;
 import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.stream.events.Comment;
 /**
  *
  * @author lenardgaunt
@@ -41,14 +43,16 @@ public class SignExamServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         DatabaseHandling conn = new DatabaseHandling();
         
-        
+        Comments comment = new Comments();
         
         try (PrintWriter out = response.getWriter()) {
             //out.print(id);
         
         if(role.equals("Internal Moderator")){
             try{
-                conn.internalSignExam(id);
+                if(comment.readComment(modcode)){
+                    conn.internalSignExam(id);
+                }
             }
             catch(Exception e){
                 
@@ -56,7 +60,10 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("Exam Commitee")){
             try{
-                conn.examCommiteeSignExam(id);
+                if(comment.readComment(modcode)){
+                    conn.examCommiteeSignExam(id);
+                }
+                
             }
             catch(Exception e){
                 
@@ -64,9 +71,12 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("External Moderator")){
             try{
-                conn.externalSignExam(id);
+                if(comment.readComment(modcode)){
+                    conn.externalSignExam(id);
                 //set exam with 3 signs to complete
                 conn.editExamStatus(id, "Completed");
+                }
+                
             }
             catch(Exception e){
                 

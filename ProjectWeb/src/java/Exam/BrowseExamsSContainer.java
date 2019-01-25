@@ -42,7 +42,7 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String comment = request.getParameter("inputbox");
                 String role = request.getParameter("role");
                 Comments instance = new Comments();
-                out.println(role);
+                //out.println(role);
                 
                 if(role.equals("Exam setter")){
                     
