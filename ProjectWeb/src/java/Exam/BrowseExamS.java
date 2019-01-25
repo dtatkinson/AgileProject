@@ -25,9 +25,20 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "BrowseExamS", urlPatterns = {"/BrowseExamS"})
 public class BrowseExamS extends HttpServlet {
 
-    public int getID(){
-        int id = 0;
-        return id;
+    public String expandRole(String role){
+        if(role.equals("ES")){
+            return "Exam Setter";
+        }
+        else if(role.equals("IM")){
+            return "Internal Moderator";
+        }
+        else if(role.equals("EC")){
+            return "Exam Commitee";
+        }
+        else if(role.equals("EX")){
+            return "External Moderator";
+        }
+        return null;
     }
     public boolean signSig(String role, String username){
         DatabaseHandling conn = new DatabaseHandling();
@@ -146,7 +157,8 @@ public class BrowseExamS extends HttpServlet {
 
                                    out.println("<input type=\"submit\" value='Sign'>");
                                    out.println("<input type='hidden' name ='id'  value ="+id+">");
-                                   out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
+                                   
+                                   out.println("<input type='hidden' name ='role'  value =" + expandRole(role) + ">");
                                    out.println("</form>");
                                 }
                                 else{
