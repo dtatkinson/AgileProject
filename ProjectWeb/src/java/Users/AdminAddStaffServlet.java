@@ -9,6 +9,7 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +41,17 @@ public class AdminAddStaffServlet extends HttpServlet {
         String password = request.getParameter("StaffPassword"); //Gets the password the was posted to this servlet
         String role = request.getParameter("Role"); //Gets the role the was posted to this servlet
         
+        boolean tryit = checkStaff(username);
+        
+        if(tryit == true)
+        {
+            response.sendRedirect("AddStaffError.jsp");
+        }
+        else
+        {
         addStaff(username, name, password,role);
         response.sendRedirect("AdminDashboard.jsp");
+        }
     }
     
     //Method that calls the add staff method in the database handling class
@@ -49,10 +59,30 @@ public class AdminAddStaffServlet extends HttpServlet {
         DatabaseHandling conn = new DatabaseHandling();
         try{
             conn.addStaff(username, name, role, password);
+            
         }
         catch(Exception e){
             
         }
+    }
+    
+    public boolean checkStaff(String username)
+    {
+        DatabaseHandling conn = new DatabaseHandling();
+        try{
+            ResultSet StaffList = conn.listTable("Staff"); //Returns a result list containing the entire staff table
+            while(StaffList.next())
+            {
+                if(username.equals(StaffList.getString("StaffName")))
+                {
+                    return true;
+                }
+            }
+           
+        }
+        catch(Exception e){
+    }
+         return false;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

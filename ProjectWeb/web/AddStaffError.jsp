@@ -16,36 +16,17 @@
     </head>
     <body>
        <div class ="img">
-        <a href="AdminNewExamDashboard.jsp">
+        <a href="AdminDashboard.jsp">
      <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
         </a>
      </div>
-         <div>
-             <h1 align ="center"><u>New Exam Dashboard</u></h1>
-    <div align="center" >
-        
-        <form name="newButton" action="ViewNewExams">
-        <input type="submit" value="View New Exams" name="newbtn" />
-        </form>
-  
-        
-     
-        <form name="viewForm" action="soon">
-            <input type="submit" value="Assign Staff to New Exams" name="viewbtn" />
-        </form>
-           
-        
-       
-        <form name="Optionsbtn" action="soon">
-            <input type="submit" value="Delete New Exam" name="Optionsbtn" />
-        </form>
-           
-           
-    </div>
-     <div align ="center">
-            <form name="Back " action="AdminDashboard.jsp">
-                <input type="submit" value="<- Go Back" name="backBtn" />   
+         <div align ="center">
+             <h2 align ="center">Sorry, that Staff user name is already taken</h2>
+
+            <form align ="center" name="Try Again" action="AddStaff.jsp">
+                <input type="submit" value="Try Again" name="backBtn" />   
             </form>
+             
         </div>
      </div>
         <br>
