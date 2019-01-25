@@ -42,10 +42,19 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String comment = request.getParameter("inputbox");
                 String role = request.getParameter("role");
                 Comments instance = new Comments();
-                instance.writeComment(modcode, comment, username);
-                 response.sendRedirect("BrowseExamS");
+                out.println(role);
                 
-            /* TODO output your page here. You may use following sample code. */
+                if(role.equals("Exam setter")){
+                    
+                    instance.ackComments(modcode, comment, username);
+                }else{
+                    
+                   instance.writeComment(modcode, comment, username);
+                }
+                
+                response.sendRedirect("BrowseExamS");
+                
+           
         }
     }
 

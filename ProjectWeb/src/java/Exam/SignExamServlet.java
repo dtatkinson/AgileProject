@@ -65,6 +65,8 @@ public class SignExamServlet extends HttpServlet {
         else if(role.equals("External Moderator")){
             try{
                 conn.externalSignExam(id);
+                //set exam with 3 signs to complete
+                conn.editExamStatus(id, "Completed");
             }
             catch(Exception e){
                 

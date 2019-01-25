@@ -81,10 +81,7 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</th>");
                 out.println("<th>");
                 out.println("Send Comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Progress");
-                out.println("</th>");
+               
                  out.println("</tr>");
                 while(setter.next()){
                     out.println("<tr>");
@@ -161,6 +158,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<input type=\"text\" name = 'inputbox'>");
                     out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                    out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
                     out.println("</td>");
                     
                    
@@ -235,6 +233,7 @@ public class BrowseExamS extends HttpServlet {
                         out.println("<td>");
                         out.println("<input type=\"text\" name = 'inputbox'>");
                         out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                        out.println("<input type='hidden' name ='role'  value ='Exam Vetting Commitee'>");
                         out.println("</td>");
                         out.println("<td>");
 
@@ -308,6 +307,7 @@ public class BrowseExamS extends HttpServlet {
                     out.println("<td>");
                     out.println("<input type=\"text\" name = 'inputbox'>");
                     out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                    out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
                     out.println("</td>");
                     out.println("<td>");
                     
