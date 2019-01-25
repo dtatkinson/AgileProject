@@ -4,13 +4,15 @@
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@page import="javax.servlet.http.HttpSession"  %>
 <%
-  
+    ServletContext context = session.getServletContext();
     String modulecode = (String)session.getAttribute("moduleCode");
-    MultipartRequest m = new MultipartRequest(request, "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modulecode+"\\2019\\");
+    String realContextPath = context.getRealPath("/");
+    String uploadpath = realContextPath+"\\"+modulecode+"\\2019\\";
+    MultipartRequest m = new MultipartRequest(request,uploadpath );
     out.println("Successfully Uploaded..The PDf will auto change to "+modulecode+".pdf");
     String fileName = m.getOriginalFileName("fname");
-    File oldName = new File("\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modulecode+"\\2019\\"+fileName);
-    File newName = new File("\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modulecode+"\\2019\\"+ modulecode+".pdf");
+    File oldName = new File(uploadpath+fileName);
+    File newName = new File(uploadpath+ modulecode+".pdf");
     oldName.renameTo(newName);
    
     
