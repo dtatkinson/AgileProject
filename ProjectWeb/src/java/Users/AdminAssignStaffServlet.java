@@ -9,7 +9,6 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.time.Year;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author lenardgaunt
+ * @author oliversimpson
  */
-@WebServlet(name = "AdminAssignToExam", urlPatterns = {"/AdminAssignToExam"})
-public class AdminAssignToExam extends HttpServlet {
+@WebServlet(name = "AdminAssignStaffServlet", urlPatterns = {"/AdminAssignStaffServlet"})
+public class AdminAssignStaffServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +35,7 @@ public class AdminAssignToExam extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+      /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -45,22 +44,10 @@ public class AdminAssignToExam extends HttpServlet {
             out.println("<body>");
             DatabaseHandling conn = new DatabaseHandling();
            
-               
-                ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new"); //Gets all of the exams that are new
-            out.println("<form action='AssignToExamServlet' method='POST'>");
-                out.println("<select name='Modules' width='150'>");
-                
-                try{
-                    while(moduleList.next()){
-                        out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
-                    } //Lists all of the exams that are new in a dropdown menu
-                }
-                catch(Exception e){
-
-                }
-                out.println("</select>");
-                out.println(" Internal:");
-                out.println("<select name='IMStaffName' width='150'>");
+            out.println("<form action='AdminChangeStaffRole' method='POST'>");
+              
+                out.println(" Staff:");
+                out.println("<select name='StaffName' width='150'>");
                 
                 ResultSet StaffList = conn.listTable("Staff"); //Returns a result list containing the entire staff table
                
@@ -74,38 +61,16 @@ public class AdminAssignToExam extends HttpServlet {
                 }
                 out.println("</select>");
                 
-                out.println(" Commitee:");
-                out.println("<select name='ECStaffName' width='150'>");
-                
-                ResultSet StaffList2 = conn.listTable("Staff"); 
-               
-                try{
-                    while(StaffList2.next()){
-                        out.println("<option name='ECStaffName' value=" + StaffList2.getString("StaffName")+">" + StaffList2.getString("Name")+ "</option>");
-                    }
-                }
-                catch(Exception e){
-                    
-                }
-                out.println("</select>");
-
-                
-                out.println(" External:");
-                out.println("<select name='EMStaffName' width='150'>");
-                
-                ResultSet StaffList3 = conn.listTable("Staff");
-               
-                try{
-                    while(StaffList3.next()){
-                        out.println("<option name='EMStaffName' value=" + StaffList3.getString("StaffName")+">" + StaffList3.getString("Name")+ "</option>");
-                    }
-                }
-                catch(Exception e){
-                    
-                }
-                out.println("</select>");
-
-                out.println("<input type='submit' value='Select' name='select'>");
+            out.println("<h4>Enter New Staff Role:</h4>");
+            out.println("<select name='NewStaffRoles' size='6'>");
+            out.println("<option value='ES'>Exam Setter</option>");
+            out.println("<option value='IM'>Internal Moderator</option>");
+            out.println("<option value='EC'>Exam Commitee</option>");
+            out.println("<option value='EM'>External Moderator</option>");
+            out.println("<option value='SO'>School Office</option>");
+            out.println("<option value='Admin'>Admin</option>");
+            out.println("</select>");
+            out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
             
             out.println("<form name='Back ' action='ManagementPage.jsp'>");
