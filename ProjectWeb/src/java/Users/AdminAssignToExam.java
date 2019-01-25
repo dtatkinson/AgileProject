@@ -46,14 +46,14 @@ public class AdminAssignToExam extends HttpServlet {
             DatabaseHandling conn = new DatabaseHandling();
            
                
-                ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new");
+                ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new"); //Gets all of the exams that are new
             out.println("<form action='AssignToExamServlet' method='POST'>");
                 out.println("<select name='Modules' width='150'>");
                 
                 try{
                     while(moduleList.next()){
                         out.println("<option name='Module' value=" + moduleList.getString("ModuleCode") + ":" + moduleList.getString("ExamID") + ">"+ moduleList.getString("ModuleCode") +"</option>");
-                    }
+                    } //Lists all of the exams that are new in a dropdown menu
                 }
                 catch(Exception e){
 
@@ -62,7 +62,7 @@ public class AdminAssignToExam extends HttpServlet {
                 out.println(" Internal:");
                 out.println("<select name='IMStaffName' width='150'>");
                 
-                ResultSet StaffList = conn.listTable("Staff");
+                ResultSet StaffList = conn.listTable("Staff"); //Returns a result list containing the entire staff table
                
                 try{
                     while(StaffList.next()){
@@ -77,7 +77,7 @@ public class AdminAssignToExam extends HttpServlet {
                 out.println(" Commitee:");
                 out.println("<select name='ECStaffName' width='150'>");
                 
-                ResultSet StaffList2 = conn.listTable("Staff");
+                ResultSet StaffList2 = conn.listTable("Staff"); 
                
                 try{
                     while(StaffList2.next()){

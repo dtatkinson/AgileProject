@@ -38,24 +38,24 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         DatabaseHandling conn = new DatabaseHandling();
         FileHandling file = new FileHandling();
         String modCode;
-        String year = "\\2019\\";
+        String year = "\\2019\\"; //Only accepts 2019 as the year
         
         try{
             ResultSet moduleList = conn.listTable("Exam");
             while(moduleList.next()){
                 modCode = moduleList.getString("ModuleCode");
-                if(!file.checkIfFileExists(modCode)){
+                if(!file.checkIfFileExists(modCode)){ //Checks if folder with the moodule code exists
                     file.createDirectory(modCode,year);
                     file.createDirectory(modCode+year, "additionalUploads");
                     file.createFile(modCode+year, "comments.txt");
-                }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){
+                }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){ //Checks if the folder with the year exists inside of the mod code folder
                     file.createDirectory(modCode, year);
                     file.createFile(modCode+year, "comments.txt");
                     file.createDirectory(modCode+year, "additionalUploads");
-                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"comments.txt")){
+                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"comments.txt")){ //Checks if the comments file exists inside the year folder
                     file.createFile(modCode+year, "comments.txt");
                 }
-                if(file.checkIfFileExists(modCode+year)&& !file.checkIfFileExists(modCode+year+"additionalUploads")){
+                if(file.checkIfFileExists(modCode+year)&& !file.checkIfFileExists(modCode+year+"additionalUploads")){ //Checks if the aditional uploads folder exists inside year
                     file.createDirectory(modCode+year, "additionalUploads");
                 }
                        
