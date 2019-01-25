@@ -25,12 +25,6 @@
          <form name="Details Input Form" action="CreateExamServlet" method="POST">
             <h4>Module Name:</h4>
             <input type="text" name="ModName" value="" />
-            
-            <h4>Module Name:</h4>
-            <select name="Module Name" size="6">
-            <option value="Biz">Business</option>
-            <option value="IM">Internal Moderator</option>
-            </select>
             </div>
         
             <div align ="center">

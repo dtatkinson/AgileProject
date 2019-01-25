@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 /**
  * Class to handle all things related to files
- * @author matthewmchale
+ * @author matthewmchale and wenjunyu
  * Reviewed by DavidAtkinson
  */
 public class FileHandling {
@@ -35,7 +35,9 @@ public class FileHandling {
     public boolean createFile(String filePath,String fileName) throws IOException{
         String fullPath = defaultPath + filePath + fileName;
         String path = filePath + fileName;
-        //need to make some sort of catch if file already exists
+        //need to make some sort of catch if file already exists or at least improve this
+        
+        //refactored - created the checkIfFileExists method
         if(checkIfFileExists(path)){
             return false;
         }
@@ -131,6 +133,7 @@ public class FileHandling {
      */
      public void createDirectory(String path, String folderName) throws IOException
     {
+        //had to create this later in the development as create file doesnt create folders
         String fullPath = defaultPath + path + folderName;
         Files.createDirectories(Paths.get(fullPath));
     }

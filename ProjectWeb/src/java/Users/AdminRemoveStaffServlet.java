@@ -38,17 +38,17 @@ public class AdminRemoveStaffServlet extends HttpServlet {
                 out.println("<HTML>");
                 out.println("<BODY>");
 
-                out.println("<table style='width:100%' border='1'");
+                out.println("<table style='width:100%' border='1'"); //Creates a html table
 
                 out.println("<tr>");
                     out.println("<th>");
-                    out.println("Staff Username");
+                    out.println("Staff Username"); //Sets one of the row headings to "Staff Username"
                     out.println("</th>");
                     out.println("<th>");
-                    out.println("Staff Role");
+                    out.println("Staff Role"); //Sets one of the row headings to "Staff Role"
                     out.println("</th>");
                     out.println("<th>");
-                    out.println("Delete?");
+                    out.println("Delete?"); //Sets one of the row headings to "Delete?"
                     out.println("</th>");
                 out.println("</tr>");
                 out.println("<form action='RemoveStaffContainerServlet' method='POST'>");
@@ -59,15 +59,15 @@ public class AdminRemoveStaffServlet extends HttpServlet {
                        
                         out.println("<tr>");
                             out.println("<td>");
-                            out.println(staffList.getString("StaffName"));
+                            out.println(staffList.getString("StaffName")); //Sets the value of one of the rows to the staff username
                             String name = staffList.getString("StaffName");
                             out.println("</td>");
                             out.println("<td>");
-                            out.println(staffList.getString("Role"));
+                            out.println(staffList.getString("Role")); //Sets the value of one of the rows to the staff role
                             out.println("</td>");
                             out.println("<td>");
                             out.println("<label>");
-                                out.println("<input type='radio' name='user' value=" + name + ">");
+                                out.println("<input type='radio' name='user' value=" + name + ">"); //Sets the value of one of the rows to a radio button
                             out.println("</label>");
                             out.println("</td>");
                         out.println("</tr>");
