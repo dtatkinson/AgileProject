@@ -25,8 +25,148 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "BrowseExamS", urlPatterns = {"/BrowseExamS"})
 public class BrowseExamS extends HttpServlet {
 
+    public int getID(){
+        int id = 0;
+        return id;
+    }
+    public boolean signSig(String role, String username){
+        DatabaseHandling conn = new DatabaseHandling();
+        if(role.equals("IM")){ 
+            ResultSet rs = conn.listTableWhereD("Exam", "InternalSignID", username);
+            return true;
+        }
+        else if(role.equals("EC")){
+            ResultSet rs = conn.listTableWhereD("Exam", "CommiteeSignID", username);
+            return true;
+        }
+        else if(role.equals("EX")){
+            ResultSet rs = conn.listTableWhereD("Exam", "ExternalSignID", username);
+            return true;
+        }
+        return false;
+    }
     
-    
+    public ResultSet getResultSet(String role, String username){
+        DatabaseHandling conn = new DatabaseHandling();
+        if(role.equals("ES")){
+            ResultSet rs = conn.listTableWhereD("Exam", "PublishedBy", username);
+            return rs;
+        }
+        else if(role.equals("IM")){
+            ResultSet rs = conn.listTableWhereD("Exam", "InternalSignID", username);
+            return rs;
+        }
+        else if(role.equals("EC")){
+            ResultSet rs = conn.listTableWhereD("Exam", "CommiteeSignID", username);
+            return rs;
+        }
+        else if(role.equals("EX")){
+            ResultSet rs = conn.listTableWhereD("Exam", "ExternalSignID", username);
+            return rs;
+        }
+        return null;   
+    }
+    public void refactor(PrintWriter out, String username, ResultSet rs, String role){
+        
+        
+        
+        out.println(role);
+        out.println("<html>");
+ 
+        out.println("<head>");
+        out.println("</head>");
+        
+        out.println("<body>");
+        
+        out.println("<table style='width: 50%' border='1' align:'center' >");
+            out.println("<tr>");
+            out.println("<th>");
+                out.println("Module code");
+            out.println("</th>");
+            out.println("<th>");
+                out.println("Exam paper");
+            out.println("</th>");
+            out.println("<th>");
+                out.println("Comments");
+            out.println("</th>");
+
+            out.println("<th>");
+                out.println("Input comment");
+            out.println("</th>");
+            out.println("<th>");
+                out.println("Send Comment");
+            out.println("</th>");
+            if(!role.equals("ES")){
+                out.println("<th>");
+                    out.println("Sign?");
+                out.println("</th>"); 
+            }
+            
+            out.println("</tr>");
+            //Table headings
+            try{
+                while(rs.next()){
+                    String moduleCode = rs.getString("ModuleCode");
+                    out.println("<tr>");
+                    
+                       out.println("<td>");
+                            out.println(moduleCode);
+                       out.println("</td>");
+                       //Module
+                       out.println("<td>");
+                            out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                       out.println("</td>");
+                       //Exam
+                       out.println("<td>");
+                            out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                       out.println("</td>");
+                       //Exam comments
+                       
+                       out.println("<td>");
+                            out.println("<form action='BrowseExamsSContainer' method='POST'>");
+                                out.println("<input type=\"text\" name = 'inputbox'>");
+                                out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                                out.println("<input type='hidden' name ='role'  value ='Exam setter'>");
+                       out.println("</td>");
+                       
+                       out.println("<td>");
+                                out.println("<input type=\"submit\" value='Add Comment'>");
+                            out.println("</form>");
+                       out.println("</td>");
+                       
+                       if(!role.equals("ES")){
+                            out.println("<td>");
+                                if(signSig(role, username)){ //POLICE, THIS LINE RIGHT HERE
+                                    
+                                   int id = rs.getInt("ExamID");
+                                   out.println("<form action='SignExamServlet' method='POST'>");
+
+                                   out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+
+
+                                   out.println("<input type=\"submit\" value='Sign'>");
+                                   out.println("<input type='hidden' name ='id'  value ="+id+">");
+                                   out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
+                                   out.println("</form>");
+                                }
+                                else{
+                                    out.println("X");
+                                }
+                           out.println("</td>");
+                        }
+                    out.println("</tr>");
+                }
+            }
+            catch(Exception e){
+                
+            }
+        out.println("</table>");
+        
+        
+        
+        out.println("</body>");
+        out.println("</html>");
+    }
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,6 +186,7 @@ public class BrowseExamS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            /*
             out.println("<!DOCTYPE html>");
             out.println("<html>");
  
@@ -58,12 +199,26 @@ public class BrowseExamS extends HttpServlet {
             
             out.println("<body>");
             try{
-                HttpSession session = request.getSession();
-                String username = (String) session.getAttribute("username");
+                
                 DatabaseHandling instance = new DatabaseHandling();
 
-                ResultSet setter = instance.listTableWhereD("Exam", "PublishedBy", username);
+                ResultSet setter = instance.listTableWhereD("Exam", "PublishedBy", username);*/
                 
+                HttpSession session = request.getSession();
+                String username = (String) session.getAttribute("username");
+                
+                ResultSet rs = getResultSet("ES", username);
+                refactor(out, username, rs, "ES");
+                
+                ResultSet rs2 = getResultSet("IM", username);
+                refactor(out, username, rs2, "IM");
+                
+                ResultSet rs3 = getResultSet("EC", username);
+                refactor(out, username, rs3, "EC");
+                
+                ResultSet rs4 = getResultSet("EX", username);
+                refactor(out, username, rs4, "EX");
+                /*
                 out.println("<table style='width: 50%' border='1' align:'center' >");
                 out.println("<tr>");
                 out.println("<th>");
@@ -356,10 +511,7 @@ public class BrowseExamS extends HttpServlet {
         
        
     }
-    public void printExam(PrintWriter out, String role, String username){
-        DatabaseHandling conn = new DatabaseHandling();
-        ResultSet external = conn.listTableWhereD("Exam", role, username);
-    }
+
   
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
