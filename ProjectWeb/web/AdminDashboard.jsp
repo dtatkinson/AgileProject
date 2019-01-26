@@ -42,11 +42,6 @@
         
         <h1 align="center"><u>Exams </u></h1>
         
-        <h2>New</h2>
-        <form name="newButton" action="CreateExamDTL.jsp">
-        <input type="submit" value="Create a new exam" name="newbtn" />
-        </form>
-        
         <form name="ipExamForm" action="ViewNewExams"> 
         <input type="submit" value="View all exams" name="ExamBtn" />
          </form>
