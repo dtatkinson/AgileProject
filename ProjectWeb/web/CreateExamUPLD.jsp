@@ -16,11 +16,19 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+        
+        
         <title>Create Exam</title>
 
     </head>
 
     <body>
+        
+        <div class ="img">
+        <a href="StaffDashboard.jsp">
+     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
+        </a>
+     </div>
         <div align ="center"> <u><h1>Create Exam</u></h1><div>
                                  
         <form action="process.jsp" method="post" enctype="multipart/form-data">

@@ -55,6 +55,12 @@ public class ViewNewExams extends HttpServlet {
                 Boolean CmtS;
                 Boolean IntS;
                 
+                out.println("<div class ='img'>");
+                out.println("<a href='AdminDashboard.jsp'>");
+                out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' align=”left” />");
+                out.println("</a>");
+                out.println("</div>");
+                
                 out.println("<h1 align='center'>All Exams</h1>");
                 
                 out.println("<table style='width: 50%' border='4' align='center' >");
