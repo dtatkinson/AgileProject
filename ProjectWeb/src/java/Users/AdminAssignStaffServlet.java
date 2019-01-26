@@ -42,11 +42,24 @@ public class AdminAssignStaffServlet extends HttpServlet {
                        
             out.println("</head>");
             out.println("<body>");
+            
+            out.println( "<div class ='img'>");
+            out.println("<a href='StaffDashboard.jsp'>");
+            out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
+            out.println("</a>");
+            out.println("</div>");
+            
             DatabaseHandling conn = new DatabaseHandling();
            
-            out.println("<form action='AdminChangeStaffRole' method='POST'>");
+                out.println("<div align='center'>");
+            
+                out.println("<h2>Assign Staff New Role</h2>");
+                
+                
+                out.println("<form action='AdminChangeStaffRole' method='POST'>");
               
-                out.println(" Staff:");
+                out.println("<h4>Staff:</h4>");
+                
                 out.println("<select name='StaffName' width='150'>");
                 
                 ResultSet StaffList = conn.listTable("Staff"); //Returns a result list containing the entire staff table
@@ -70,12 +83,17 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("<option value='SO'>School Office</option>");
             out.println("<option value='Admin'>Admin</option>");
             out.println("</select>");
+            out.println("<br>");
             out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
             
+            out.println("<br>");
             out.println("<form name='Back ' action='ManagementPage.jsp'>");
-                out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
-                out.println("</form>");
+            out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
+            out.println("</form>");
+                
+            out.println("</div>");
+           
             out.println("</body>");
             out.println("</html>");
         }
