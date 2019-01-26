@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author lenardgaunt
  */
 @WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
-public class AdminSetDeadlinesModulesServlet extends HttpServlet {
+public class AdminSetDeadlineServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,9 +48,20 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
             DatabaseHandling conn = new DatabaseHandling();
             String year; 
                 year  = ""+Year.now().getValue();
-                out.print(year);
+             
                 ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
+                
+            out.println( "<div class ='img'>");
+            out.println("<a href='StaffDashboard.jsp'>");
+            out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
+            out.println("</a>");
+            out.println("</div>");
+                
+            out.println("<h2 align='center'>Assign Exam Deadlines</h2>");
+            
+            out.println("<div align='center'>");
             out.println("<form action='SetDeadlineServlet' method='POST'>");
+                out.println("<h4>Modules:</h4>");
                 out.println("<select name='Modules' width='150'>");
                 
                 try{
@@ -62,18 +73,31 @@ public class AdminSetDeadlinesModulesServlet extends HttpServlet {
 
                 }
                 out.println("</select>");
-                out.println(" Internal:");
+                
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<h4>Internals: </h4>");
                 out.println("<input type='date' name='IMdeadline'>");
-                out.println(" Commitee:");
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<h4>Commitee:</h4>");
                 out.println("<input type='date' name='ECdeadline'>");
-                out.println(" External:");
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<h4>Externals: </h4>");
                 out.println("<input type='date' name='EMdeadline'>");
+                out.println("<br>");
+                out.println("<br>");
                 out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
+            
+            out.println("<br>");
+                out.println("<br>");
             
             out.println("<form name='Back' action='ManagementPage.jsp'>");
                out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
             out.println("</form>");
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
