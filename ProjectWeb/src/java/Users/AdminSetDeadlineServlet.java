@@ -76,7 +76,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
                 
                 out.println("<br>");
                 out.println("<br>");
-                out.println("<h4>Internals: </h4>");
+                out.println("<h4>Internal: </h4>");
                 out.println("<input type='date' name='IMdeadline'>");
                 out.println("<br>");
                 out.println("<br>");
@@ -84,7 +84,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
                 out.println("<input type='date' name='ECdeadline'>");
                 out.println("<br>");
                 out.println("<br>");
-                out.println("<h4>Externals: </h4>");
+                out.println("<h4>External: </h4>");
                 out.println("<input type='date' name='EMdeadline'>");
                 out.println("<br>");
                 out.println("<br>");

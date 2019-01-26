@@ -43,11 +43,24 @@ public class AdminAssignToExam extends HttpServlet {
                        
             out.println("</head>");
             out.println("<body>");
+            
+            out.println( "<div class ='img'>");
+            out.println("<a href='StaffDashboard.jsp'>");
+            out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
+            out.println("</a>");
+            out.println("</div>");
+            
             DatabaseHandling conn = new DatabaseHandling();
            
                
                 ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new"); //Gets all of the exams that are new
+                out.println("<div align='center'>");
+                
+                 out.println("<h2>Assign Staff To Exam</h2>");
+                
             out.println("<form action='AssignToExamServlet' method='POST'>");
+            
+                 out.println("<h4>Modules:</h4>");
                 out.println("<select name='Modules' width='150'>");
                 
                 try{
@@ -59,7 +72,9 @@ public class AdminAssignToExam extends HttpServlet {
 
                 }
                 out.println("</select>");
-                out.println(" Internal:");
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<h4>Internal:</h4>");
                 out.println("<select name='IMStaffName' width='150'>");
                 
                 ResultSet StaffList = conn.listTable("Staff"); //Returns a result list containing the entire staff table
@@ -73,8 +88,11 @@ public class AdminAssignToExam extends HttpServlet {
                     
                 }
                 out.println("</select>");
+                out.println("<br>");
+                out.println("<br>");
                 
-                out.println(" Commitee:");
+                
+                out.println("<h4>Commitee:</h4>");
                 out.println("<select name='ECStaffName' width='150'>");
                 
                 ResultSet StaffList2 = conn.listTable("Staff"); 
@@ -88,9 +106,10 @@ public class AdminAssignToExam extends HttpServlet {
                     
                 }
                 out.println("</select>");
-
+                out.println("<br>");
+                out.println("<br>");
                 
-                out.println(" External:");
+                out.println("<h4>External:</h4>");
                 out.println("<select name='EMStaffName' width='150'>");
                 
                 ResultSet StaffList3 = conn.listTable("Staff");
@@ -104,13 +123,19 @@ public class AdminAssignToExam extends HttpServlet {
                     
                 }
                 out.println("</select>");
-
+                 out.println("<br>");
+                out.println("<br>");
                 out.println("<input type='submit' value='Select' name='select'>");
             out.println("</form>");
             
+            
+            out.println("<br>");
+                out.println("<br>");
             out.println("<form name='Back ' action='ManagementPage.jsp'>");
+           
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
                 out.println("</form>");
+                out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
