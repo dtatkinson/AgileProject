@@ -81,21 +81,26 @@ public class BrowseExamS extends HttpServlet {
         
         
         
-        out.println(role);
+        
+        
         out.println("<html>");
  
         out.println("<head>");
+        out.println("<!-- Latest compiled and minified CSS -->\n" +
+"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
         out.println("</head>");
         
         out.println("<body>");
         
-        out.println("<table style='width: 50%' border='1' align:'center' >");
+        out.println("<h1 align='center'>"+role+"</h1>");
+        out.println("<table style='width: 50%' border='4' align='center' >");
+        
             out.println("<tr>");
             out.println("<th>");
                 out.println("Module code");
             out.println("</th>");
             out.println("<th>");
-                out.println("Exam paper");
+            out.println("Exam paper");
             out.println("</th>");
             out.println("<th>");
                 out.println("Comments");
@@ -172,10 +177,8 @@ public class BrowseExamS extends HttpServlet {
             catch(Exception e){
                 
             }
+      
         out.println("</table>");
-        
-        
-        
         out.println("</body>");
         out.println("</html>");
     }
@@ -219,6 +222,12 @@ public class BrowseExamS extends HttpServlet {
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username");
                 
+                out.println( "<div class ='img'>");
+                out.println("<a href='StaffDashboard.jsp'>");
+                out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
+                out.println("</a>");
+                out.println("</div>");
+                
                 ResultSet rs = getResultSet("ES", username);
                 refactor(out, username, rs, "ES");
                 
@@ -231,9 +240,12 @@ public class BrowseExamS extends HttpServlet {
                 ResultSet rs4 = getResultSet("EX", username);
                 refactor(out, username, rs4, "EX");
                 
+                out.println("<br>");
+                out.println("<div align='center'>");
                 out.println("<form name='Back ' action='StaffDashboard.jsp'>");
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
-                out.println("</form>");
+                out.println("</form>");  
+                out.println("</div>");
                 /*
                 out.println("<table style='width: 50%' border='1' align:'center' >");
                 out.println("<tr>");
