@@ -230,6 +230,10 @@ public class BrowseExamS extends HttpServlet {
                 
                 ResultSet rs4 = getResultSet("EX", username);
                 refactor(out, username, rs4, "EX");
+                
+                out.println("<form name='Back ' action='StaffDashboard.jsp'>");
+                out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
+                out.println("</form>");
                 /*
                 out.println("<table style='width: 50%' border='1' align:'center' >");
                 out.println("<tr>");
