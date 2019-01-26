@@ -51,7 +51,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 ResultSet completed = instance.listTableWhere("Exam", "ExamStatus", "Complete");
                 
                 out.println( "<div class ='img'>");
-                out.println("<a href='SchoolDashboard.jsp'>");
+                out.println("<a href='SchoolOfficeDashboard.jsp'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' align=”left” ></img>");
                 out.println("</a>");
                 out.println("</div>");

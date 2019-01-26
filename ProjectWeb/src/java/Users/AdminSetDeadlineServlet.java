@@ -52,7 +52,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
                 ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
                 
             out.println( "<div class ='img'>");
-            out.println("<a href='StaffDashboard.jsp'>");
+            out.println("<a href='AdminDashboard.jsp'>");
             out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
             out.println("</a>");
             out.println("</div>");
