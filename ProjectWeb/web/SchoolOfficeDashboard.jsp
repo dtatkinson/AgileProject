@@ -24,15 +24,9 @@
     <div align="center" >
         <h2>View Exams </h2>
         <form name="viewForm" action="SchoolOfficeViewExams">
-            <input type="submit" value="View complete exams" name="viewbtn" />
+            <input type="submit" value="View & Downlaod Exams" name="viewbtn" />
         </form>
     </div>
-           <div align ="center">
-        <h2> Download Exams</h2>
-        <form name="viewForm" action="will go somewhere.jsp">
-            <input type="submit" value="Download exams" name="viewbtn" />
-        </form>
-           </div>
            <div align ="center">
                <h2 > Options</h2>
         <form name="Optionsbtn" action="compExams.jsp">
