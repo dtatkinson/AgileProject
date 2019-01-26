@@ -55,6 +55,7 @@ public class ViewNewExams extends HttpServlet {
                 Boolean CmtS;
                 Boolean IntS;
                 
+                out.println("<h1 align='center'>All Exams</h1>");
                 
                 out.println("<table style='width: 50%' border='4' align='center' >");
                 out.println("<tr>");
@@ -153,27 +154,24 @@ public class ViewNewExams extends HttpServlet {
                     out.println("</tr>");
                     
                 }
-                out.println("<div align='center'>");
-                out.println("<h1>All Exams</h1>");
+                out.println("</table>");
                 
+                out.println("<br>");
+                out.println("<div align='center'>");
                 out.println("<form name='Back ' action='AdminDashboard.jsp'>");
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");  
                 out.println("</form>");
                 out.println("</div>");
                 
-                
                 out.print("</body>");
         }
             catch(Exception e)
-        {
-            
-        }
+            {  
+            }
         }
         catch(Exception e)
-        {
-            
-        }
-        
+        {   
+        }  
     }
     
 
