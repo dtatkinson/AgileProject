@@ -35,20 +35,22 @@ public class AdminRemoveStaffServlet extends HttpServlet {
         try{
             ResultSet staffList = conn.searchTable(username, "Staff", "StaffName");
             try (PrintWriter out = response.getWriter()) {
-                out.println("<HTML>");
+                out.println("<html>");
                  out.println("<head>");
                  out.println("<link rel='stylesheet' href='CSS.css'>");
                 out.println("<!-- Latest compiled and minified CSS -->\n" +
 "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
                  out.println("</head>");
-                out.println("<BODY>");
+                out.println("<body>");
 
                 out.println( "<div class ='img'>");
-                out.println("<a href='StaffDashboard.jsp'>");
+                out.println("<a href='AdminDashboard.jsp'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
                 out.println("</a>");
                 out.println("</div>");
                 out.println("<tr>");
+                
+                out.println("<h1 align='center'>Remove Staff</h1>");
                 
            //     out.println("<table style='width:100%' border='1'"); //Creates a html table
              //   out.println("<h1 align='center'>"+role+"</h1>");
@@ -101,8 +103,8 @@ public class AdminRemoveStaffServlet extends HttpServlet {
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
                 out.println("</form>");
                 out.println("</div>");
-                out.println("</BODY>");
-                out.println("</HTML>");
+                out.println("</body>");
+                out.println("</html>");
             }
             catch(Exception e){
                 

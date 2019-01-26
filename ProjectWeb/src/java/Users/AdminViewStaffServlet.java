@@ -42,20 +42,24 @@ public class AdminViewStaffServlet extends HttpServlet {
             
             try{
                 ResultSet staffList  = conn.searchTable(search, "Staff", "StaffName");
-                out.println("<HTML>");
+                out.println("<html>");
                 out.println("<head>");
                 out.println("<link rel='stylesheet' href='CSS.css'>");
                 out.println("<!-- Latest compiled and minified CSS -->\n" +
 "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
                 out.println("</head>");
-                out.println("<BODY>");
+                out.println("<body>");
 
+                
+                
                 out.println( "<div class ='img'>");
-                out.println("<a href='StaffDashboard.jsp'>");
+                out.println("<a href='AdminDashboard.jsp'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
                 out.println("</a>");
                 out.println("</div>");
    
+                out.println("<h1 align='center'>All Staff</h1>");
+                
                out.println("<table style='width: 50%' border='4' align='center' >");
 
                 out.println("<tr>");
@@ -86,15 +90,17 @@ public class AdminViewStaffServlet extends HttpServlet {
                 }
                 out.println("</table>");
                 
+                out.println("<div align='center'>");
                 out.println("<form action='ManagementPage.jsp'>");
                   out.println("<br>");
-                out.println("<div align='center'>");
-                out.println("<input type='submit' value='Back'>");
-                out.println("</div>");
-                out.println("</form>");
                 
-                out.println("</BODY>");
-                out.println("</HTML>");
+                out.println("<input type='submit' value='Back'>");
+                
+                out.println("</form>");
+                out.println("</div>");
+                
+                out.println("</body>");
+                out.println("</html>");
             }
             catch(Exception e){
             
