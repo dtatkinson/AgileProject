@@ -7,7 +7,7 @@ and open the template in the editor.
 <%@ page import="Users.Admin" %>
 <html>
     <style>
-        background-color:red
+
     </style>
     <head>
         <title>Login</title>
@@ -54,8 +54,9 @@ and open the template in the editor.
 			    </div>
 			  </fieldset>
 			</form>
-                          <img src="QMB.jpg" width="100%" height="480" alt="QMB"/>
-
+                          <div class="qmbImg">
+                          <img src="QMB.jpg" max-width="10%" height="auto" alt="QMB"/>
+                          </div>
 		</div>
 	</div>
 </div>
