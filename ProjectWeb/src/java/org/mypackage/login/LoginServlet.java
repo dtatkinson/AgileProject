@@ -81,13 +81,23 @@ public class LoginServlet extends HttpServlet {
             }
             
             if(flag == false){
+                out.println("<html>");
+ 
+                out.println("<head>");
+                out.println("<link rel='stylesheet' href='CSS.css'>");
+                out.println("</head>");
+        
+                out.println("<body>");
                 
                 out.println( "<div align='center' class ='img'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
                 out.println("</div>");
                 
                 out.println("<div align='center'>");
-                
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<br>");
+                out.println("<br>");
                 out.println("<h4>Invalid login, please check you username and password.</h4>");
                 out.println("<h4>If you can not login please contact your local exams officer.</h4>");
                 
@@ -96,6 +106,8 @@ public class LoginServlet extends HttpServlet {
                 out.println("</form>");
                 
                 out.println("</div>");
+                out.println("</body>");
+                out.println("</html>");
             }   
         }
         catch (Exception e){    

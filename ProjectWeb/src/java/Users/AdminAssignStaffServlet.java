@@ -39,7 +39,7 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-                       
+            out.println("<link rel='stylesheet' href='CSS.css'>");
             out.println("</head>");
             out.println("<body>");
             
