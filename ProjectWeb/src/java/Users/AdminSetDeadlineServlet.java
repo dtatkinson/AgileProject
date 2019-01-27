@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lenardgaunt
  */
-@WebServlet(name = "AdminSetDeadlinesServlet", urlPatterns = {"/AdminSetDeadlinesServlet"})
+@WebServlet(name = "AdminSetDeadlineServlet", urlPatterns = {"/AdminSetDeadlineServlet"})
 public class AdminSetDeadlineServlet extends HttpServlet {
 
     /**
@@ -42,20 +42,36 @@ public class AdminSetDeadlineServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<link rel='stylesheet' href='CSS.css'>");
+             out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
+                        "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
+                        "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
+                        "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
+                        "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                        "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
+                        "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+                        "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>");
             out.println("</head>");
             out.println("<body>");
+                        out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
+                        "  <div class=\"container-fluid\">\n" +
+                        "    <div class=\"navbar-header\">\n" +
+                        "      <a class=\"navbar-brand\" href=\"ViewNewExams\">Admin Staff Dashboard</a>\n" +
+                        "    </div>\n" +
+                        "    <ul class=\"nav navbar-nav\">\n" +
+                        "      <li><a href=\"AddStaff.jsp\">Add Staff</a></li>\n" +
+                        "      <li><a href=\"DeleteStaff.jsp\">Delete Staff</a></li>\n" +
+                        "      <li><a href=\"AssignStaff.jsp\">Assign Staff New role</a></li>\n" +
+                        "      <li><a href=\"ViewStaff.jsp\">View Staff</a></li>\n" +
+                        "      <li><a href=\"AdminSetDeadlineServlet\">Set Deadlines</a></li>\n" +
+                        "      <li><a href=\"AssignStaff.jsp\">Assign Staff to new exam</a></li>\n" +
+                        "    </ul>\n" +
+                        "  </div>\n" +
+                        "</nav>");
             DatabaseHandling conn = new DatabaseHandling();
             String year; 
                 year  = ""+Year.now().getValue();
              
                 ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-                
-            out.println( "<div class ='img'>");
-            out.println("<a href='AdminDashboard.jsp'>");
-            out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
-            out.println("</a>");
-            out.println("</div>");
                 
             out.println("<h2 align='center'>Assign Exam Deadlines</h2>");
             
@@ -94,10 +110,6 @@ public class AdminSetDeadlineServlet extends HttpServlet {
             out.println("<br>");
                 out.println("<br>");
             
-            out.println("<form name='Back' action='ManagementPage.jsp'>");
-               out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
-            out.println("</form>");
-            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }

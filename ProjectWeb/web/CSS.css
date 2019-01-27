@@ -9,8 +9,8 @@ and open the template in the editor.
 */
 
 html{
-     border-right: 200px solid powderblue;
-    border-left:  200px solid powderblue;
+     border-right: 200px solid grey;
+    border-left:  200px solid grey;
     margin:  auto;
     height: 100%;
 }
