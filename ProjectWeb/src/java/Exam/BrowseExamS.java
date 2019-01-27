@@ -93,7 +93,7 @@ public class BrowseExamS extends HttpServlet {
         
         out.println("<body>");
         
-        out.println("<h1 align='center'>"+role+"</h1>");
+        out.println("<h1 align='center'>"+expandRole(role)+"</h1>");
         out.println("<table style='width: 50%' border='4' align='center' >");
         
             out.println("<tr>");

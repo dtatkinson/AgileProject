@@ -7,6 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+     <%
+        if(session.getAttribute("username") == null || session.getAttribute("role").equals("Admin")|| session.getAttribute("role").equals("SO")){
+            response.sendRedirect("LogoutServlet");
+        }
+        %>
     <head>
  
          <link rel="stylesheet" href="CSS.css">

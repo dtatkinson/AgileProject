@@ -11,8 +11,8 @@
 <!DOCTYPE html>
 <html>
     <%
-        if(session.getAttribute("username") == null){
-            response.sendRedirect("index.jsp");
+        if(session.getAttribute("username") == null || !session.getAttribute("role").equals("Admin")){
+            response.sendRedirect("LogoutServlet");
         }
         %>
     <head>
