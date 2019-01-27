@@ -9,7 +9,7 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -77,7 +77,7 @@ public class BrowseExamS extends HttpServlet {
         }
         return null;   
     }
-    public void refactor(PrintWriter out, String username, ResultSet rs, String role){
+    public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url){
         
         
         
@@ -131,11 +131,17 @@ public class BrowseExamS extends HttpServlet {
                        out.println("</td>");
                        //Module
                        out.println("<td>");
-                            out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                       String pdfPath = url + moduleCode + "\\2019\\" + moduleCode + ".pdf";
+                            out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
+                            //out.println("<form method='get' action=" + fuck + ">");
+                            //out.println("<button type=\"submit\">Download!</button>");
+                            //out.println("</form>");
                        out.println("</td>");
                        //Exam
                        out.println("<td>");
-                            out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
+                       String comPath = url + moduleCode + "\\2019\\" + "comments.txt";
+                       out.println("<a href="+comPath+">"+moduleCode+" Comments</a>");
+                            //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
                        //Exam comments
                        
@@ -183,7 +189,8 @@ public class BrowseExamS extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
-    
+  
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -198,7 +205,9 @@ public class BrowseExamS extends HttpServlet {
             throws ServletException, IOException {
         
         
+        String url = request.getServletPath();
         
+        url = url + "../../../2018-agileteam3/";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
@@ -230,16 +239,16 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</div>");
                 
                 ResultSet rs = getResultSet("ES", username);
-                refactor(out, username, rs, "ES");
+                refactor(out, username, rs, "ES", url);
                 
                 ResultSet rs2 = getResultSet("IM", username);
-                refactor(out, username, rs2, "IM");
+                refactor(out, username, rs2, "IM", url);
                 
                 ResultSet rs3 = getResultSet("EC", username);
-                refactor(out, username, rs3, "EC");
+                refactor(out, username, rs3, "EC", url);
                 
                 ResultSet rs4 = getResultSet("EX", username);
-                refactor(out, username, rs4, "EX");
+                refactor(out, username, rs4, "EX", url);
                 
                 out.println("<br>");
                 out.println("<div align='center'>");

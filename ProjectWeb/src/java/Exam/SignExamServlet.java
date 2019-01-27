@@ -9,6 +9,7 @@ import Comment.Comments;
 import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +51,7 @@ public class SignExamServlet extends HttpServlet {
         
         if(role.equals("Internal Moderator")){
             try{
-                if(comment.readComment(modcode)){
+                if(comment.readComment(modcode, getPath())){
                     conn.internalSignExam(id);
                 }
             }
@@ -60,7 +61,7 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("Exam Commitee")){
             try{
-                if(comment.readComment(modcode)){
+                if(comment.readComment(modcode, getPath())){
                     conn.examCommiteeSignExam(id);
                 }
                 
@@ -71,7 +72,7 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("External Moderator")){
             try{
-                if(comment.readComment(modcode)){
+                if(comment.readComment(modcode, getPath())){
                     conn.externalSignExam(id);
                 //set exam with 3 signs to complete
                 conn.editExamStatus(id, "Completed");
@@ -86,6 +87,12 @@ public class SignExamServlet extends HttpServlet {
         response.sendRedirect("BrowseExamS");
         }
         
+    }
+   public String getPath()
+    { 
+        String rightPath = getServletContext().getRealPath("/");
+        out.println(rightPath);
+        return rightPath;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

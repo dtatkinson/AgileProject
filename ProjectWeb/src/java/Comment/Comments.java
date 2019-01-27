@@ -7,6 +7,7 @@ package Comment;
 
 import FileHandling.FileHandling;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.util.Arrays;
 
 /**
@@ -23,7 +24,7 @@ public class Comments {
     * @param signBy
     * @throws IOException 
     */
-    public void writeComment(String modCode,String comment, String signBy) throws IOException{
+    public void writeComment(String modCode,String comment, String signBy, String lenardsPath) throws IOException{
         FileHandling instance = new FileHandling();
         //hard coded value okay for the comments file, however year will need to be dealt with during sprint2
         String commentFile = "comments.txt" ;
@@ -32,6 +33,8 @@ public class Comments {
         String commentR = "c." + comment;
         //this code eventually had to be refactored to another method "ackComments" to accomodate for the difference in comments by
         //a moderator and an acknowledgement from an exam setter
+        instance.defaultPath = lenardsPath;
+        
         if(instance.checkIfFileExists(fullPath))
         {         
             instance.appendToFile(path, commentFile, commentR);
@@ -51,7 +54,7 @@ public class Comments {
      * @return
      * @throws IOException 
      */
-    public boolean readComment(String modCode) throws IOException{
+    public boolean readComment(String modCode, String lenardPath) throws IOException{
         //this entire method was refactored as during the orignal development me sort of lost sight of what the goal
         //of the method was supposed to do, now the name is not quite accurate as the method is actually more of 
         //a check as to whether or not all the comments made by moderators have an acknowledgment comment
@@ -59,6 +62,7 @@ public class Comments {
         //simply done by checking the first character of the string for an 'a' or a 'c'
         String[] comment = null;
         FileHandling file = new FileHandling();
+        file.defaultPath = lenardPath;
         String commentFile = "comments.txt" ;
         String path = modCode + "\\2019\\";
         String fullPath = path+commentFile;
@@ -99,22 +103,36 @@ public class Comments {
     * @throws IOException 
     */
     //refactored code to write acknowledgement comments instead of normal comments
-    public void ackComments(String modCode,String comment,String signBy) throws IOException{
+    public void ackComments(String modCode,String comment,String signBy, String lenardPath) throws IOException{
+       
+        System.out.println("1");
         FileHandling file = new FileHandling();
+        file.defaultPath = lenardPath;
+        System.out.println("2");
         String commentFile = "comments.txt" ;
+        System.out.println("3");
         String path = modCode + "\\2019\\";
+        System.out.println("4");
         String fullPath = path+commentFile;
+        System.out.println("5");
         String commentR = "a." + comment;
-        
+        System.out.println("6");
         if(file.checkIfFileExists(fullPath))
         {         
+            System.out.println("7");
             file.appendToFile(path, commentFile, commentR);
+            System.out.println("8");
             file.appendToFile(path, commentFile, signBy);
+            System.out.println("9");
         }else if(!file.checkIfFileExists(fullPath))
         {
+            System.out.println("10");
             file.createFile(path, commentFile);
+            System.out.println("11");
             file.writeToFile(path, commentFile, commentR);
+            System.out.println("12");
             file.appendToFile(path, commentFile, signBy);
+            System.out.println("13");
         }
     }
 }

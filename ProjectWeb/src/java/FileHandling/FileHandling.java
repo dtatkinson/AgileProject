@@ -16,6 +16,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.System.out;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 /**
  * Class to handle all things related to files
  * @author matthewmchale and wenjunyu
@@ -23,7 +31,12 @@ import java.util.Scanner;
  */
 public class FileHandling {
     //default file path
-    String defaultPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
+   
+    //String defaultPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
+                         //"C:\\Users\\wenjunyu\\Documents\\NetBeansProjects\\AgileProject\\ProjectWeb\\build\\web\\"
+    //filePath fb = new filePath();
+    
+    public String defaultPath;
     
    /**
     * Method to create file
@@ -34,6 +47,7 @@ public class FileHandling {
     */
     public boolean createFile(String filePath,String fileName) throws IOException{
         String fullPath = defaultPath + filePath + fileName;
+        
         String path = filePath + fileName;
         //need to make some sort of catch if file already exists or at least improve this
         
@@ -59,6 +73,7 @@ public class FileHandling {
     public void writeToFile(String filePath, String fileName, String strToWrite) throws IOException{
         
         String fullPath = defaultPath + filePath + fileName;
+        System.out.println(fullPath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath))) {
             
             writer.write(strToWrite);
@@ -75,6 +90,7 @@ public class FileHandling {
      */
     public void appendToFile(String path, String fileName, String strToAppend) throws IOException{
         String fullPath = defaultPath + path + fileName;
+        System.out.println(fullPath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath,true))) {
             writer.newLine();
             writer.write(strToAppend);
@@ -101,9 +117,10 @@ public class FileHandling {
      * @throws IOException 
      */
     public String[] readFromFile(String path, String fileName) throws FileNotFoundException, IOException{
+        
        String fullPath = defaultPath + path + fileName;
         BufferedReader in = new BufferedReader(new FileReader(fullPath));
-        String str = "";
+        String str;
         ArrayList<String> lines = new ArrayList<String>();
         while((str = in.readLine()) != null){
             lines.add(str);

@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html>
      <%
-        if(session.getAttribute("username") == null || session.getAttribute("role").equals("Admin")|| session.getAttribute("role").equals("SO")){
+        /*if(session.getAttribute("username") == null || session.getAttribute("role").equals("Admin")|| session.getAttribute("role").equals("SO")){
             response.sendRedirect("LogoutServlet");
-        }
+        }*/
         %>
     <head>
  

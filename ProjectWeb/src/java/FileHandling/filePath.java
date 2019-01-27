@@ -3,25 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Exam;
+package FileHandling;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Comment.Comments;
-import static java.lang.System.out;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author davidatkinson
+ * @author wenjunyu
  */
-@WebServlet(name = "BrowseExamsSContainer", urlPatterns = {"/BrowseExamsSContainer"})
-public class BrowseExamsSContainer extends HttpServlet {
+@WebServlet(name = "filePath", urlPatterns = {"/filePath"})
+public class filePath extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,42 +30,20 @@ public class BrowseExamsSContainer extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             HttpSession session = request.getSession();
-                String username = (String) session.getAttribute("username");
-                String modcode = request.getParameter("modcode");
-                String comment = request.getParameter("inputbox");
-                String role = request.getParameter("role");
-                Comments comm = new Comments();
-               
-                out.print(getPath());
-                if(role.equals("Exam setter")){
-               
-                    comm.ackComments(modcode, comment, username, getPath());
-                 
-                }else{
-                    
-                   comm.writeComment(modcode, comment, username, getPath());
-                  
-                }
-                
-                response.sendRedirect("BrowseExamS");
-                
-           
+            
         }
-     
     }
-   public String getPath()
+    public String getPath()
     { 
         String rightPath = getServletContext().getRealPath("/");
-        rightPath = rightPath + "/";
         out.println(rightPath);
         return rightPath;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

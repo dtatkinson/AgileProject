@@ -44,6 +44,10 @@ public class CommentsTest {
      * Test of writeComment method, of class Comments.
      * @throws java.io.IOException
      */
+    
+    //fix this later
+    String path = "";
+    
     @Test
     public void testWriteComment() throws IOException {
         String modCode = "CommentsTestModule";
@@ -51,7 +55,7 @@ public class CommentsTest {
         String signBy = "Morty";
         System.out.println("writeComment");
         Comments instance = new Comments();
-        instance.writeComment(modCode,comment,signBy);
+        instance.writeComment(modCode,comment,signBy, path);
     }
 
     /*
@@ -63,7 +67,7 @@ public class CommentsTest {
         String modCode = "CommentsTestModule";
          Comments instance = new Comments();
          boolean read;
-        read = instance.readComment(modCode);
+        read = instance.readComment(modCode, path);
         if(read){
         assertTrue("acknowledged", read);
         }
@@ -78,7 +82,7 @@ public class CommentsTest {
         String comment = "test ACK comment";
         String signBy = "BIGarsingGDAVE";
         Comments instance = new Comments();
-        instance.ackComments(modCode,comment,signBy);
+        instance.ackComments(modCode,comment,signBy, path);
     }
     
 }
