@@ -49,13 +49,13 @@ and open the template in the editor.
 			    <div class="control-group">
 			      <!-- Button -->
 			      <div class="controls">
-			        <button>Login</button>
+			        <button class="btn btn-info">Login</button>
 			      </div>
 			    </div>
 			  </fieldset>
 			</form>
-                          <div class="qmbImg">
-                          <img src="QMB.jpg" max-width="10%" height="auto" alt="QMB"/>
+                          <div >
+                          <img src="opengraph.png" max-width="100%" height="auto" alt="Logo"/>
                           </div>
 		</div>
 	</div>
