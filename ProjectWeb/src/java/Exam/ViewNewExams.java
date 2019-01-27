@@ -34,6 +34,9 @@ public class ViewNewExams extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = request.getServletPath();
+        
+        url = url + "../../../2018-agileteam3/";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            try{   
@@ -127,7 +130,8 @@ public class ViewNewExams extends HttpServlet {
                     
                     
                     out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
+                    String path = url +  moduleCode + "\\2019\\" + moduleCode + ".pdf";
+                    out.println("<a href="+path+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");
                     out.println("<td>");
                     out.println(newones.getString("AcademicYear"));
