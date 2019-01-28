@@ -131,7 +131,7 @@ public class ViewNewExams extends HttpServlet {
                     
                     out.println("<td>");
                     String path = url +  moduleCode + "\\2019\\" + moduleCode + ".pdf";
-                    out.println("<a href="+path+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("<a href="+path+">"+moduleCode+" Exam</a>");
                     out.println("</td>");
                     out.println("<td>");
                     out.println(newones.getString("AcademicYear"));
