@@ -5,24 +5,20 @@
  */
 package Exam;
 
-import Comment.Comments;
-import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.stream.events.Comment;
+
 /**
  *
  * @author lenardgaunt
  */
-@WebServlet(name = "SignExamServlet", urlPatterns = {"/SignExamServlet"})
-public class SignExamServlet extends HttpServlet {
+@WebServlet(name = "NotificationServlet", urlPatterns = {"/NotificationServlet"})
+public class NotificationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,66 +32,18 @@ public class SignExamServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        String modcode = request.getParameter("modcode");
-        String role = request.getParameter("role");
-        int id = Integer.parseInt(request.getParameter("id"));
-        DatabaseHandling conn = new DatabaseHandling();
-        
-        Comments comment = new Comments();
-        
         try (PrintWriter out = response.getWriter()) {
-            //out.print(id);
-        out.println(role);
-        if(role.equals("Internal Moderator")){
-            try{
-                out.print(id);
-                if(comment.readComment(modcode, getPath())){
-                    out.print(id);
-                    conn.internalSignExam(id);
-                }
-            }
-            catch(Exception e){
-                
-            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NotificationServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NotificationServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        else if(role.equals("Exam Commitee")){
-            try{
-                if(comment.readComment(modcode, getPath())){
-                    conn.examCommiteeSignExam(id);
-                }
-                
-            }
-            catch(Exception e){
-                
-            }
-        }
-        else if(role.equals("External Moderator")){
-            try{
-                if(comment.readComment(modcode, getPath())){
-                    conn.externalSignExam(id);
-                //set exam with 3 signs to complete
-                conn.editExamStatus(id, "Completed");
-                }
-                
-            }
-            catch(Exception e){
-                
-            }
-        }
-        
-        response.sendRedirect("BrowseExamS");
-        }
-        
-    }
-   public String getPath()
-    { 
-        String rightPath = getServletContext().getRealPath("/");
-        rightPath = rightPath + "/";
-        out.println(rightPath);
-        return rightPath;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

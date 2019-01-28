@@ -7,7 +7,6 @@ package Comment;
 
 import FileHandling.FileHandling;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.util.Arrays;
 
 /**
@@ -22,6 +21,7 @@ public class Comments {
     * @param modCode 
     * @param comment
     * @param signBy
+     * @param lenardsPath
     * @throws IOException 
     */
     public void writeComment(String modCode,String comment, String signBy, String lenardsPath) throws IOException{
@@ -51,6 +51,7 @@ public class Comments {
     /**
      * Method to read comments and check if all comments have been acknowledged
      * @param modCode
+     * @param lenardPath
      * @return
      * @throws IOException 
      */
@@ -100,39 +101,40 @@ public class Comments {
     * @param modCode
     * @param comment
     * @param signBy
+     * @param lenardPath
     * @throws IOException 
     */
     //refactored code to write acknowledgement comments instead of normal comments
     public void ackComments(String modCode,String comment,String signBy, String lenardPath) throws IOException{
        
-        System.out.println("1");
+        
         FileHandling file = new FileHandling();
         file.defaultPath = lenardPath;
-        System.out.println("2");
+        
         String commentFile = "comments.txt" ;
-        System.out.println("3");
+       
         String path = modCode + "\\2019\\";
-        System.out.println("4");
+        
         String fullPath = path+commentFile;
-        System.out.println("5");
+       
         String commentR = "a." + comment;
-        System.out.println("6");
+       
         if(file.checkIfFileExists(fullPath))
         {         
-            System.out.println("7");
+           
             file.appendToFile(path, commentFile, commentR);
-            System.out.println("8");
+           
             file.appendToFile(path, commentFile, signBy);
-            System.out.println("9");
+           
         }else if(!file.checkIfFileExists(fullPath))
         {
-            System.out.println("10");
+            
             file.createFile(path, commentFile);
-            System.out.println("11");
+           
             file.writeToFile(path, commentFile, commentR);
-            System.out.println("12");
+        
             file.appendToFile(path, commentFile, signBy);
-            System.out.println("13");
+           
         }
     }
 }

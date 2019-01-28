@@ -40,20 +40,59 @@ public class BrowseExamS extends HttpServlet {
         }
         return null;
     }
-    public boolean signSig(String role, String username){
+    public boolean signSig(String role, String username, int id){
+        
         DatabaseHandling conn = new DatabaseHandling();
         if(role.equals("IM")){ 
-            ResultSet rs = conn.listTableWhereD("Exam", "InternalSignID", username);
-            return true;
+            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            try{
+                while(rs.next()){
+                    if(rs.getBoolean("InternalSign")){
+                        return false;
+                    }
+                    else{
+                        return true;
+                        }
+                    }
+            }
+            catch(Exception e){
+                
+            }
         }
         else if(role.equals("EC")){
-            ResultSet rs = conn.listTableWhereD("Exam", "CommiteeSignID", username);
-            return true;
+            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            try{
+                while(rs.next()){
+                    if(rs.getBoolean("CommiteeSign")){
+                        return false;
+                    }
+                    else{
+                        return true;
+                        }
+                    }
+            }
+            catch(Exception e){
+                
+            }
         }
+        
         else if(role.equals("EX")){
-            ResultSet rs = conn.listTableWhereD("Exam", "ExternalSignID", username);
-            return true;
+            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            try{
+                while(rs.next()){
+                if(rs.getBoolean("ExternalSign")){
+                    return false;
+                }
+                else{
+                    return true;
+                    }
+                }
+            }
+            catch(Exception e){
+                
+            }
         }
+        
         return false;
     }
     
@@ -149,19 +188,20 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='role'  value ='Exam setter'>");
+                                
+                                out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
                        out.println("</td>");
                        
                        out.println("<td>");
                                 out.println("<input type=\"submit\" value='Add Comment'>");
                             out.println("</form>");
                        out.println("</td>");
-                       
+                       int id = rs.getInt("ExamID");
                        if(!role.equals("ES")){
                             out.println("<td>");
-                                if(signSig(role, username)){ //POLICE, THIS LINE RIGHT HERE
-                                    
-                                   int id = rs.getInt("ExamID");
+                                if(signSig(role, username, id)){ //POLICE, THIS LINE RIGHT HERE
+                                   out.println(signSig(role, username, id));
+                                   //int id = rs.getInt("ExamID");
                                    out.println("<form action='SignExamServlet' method='POST'>");
 
                                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
@@ -170,7 +210,7 @@ public class BrowseExamS extends HttpServlet {
                                    out.println("<input type=\"submit\" value='Sign'>");
                                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                                    
-                                   out.println("<input type='hidden' name ='role'  value =" + expandRole(role) + ">");
+                                   out.println("<input type='hidden' name ='role'  value ='" + expandRole(role) + "'>");
                                    out.println("</form>");
                                 }
                                 else{

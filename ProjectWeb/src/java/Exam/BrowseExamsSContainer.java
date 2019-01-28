@@ -44,13 +44,14 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String role = request.getParameter("role");
                 Comments comm = new Comments();
                
-                out.print(getPath());
-                if(role.equals("Exam setter")){
-               
+                //out.print(getPath());
+                //out.print(role);
+                if(role.equals("Exam Setter")){
                     comm.ackComments(modcode, comment, username, getPath());
+                    out.print(role);
                  
                 }else{
-                    
+                    out.print(role);
                    comm.writeComment(modcode, comment, username, getPath());
                   
                 }
