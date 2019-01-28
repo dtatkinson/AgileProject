@@ -51,8 +51,12 @@
     <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn"  />
     </form>
+    <form name="Notifications" action="NotificationServlet">
+        <input type="submit" value="New Lenard button" name="Lenard"/>
+    </form>
         </div>
      </div>
+    
         <br>
         <div align = "center">
         <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
