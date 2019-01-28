@@ -118,7 +118,9 @@ public class BrowseExamS extends HttpServlet {
     }
     public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url){
         
-        
+                Boolean ExtS;
+                Boolean CmtS;
+                Boolean IntS;
         
         
         
@@ -245,8 +247,49 @@ public class BrowseExamS extends HttpServlet {
                                 else{
                                     out.println("X");
                                 }
+                                
                            out.println("</td>");
-                        }
+                       }
+                            out.println("<td width=25%>");
+                    ExtS=rs.getBoolean("ExternalSign");
+                    CmtS=rs.getBoolean("CommiteeSign");
+                    IntS=rs.getBoolean("InternalSign");
+                    if(ExtS){
+                      
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:100%\">\n" +
+                                "    Completed\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }
+                    else if(CmtS){
+                      
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:75%\">\n" +
+                                "    75%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }else if(IntS){
+                       
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:50%\">\n" +
+                                "    50%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }else{
+                        
+                    out.println("<div class=\"progress\">\n" +
+                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
+                                "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:25%\">\n" +
+                                "    25%\n" +
+                                "  </div>\n" +
+                                "</div>");
+                    }
+                    out.println("</td>");
+                        
                     out.println("</tr>");
                 }
             }
