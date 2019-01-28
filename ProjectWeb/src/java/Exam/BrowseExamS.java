@@ -149,7 +149,7 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='role'  value ='Exam setter'>");
+                                out.println("<input type='hidden' name ='role'  value ="+expandRole(role) + ">");
                        out.println("</td>");
                        
                        out.println("<td>");
