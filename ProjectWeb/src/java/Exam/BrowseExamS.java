@@ -143,6 +143,16 @@ public class BrowseExamS extends HttpServlet {
             out.println("Exam paper");
             out.println("</th>");
             out.println("<th>");
+             if(role.equals("ES"))
+            {
+            out.println("Upload new version");
+            }
+            else
+            {
+                 out.println("Upload additonal");
+            }
+            out.println("</th>");
+            out.println("<th>");
                 out.println("Comments");
             out.println("</th>");
 
@@ -177,6 +187,25 @@ public class BrowseExamS extends HttpServlet {
                             //out.println("</form>");
                        out.println("</td>");
                        //Exam
+                       
+                       if(role.equals("ES"))
+                       {
+                            out.println("<td>");
+                            out.println("<form name='Upload ' action='ReUpload.jsp'>");
+                            out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("</form>");
+                            out.println("</td>");
+                       }
+                       else
+                       {
+                            out.println("<td>");
+                            out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
+                            out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("</form>");
+                            out.println("</td>"); 
+                       }
+                       
+                       //Exam reupload
                        out.println("<td>");
                        String comPath = url + moduleCode + "\\2019\\" + "comments.txt";
                        out.println("<a href="+comPath+">"+moduleCode+" Comments</a>");
