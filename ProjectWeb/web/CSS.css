@@ -12,7 +12,7 @@ html{
      border-right: 200px solid grey;
     border-left:  200px solid grey;
     margin:  auto;
-    height: 100%;
+    height: auto;
 }
 
 div.Staff{
