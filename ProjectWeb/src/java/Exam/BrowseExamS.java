@@ -149,7 +149,8 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='role'  value ="+expandRole(role) + ">");
+                                
+                                out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
                        out.println("</td>");
                        
                        out.println("<td>");
@@ -170,7 +171,7 @@ public class BrowseExamS extends HttpServlet {
                                    out.println("<input type=\"submit\" value='Sign'>");
                                    out.println("<input type='hidden' name ='id'  value ="+id+">");
                                    
-                                   out.println("<input type='hidden' name ='role'  value =" + expandRole(role) + ">");
+                                   out.println("<input type='hidden' name ='role'  value ='" + expandRole(role) + "'>");
                                    out.println("</form>");
                                 }
                                 else{
