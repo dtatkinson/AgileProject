@@ -51,7 +51,9 @@ public class SignExamServlet extends HttpServlet {
         out.println(role);
         if(role.equals("Internal Moderator")){
             try{
+                out.print(id);
                 if(comment.readComment(modcode, getPath())){
+                    out.print(id);
                     conn.internalSignExam(id);
                 }
             }
@@ -84,13 +86,14 @@ public class SignExamServlet extends HttpServlet {
             }
         }
         
-        //response.sendRedirect("BrowseExamS");
+        response.sendRedirect("BrowseExamS");
         }
         
     }
    public String getPath()
     { 
         String rightPath = getServletContext().getRealPath("/");
+        rightPath = rightPath + "/";
         out.println(rightPath);
         return rightPath;
     }

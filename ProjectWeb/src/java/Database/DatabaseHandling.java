@@ -94,6 +94,18 @@ public class DatabaseHandling {
       
       return null;
   }
+  public ResultSet listTableWhereI(String tableName, String columnName, int where){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "='" + where + "'");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
   
   /**
    * Method that selects distinct statements
@@ -106,6 +118,19 @@ public class DatabaseHandling {
       try{
         java.sql.Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT DISTINCT * FROM " + tableName + " WHERE " + columnName + "='" + where + "'");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
+  
+  public ResultSet test(String tableName, String columnName, boolean where){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "=" + where + "");
         return rs;
       }
       catch(Exception e){
