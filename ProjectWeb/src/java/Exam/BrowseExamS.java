@@ -169,6 +169,9 @@ public class BrowseExamS extends HttpServlet {
                     out.println("Sign?");
                 out.println("</th>"); 
             }
+            out.println("<th>");
+                out.println("Progress");
+            out.println("</th>");
             
             out.println("</tr>");
             //Table headings
