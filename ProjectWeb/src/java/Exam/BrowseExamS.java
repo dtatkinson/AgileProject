@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -178,6 +178,7 @@ public class BrowseExamS extends HttpServlet {
             try{
                 while(rs.next()){
                     String moduleCode = rs.getString("ModuleCode");
+                    String year = rs.getString("AdademicYear");
                     out.println("<tr>");
                     
                        out.println("<td>");
@@ -185,7 +186,7 @@ public class BrowseExamS extends HttpServlet {
                        out.println("</td>");
                        //Module
                        out.println("<td>");
-                       String pdfPath = url + moduleCode + "\\2019\\" + moduleCode + ".pdf";
+                       String pdfPath = url + moduleCode + "\\"+year+"\\" + moduleCode + ".pdf";
                             out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
                             //out.println("<form method='get' action=" + fuck + ">");
                             //out.println("<button type=\"submit\">Download!</button>");
@@ -212,7 +213,7 @@ public class BrowseExamS extends HttpServlet {
                        
                        //Exam reupload
                        out.println("<td>");
-                       String comPath = url + moduleCode + "\\2019\\" + "comments.txt";
+                       String comPath = url + moduleCode + "\\"+year+"\\" + "comments.txt";
                        out.println("<a href="+comPath+">"+moduleCode+" Comments</a>");
                             //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
@@ -222,6 +223,7 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                                out.println("<input type='hidden' name ='year'  value ="+moduleCode+">");
                                 
                                 out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
                        out.println("</td>");
@@ -243,6 +245,7 @@ public class BrowseExamS extends HttpServlet {
 
                                    out.println("<input type=\"submit\" value='Sign'>");
                                    out.println("<input type='hidden' name ='id'  value ="+id+">");
+                                   out.println("<input type='hidden' name ='year'  value ="+moduleCode+">");
                                    
                                    out.println("<input type='hidden' name ='role'  value ='" + expandRole(role) + "'>");
                                    out.println("</form>");

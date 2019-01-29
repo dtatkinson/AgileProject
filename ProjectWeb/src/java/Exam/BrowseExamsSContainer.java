@@ -42,6 +42,7 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String username = (String) session.getAttribute("username");
                 String modcode = request.getParameter("modcode");
                 String comment = request.getParameter("inputbox");
+                String year = request.getParameter("year");
                 String role = request.getParameter("role");
                 Comments comm = new Comments();
                 DatabaseHandling conn = new DatabaseHandling();
@@ -49,13 +50,13 @@ public class BrowseExamsSContainer extends HttpServlet {
                 //out.print(getPath());
                 //out.print(role);
                 if(role.equals("Exam Setter")){
-                    comm.ackComments(modcode, comment, username, getPath());
+                    comm.ackComments(modcode, comment, username, getPath(), year);
                     out.print(role);
                  
                 }else{
                     
                    out.print(role);
-                   comm.writeComment(modcode, comment, username, getPath());
+                   comm.writeComment(modcode, comment, username, getPath(), year);
                   
                 }
                 
