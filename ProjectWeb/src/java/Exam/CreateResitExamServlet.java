@@ -49,7 +49,7 @@ public class CreateResitExamServlet extends HttpServlet {
             String publishedBy = (String)session.getAttribute("username");
 
             createResitExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
-            createFile(moduleCode,getPath());
+            createFile(moduleCode,getPath(), academicYear);
 
             session.setAttribute("moduleCode", moduleCode);
             response.sendRedirect("CreateResitExamUPLD.jsp");
@@ -72,9 +72,9 @@ public class CreateResitExamServlet extends HttpServlet {
         
     }
     
-    public void createFile(String modCode ,String lenardPath)
+    public void createFile(String modCode ,String lenardPath, String year)
     {
-        String year = "\\2019\\";
+        year = "\\"+year+"\\";
         
         FileHandling file = new FileHandling();
         file.defaultPath = lenardPath;
