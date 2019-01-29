@@ -422,6 +422,204 @@ public class DatabaseHandling {
       Statement stmt=con.createStatement();  
       stmt.execute("update Exam set ExternalSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
   }
+    
+     public void createResitExam(String name, String code, String place, String school, String year, String pubBy) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      ResultSet rs = stmt.executeQuery("select ExamID from Resit where ExamID = (select max(ExamID) from Exam)");
+      stmt.execute("insert into Resit (ModuleName, ModuleCode, Institution, School, AcademicYear, PublishedBy) values('"+name+"','"+code+"','"+place+"','"+school+"','"+year+"','"+pubBy+"');");
+  }
+  
+  /**
+   * Method to delete exam from the database
+   * @param id exam ID
+   * @throws Exception 
+   */
+  public void deleteResitExam(int id) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("delete from Resit where ExamID = "+id+";");
+  }
+  
+  /**
+   * Method to edit exams status (new, in progress, complete)
+   * @param id exam ID
+   * @param newStatus Exams new status to be set
+   * @throws Exception 
+   */
+  public void editResitExamStatus(int id, String newStatus) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set ExamStatus = '"+newStatus+"' where ExamID = "+id+";");  
+  }
+   
+  /**
+   * Method to edit the module name
+   * @param id exam ID
+   * @param newName New module name
+   * @throws Exception 
+   */
+  public void editResitExamModuleName(int id, String newName) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set ModuleName = '"+newName+"' where ExamID = "+id+";"); 
+  }
+    
+  /**
+   * Method to edit module code
+   * @param id exams ID
+   * @param newCode new module code
+   * @throws Exception 
+   */
+  public void editResitExamModuleCode(int id, String newCode) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set ModuleCode = '"+newCode+"' where ExamID = "+id+";");   
+  }
+     
+  /**
+   * Method to edit exam institution
+   * @param id Exams ID
+   * @param newIN new institution
+   * @throws Exception 
+   */
+  public void editResitExamInstitution(int id, String newIN) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set Institution = '"+newIN+"' where ExamID = "+id+";");    
+  }
+      
+  /**
+   * Method to edit exam school
+   * @param id ID of the exam
+   * @param newSchool new school to be set
+   * @throws Exception 
+   */
+  public void editResitExamSchool(int id, String newSchool) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set School = '"+newSchool+"' where ExamID = "+id+";");  
+  }
+       
+  /**
+   * Method to edit the academic year
+   * @param id Exam ID
+   * @param newYear New year that will be set
+   * @throws Exception 
+   */
+  public void editResitExamAcademicYear(int id, String newYear) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set AcademicYear = '"+newYear+"' where ExamID = "+id+";");   
+  }
+   
+  /**
+   * Method to assign a member of staff as the internal moderator
+   * @param id Id of the exam
+   * @param staffName Name of the staff member that will be internal moderator
+   * @throws Exception 
+   */
+  public void internalAssignResitExam(int id, String staffName) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set InternalSignID = '"+staffName+"' where ExamID = "+id+";");
+  }
+  
+  /**
+   * Method to mark the internal moderators deadline
+   * @param id Id of the exam
+   * @param dead deadline that will be set on the DB
+   * @throws Exception 
+   */
+   public void internalAssignResitExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set InternalSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
+  }
+  
+   /**
+    * Method to mark that the internal moderator has signed off on the exam
+    * @param id Id of the exam
+    * @throws Exception 
+    */
+  public void internalSignResitExam(int id) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set InternalSign = true where ExamID = "+id+";"); 
+     stmt.execute("update Resit set InternalSignDate = CURDATE() where ExamID = "+id+";");
+  }
+   
+  /**
+   * Method to assign an Exam vetting committe to an exam
+   * @param id Id of the exam
+   * @param staffName name of the staff member that will be signing as the EVC
+   * @throws Exception 
+   */
+  public void examCommiteeAssignResitExam(int id, String staffName) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set CommiteeSignID = '"+staffName+"' where ExamID = "+id+";");
+  }
+  
+  /**
+   * method to mark the exam as signed by the EVC
+   * @param id ID of the exam
+   * @throws Exception 
+   */
+  public void examCommiteeSignResitExam(int id) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set CommiteeSign = true where ExamID = "+id+";"); 
+     stmt.execute("update Resit set CommiteeSignDate = CURDATE() where ExamID = "+id+";");
+  }
+ 
+  /**
+   * method to set the deadline for the EVC 
+   * @param id ID of the exam
+   * @param dead deadline that will be set
+   * @throws Exception 
+   */
+    public void examCommiteeAssignResitExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set CommiteeSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
+  }
+    
+    /**
+     * Method to assign a staff member as the external moderator
+     * @param id ID of the exam
+     * @param staffName name of the member of staff that will be assigned to EM
+     * @throws Exception 
+     */
+   public void externalAssignResitExam(int id, String staffName) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set ExternalSignID = '"+staffName+"' where ExamID = "+id+";"); 
+  }
+  
+   /**
+    * Method that marks the exam as signed by the EM
+    * @param id ID of the exam
+    * @throws Exception 
+    */
+  public void externalSignResitExam(int id) throws Exception
+  {
+     Statement stmt=con.createStatement();  
+     stmt.execute("update Resit set ExternalSign = true where ExamID = "+id+";");   
+     stmt.execute("update Resit set ExternalSignDate = CURDATE() where ExamID = "+id+";");
+  }
+  
+  /**
+   * Method to set the deadline for the EM
+   * @param id ID of the exam
+   * @param dead deadline that will be set for the EM
+   * @throws Exception 
+   */
+    public void externalAssignResitExamDeadline(int id, String dead) throws Exception
+  {
+      Statement stmt=con.createStatement();  
+      stmt.execute("update Resit set ExternalSignDeadlineDate = '"+dead+"' where ExamID = "+id+";");
+  }
   
   /**
    * Method that kills the connection to the database
