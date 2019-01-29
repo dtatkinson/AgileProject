@@ -140,6 +140,19 @@ public class DatabaseHandling {
       return null;
   }
   
+   public ResultSet getAllPastExams(String tableName){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from "+tableName+" where AcademicYear != year(CURDATE());");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
+  
    /**
    * Method to add staff to the data base
    * @param username staff members username
