@@ -32,8 +32,8 @@
               <ul class="nav navbar-nav">
                 <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
                 <li><a href="BrowseExamS">View my Exams</a></li>
-                <li><a href="#">Upload Resit Exam paper</a></li>
-                <li><a href="#">View Resit Exam papers</a></li>
+                <li><a href="CreateResitExamDTL.jsp">Upload Resit Exam paper</a></li>
+                <li><a href="BrowseExamResit">View Resit Exam papers</a></li>
                 <li><a href="#">View Past papers</a></li>
               </ul>
             </div>
@@ -42,7 +42,7 @@
                 
        <div align ="center"> <h1><u>Create Exam</u></h1></div>
        <div align="center">                        
-        <form action="process.jsp" method="post" enctype="multipart/form-data">
+        <form action="processResit.jsp" method="post" enctype="multipart/form-data">
 
             <b>Upload Exam PDF:</b> 
             <input type="file" name="fname" accept="application/pdf"><br/>
