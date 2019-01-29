@@ -49,7 +49,7 @@ public class CreateExamServlet extends HttpServlet {
             String publishedBy = (String)session.getAttribute("username");
 
             createExam(moduleName, moduleCode, institution, school, academicYear, publishedBy);
-            createFile(moduleCode);
+            createFile(moduleCode,getPath());
 
             session.setAttribute("moduleCode", moduleCode);
             response.sendRedirect("CreateExamUPLD.jsp");
@@ -72,11 +72,12 @@ public class CreateExamServlet extends HttpServlet {
         
     }
     
-    public void createFile(String modCode)
+    public void createFile(String modCode ,String lenardPath)
     {
         String year = "\\2019\\";
         
         FileHandling file = new FileHandling();
+        file.defaultPath = lenardPath;
         try{
             if(!file.checkIfFileExists(modCode)){
                     file.createDirectory(modCode,year);
@@ -94,12 +95,18 @@ public class CreateExamServlet extends HttpServlet {
                 }
                       
         }
-        catch(Exception e)
+        catch(IOException e)
                 {
                 }
     }
     
-    
+    public String getPath()
+    { 
+        String rightPath = getServletContext().getRealPath("/");
+        rightPath = rightPath + "/";
+        out.println(rightPath);
+        return rightPath;
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

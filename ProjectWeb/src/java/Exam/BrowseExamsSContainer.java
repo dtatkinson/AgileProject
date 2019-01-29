@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Comment.Comments;
+import Database.DatabaseHandling;
 import static java.lang.System.out;
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +44,8 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String comment = request.getParameter("inputbox");
                 String role = request.getParameter("role");
                 Comments comm = new Comments();
-               
+                DatabaseHandling conn = new DatabaseHandling();
+                
                 //out.print(getPath());
                 //out.print(role);
                 if(role.equals("Exam Setter")){
@@ -51,7 +53,8 @@ public class BrowseExamsSContainer extends HttpServlet {
                     out.print(role);
                  
                 }else{
-                    out.print(role);
+                    
+                   out.print(role);
                    comm.writeComment(modcode, comment, username, getPath());
                   
                 }
