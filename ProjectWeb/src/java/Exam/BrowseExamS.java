@@ -196,9 +196,13 @@ public class BrowseExamS extends HttpServlet {
                        
                        if(role.equals("ES"))
                        {
+                            
+                         
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUpload.jsp'>");
                             out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                            out.println("<input type='hidden' name ='year'  value ="+year+">");
                             out.println("</form>");
                             out.println("</td>");
                        }
@@ -207,6 +211,8 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                             out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                            out.println("<input type='hidden' name ='year'  value ="+year+">");
                             out.println("</form>");
                             out.println("</td>"); 
                        }
@@ -223,7 +229,7 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='year'  value ="+moduleCode+">");
+                                out.println("<input type='hidden' name ='year'  value ="+year+">");
                                 
                                 out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
                        out.println("</td>");
@@ -245,7 +251,7 @@ public class BrowseExamS extends HttpServlet {
 
                                    out.println("<input type=\"submit\" value='Sign'>");
                                    out.println("<input type='hidden' name ='id'  value ="+id+">");
-                                   out.println("<input type='hidden' name ='year'  value ="+moduleCode+">");
+                                   out.println("<input type='hidden' name ='year'  value ="+year+">");
                                    
                                    out.println("<input type='hidden' name ='role'  value ='" + expandRole(role) + "'>");
                                    out.println("</form>");

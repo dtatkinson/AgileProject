@@ -7,8 +7,9 @@
     ServletContext context = session.getServletContext();
     String modulecode = (String)session.getAttribute("moduleCode");
     String StaffName = (String)session.getAttribute("ReUploadName");
+    String year = (String)session.getAttribute("year");
     String realContextPath = context.getRealPath("/");
-    String uploadpath = realContextPath+"\\"+modulecode+"\\2019\\additonalUploads\\";
+    String uploadpath = realContextPath+"\\"+modulecode+"\\"+year+"\\additonalUploads\\";
     MultipartRequest m = new MultipartRequest(request,uploadpath );
     out.println("Successfully Uploaded..The PDf will auto change to "+modulecode+StaffName+".pdf");
     out.println(uploadpath);

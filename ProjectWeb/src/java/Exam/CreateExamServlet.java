@@ -52,6 +52,7 @@ public class CreateExamServlet extends HttpServlet {
             createFile(moduleCode,getPath(), academicYear);
 
             session.setAttribute("moduleCode", moduleCode);
+            session.setAttribute("newYear", academicYear);
             response.sendRedirect("CreateExamUPLD.jsp");
         
         }

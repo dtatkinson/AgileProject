@@ -6,8 +6,9 @@
 <%
     ServletContext context = session.getServletContext();
     String modulecode = (String)session.getAttribute("moduleCode");
+    String year = (String)session.getAttribute("year");
     String realContextPath = context.getRealPath("/");
-    String uploadpath = realContextPath+"\\"+modulecode+"\\2019\\";
+    String uploadpath = realContextPath+"\\"+modulecode+"\\"+year+"\\";
     
     //kills older version of file
     File olderName = new File(uploadpath+modulecode+".pdf");
