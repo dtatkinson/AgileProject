@@ -108,7 +108,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                     out.println(completed.getString("PublishedBy"));
                     out.println("</td>");
                     out.println("<td>");
-                    String path = url +  moduleCode + "\\2019\\" + moduleCode + ".pdf";
+                    String path = url +  moduleCode + "\\"+completed.getString("AcademicYear")+"\\" + moduleCode + ".pdf";
                     out.println("<a href="+path+".pdf'>"+moduleCode+" Exam</a>");
                     out.println("</td>");             
                     out.println("</tr>");

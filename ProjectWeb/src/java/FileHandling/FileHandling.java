@@ -32,11 +32,11 @@ import javax.servlet.http.HttpServletResponse;
 public class FileHandling {
     //default file path
    
-    //String defaultPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
+    public String defaultPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
                          //"C:\\Users\\wenjunyu\\Documents\\NetBeansProjects\\AgileProject\\ProjectWeb\\build\\web\\"
     //filePath fb = new filePath();
     
-    public String defaultPath;
+    //public String defaultPath;
     
    /**
     * Method to create file

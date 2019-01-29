@@ -55,7 +55,7 @@ public class CommentsTest {
         String signBy = "Morty";
         System.out.println("writeComment");
         Comments instance = new Comments();
-        instance.writeComment(modCode,comment,signBy, path);
+        instance.writeComment(modCode,comment,signBy, path,"2019");
     }
 
     /*
@@ -67,7 +67,7 @@ public class CommentsTest {
         String modCode = "CommentsTestModule";
          Comments instance = new Comments();
          boolean read;
-        read = instance.readComment(modCode, path);
+        read = instance.readComment(modCode, path,"2019");
         if(read){
         assertTrue("acknowledged", read);
         }
@@ -82,7 +82,7 @@ public class CommentsTest {
         String comment = "test ACK comment";
         String signBy = "BIGarsingGDAVE";
         Comments instance = new Comments();
-        instance.ackComments(modCode,comment,signBy, path);
+        instance.ackComments(modCode,comment,signBy, path,"2019");
     }
     
 }

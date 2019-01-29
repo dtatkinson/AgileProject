@@ -41,6 +41,7 @@ public class SignExamServlet extends HttpServlet {
         String username = (String) session.getAttribute("username");
         String modcode = request.getParameter("modcode");
         String role = request.getParameter("role");
+        String year = request.getParameter("year");
         int id = Integer.parseInt(request.getParameter("id"));
         DatabaseHandling conn = new DatabaseHandling();
         
@@ -52,7 +53,7 @@ public class SignExamServlet extends HttpServlet {
         if(role.equals("Internal Moderator")){
             try{
                 out.print(id);
-                if(comment.readComment(modcode, getPath())){
+                if(comment.readComment(modcode, getPath(), year)){
                     out.print(id);
                     conn.internalSignExam(id);
                 }
@@ -63,7 +64,7 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("Exam Commitee")){
             try{
-                if(comment.readComment(modcode, getPath())){
+                if(comment.readComment(modcode, getPath(), year)){
                     conn.examCommiteeSignExam(id);
                 }
                 
@@ -74,7 +75,7 @@ public class SignExamServlet extends HttpServlet {
         }
         else if(role.equals("External Moderator")){
             try{
-                if(comment.readComment(modcode, getPath())){
+                if(comment.readComment(modcode, getPath(), year)){
                     conn.externalSignExam(id);
                 //set exam with 3 signs to complete
                 conn.editExamStatus(id, "Completed");
