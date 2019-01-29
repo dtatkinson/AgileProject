@@ -185,7 +185,7 @@ public class BrowseExamResit extends HttpServlet {
                        out.println("</td>");
                        //Module
                        out.println("<td>");
-                       String pdfPath = url + moduleCode + "\\2019\\" + moduleCode + ".pdf";
+                       String pdfPath = url + moduleCode + "\\"+rs.getString("AcademicYear")+"\\" + moduleCode + ".pdf";
                             out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
                             //out.println("<form method='get' action=" + fuck + ">");
                             //out.println("<button type=\"submit\">Download!</button>");
@@ -212,7 +212,7 @@ public class BrowseExamResit extends HttpServlet {
                        
                        //Exam reupload
                        out.println("<td>");
-                       String comPath = url + moduleCode + "\\2019\\" + "comments.txt";
+                       String comPath = url + moduleCode + "\\"+rs.getString("AcademicYear")+"\\" + "comments.txt";
                        out.println("<a href="+comPath+">"+moduleCode+" Comments</a>");
                             //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
