@@ -1,7 +1,7 @@
 <%-- 
-    Document   : CreateExamDTL
-    Created on : 22-Jan-2019, 15:28:28
-    Author     : camerontaylor
+    Document   : CreateResitExamDTL
+    Created on : 29-Jan-2019, 15:23:29
+    Author     : owenkelbie
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,8 +28,8 @@
               <ul class="nav navbar-nav">
                 <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
                 <li><a href="BrowseExamS">View my Exams</a></li>
-                <li><a href="#">Upload Resit Exam paper</a></li>
-                <li><a href="#">View Resit Exam papers</a></li>
+                <li><a href="CreateResitExamDTL.jsp">Upload Resit Exam paper</a></li>
+                <li><a href="BrowseExamResit">View Resit Exam papers</a></li>
                 <li><a href="#">View Past papers</a></li>
               </ul>
             </div>
@@ -38,9 +38,9 @@
         <div class ="img">
         
         </div>
-        <h1 align ="center"><u>Create Exam</u></h1>    
+        <h1 align ="center"><u>Create Resit Exam</u></h1>    
              <div align ="center">
-         <form name="Details Input Form" action="CreateExamServlet" method="POST">
+         <form name="Details Input Form" action="CreateResitExamServlet" method="POST">
             <h4>Module Name:</h4>
             <input type="text" name="ModName" value="" />
             </div>
@@ -67,7 +67,8 @@
             <div align ="center">
             <input type="submit" value="Submit" name="examSubmit" />
             </div>
-         </form>
+         
+            </form>
                  
              <div align ="center">
              <form name="Back " action="StaffDashboard.jsp">

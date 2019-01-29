@@ -31,23 +31,19 @@
         <nav class="navbar fixed-bottom navbar-inverse" >
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Staff Dashboard</a>
+      <a class="navbar-brand" href="StaffDashboard.jsp">Staff Dashboard</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#">Upload an Exam paper</a></li>
-      <li><a href="#">View my Exams</a></li>
-      <li><a href="#">Upload Resit Exam paper</a></li>
-      <li><a href="#">View Resit Exam papers</a></li>
+      <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
+      <li><a href="BrowseExamS">View my Exams</a></li>
+      <li><a href="CreateResitExamDTL.jsp">Upload Resit Exam paper</a></li>
+      <li><a href="BrowseExamResit">View Resit Exam papers</a></li>
       <li><a href="#">View Past papers</a></li>
     </ul>
   </div>
 </nav>
         
-       <div class ="img">
-        <a href="StaffDashboard.jsp">
-     <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left” />
-        </a>
-     </div>
+     
          <div>
              <h1 align ="center"><u>Staff Dashboard</u></h1>
     <div align="center" >
@@ -72,7 +68,7 @@
     </div>
         <div align="center" class="plain">
     <form  name="logoutForm" action="LogoutServlet">
-        <input type="submit" value="Logout" name="logoutbtn"  />
+        <input type="submit" value="Logout" name="logoutbtn">
     </form>
     <form name="Notifications" action="NotificationServlet">
         <input type="submit" value="New Lenard button" name="Lenard"/>
