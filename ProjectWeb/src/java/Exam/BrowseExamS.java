@@ -183,14 +183,15 @@ public class BrowseExamS extends HttpServlet {
                     
                        out.println("<td>");
                             out.println(moduleCode);
+                            out.println("TTTTTTTTTTTTTTTTTTTTTT");
                        out.println("</td>");
                        //Module
                        out.println("<td>");
                        String pdfPath = url + moduleCode + "\\"+year+"\\" + moduleCode + ".pdf";
-                            out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
-                            //out.println("<form method='get' action=" + fuck + ">");
-                            //out.println("<button type=\"submit\">Download!</button>");
-                            //out.println("</form>");
+                            //out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
+                            out.println("<form method='post' action='DownloadServlet'>");
+                                out.println("<button type='submit' value=" + pdfPath +" name='fileToDownload'>Download Exam</button>");
+                            out.println("</form>");
                        out.println("</td>");
                        //Exam
                        
