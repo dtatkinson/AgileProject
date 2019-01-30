@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Database.DatabaseHandling"%>
+<%@page import="javax.servlet.http.HttpSession"  %>
+<%@page import="java.sql.*"  %>
+
 <!DOCTYPE html>
 <html>
      <%
@@ -42,12 +46,26 @@
     </ul>
   </div>
 </nav>
-        
+        <%
+            String username = (String) session.getAttribute("username");
+            //out.println(username);
+            DatabaseHandling conn = new DatabaseHandling();
+            ResultSet examChange = conn.getChange(username);
+            int count = 0;
+            
+            if(examChange != null){
+                while(examChange.next()){
+                   count++;
+                }
+            }
+            out.println(count);   
+            
+            
+    %>
         <div align="center">
          <div class="btn btn-danger">
              <p>
-                 You have no new notifications
-                 ------PLACEHOLDERTHING------
+                 You have <% out.print(count); %> updates! 
                  
              </p>
          </div> 
@@ -57,9 +75,10 @@
     <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn">
     </form>
-    <form name="Notifications" action="NotificationServlet">
-        <input type="submit" value="New Lenard button" name="Lenard"/>
-    </form>
+    
+        
+    
+        
         </div>
         
         <br>

@@ -34,7 +34,17 @@ public class DatabaseHandling {
          System.err.println("Unable to find driver");
       }
     }
-    
+   public ResultSet getChange(String username){
+       try{
+           java.sql.Statement stmt = con.createStatement();
+           ResultSet rs = stmt.executeQuery("SELECT * FROM Exam WHERE Changes = 1 AND PublishedBy='" + username + "'");
+           return rs;
+       }
+       catch(Exception e){
+           
+       }
+       return null;
+   }  
    public void setChanges(int change, int id) throws Exception{
       
         java.sql.Statement stmt = con.createStatement();

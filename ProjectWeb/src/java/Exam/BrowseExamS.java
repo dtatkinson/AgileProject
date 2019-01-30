@@ -281,7 +281,7 @@ public class BrowseExamS extends HttpServlet {
                            
                             out.println("<td>");
                                 if(signSig(role, username, id)){ //POLICE, THIS LINE RIGHT HERE
-                                   out.println(signSig(role, username, id));
+                             
                                    //int id = rs.getInt("ExamID");
                                    out.println("<form action='SignExamServlet' method='POST'>");
 
