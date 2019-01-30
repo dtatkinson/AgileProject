@@ -5,7 +5,10 @@
  */
 package Exam;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,11 +35,50 @@ public class DownloadServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String path = request.getParameter("fileToDownload");
+        
+        
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            //out.print(path);
+            String relativePath = getServletContext().getRealPath("");
+       
+      
+            //out.println(relativePath);
+            String fileName = "T";
+          
+            String fileType = "appliaction/pdf";
+         
+          
+            String test1 = relativePath+"/AC137/2019/AC137.pdf";
+          
+       
+            response.setContentType(fileType);
+            File test = new File(test1);
+            response.setContentLength((int) test.length());
+             // Make sure to show the download dialog
+            response.setHeader("Content-Disposition","attachment; filename=TTTTTTT.pdf");
             
+            
+            OutputStream outF = response.getOutputStream();
+            FileInputStream in = new FileInputStream(test1);
+            byte[] buffer = new byte[4096];
+           int length;
+            while ((length = in.read(buffer)) > 0){
+               outF.write(buffer, 0, length);
+           }
+            in.close();
+           out.flush();
+  //         int i;   
+//while ((i=in.read()) != -1) {  
+//out.write(i);   
+//}   
+//in.close();   
+//out.close();   
+            response.sendRedirect("BrowseExamS");
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -44,19 +44,35 @@ public class BrowseExamsSContainer extends HttpServlet {
                 String comment = request.getParameter("inputbox");
                 String year = request.getParameter("year");
                 String role = request.getParameter("role");
+                String temp= request.getParameter("id");
+               
+                int id = Integer.parseInt(temp);
+                
                 Comments comm = new Comments();
                 DatabaseHandling conn = new DatabaseHandling();
                 
                 //out.print(getPath());
-                //out.print(role);
+                //out.println(id);
                 if(role.equals("Exam Setter")){
                     comm.ackComments(modcode, comment, username, getPath(), year);
-                    out.print(role);
-                 
+                    //out.print(role);
+                    try{
+                        conn.setChanges(0, id);
+                      
+                    }
+                    catch(Exception e){
+                        
+                    }
                 }else{
                     
                    out.print(role);
                    comm.writeComment(modcode, comment, username, getPath(), year);
+                   try{
+                       conn.setChanges(1, id);
+                   }
+                   catch(Exception e){
+                       
+                   }
                   
                 }
                 

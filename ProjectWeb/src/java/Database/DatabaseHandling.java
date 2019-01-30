@@ -35,7 +35,13 @@ public class DatabaseHandling {
       }
     }
     
-   
+   public void setChanges(int change, int id) throws Exception{
+      
+        java.sql.Statement stmt = con.createStatement();
+        stmt.execute("update Exam set Changes = "+change+" WHERE ExamID = "+id+";");
+      //stmt.execute("update Staff set StaffName = '"+newName+"' where StaffName = '"+username+"';");
+
+   }
     /**
      * method to search table and returns resultset
      * @param search  string containing the search string and

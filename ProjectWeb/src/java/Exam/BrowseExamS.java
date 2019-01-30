@@ -122,7 +122,7 @@ public class BrowseExamS extends HttpServlet {
                 Boolean CmtS;
                 Boolean IntS;
         
-        
+        DatabaseHandling conn = new DatabaseHandling();
         
         out.println("<html>");
  
@@ -147,11 +147,11 @@ public class BrowseExamS extends HttpServlet {
             out.println("<th>");
              if(role.equals("ES"))
             {
-            out.println("Upload new version");
+                out.println("Upload new version");
             }
             else
             {
-                 out.println("Upload additonal");
+                out.println("Upload additonal");
             }
             out.println("</th>");
             out.println("<th>");
@@ -175,29 +175,34 @@ public class BrowseExamS extends HttpServlet {
             
             out.println("</tr>");
             //Table headings
+            
             try{
+          
                 while(rs.next()){
+                   
                     String moduleCode = rs.getString("ModuleCode");
-                    String year = rs.getString("AdademicYear");
+                    //out.println(moduleCode);
+                    String year = rs.getString("AcademicYear");
+                    
                     out.println("<tr>");
                     
                        out.println("<td>");
                             out.println(moduleCode);
-                            out.println("TTTTTTTTTTTTTTTTTTTTTT");
+        
                        out.println("</td>");
                        //Module
                        out.println("<td>");
                        String pdfPath = url + moduleCode + "\\"+year+"\\" + moduleCode + ".pdf";
-                            //out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
-                            out.println("<form method='post' action='DownloadServlet'>");
-                                out.println("<button type='submit' value=" + pdfPath +" name='fileToDownload'>Download Exam</button>");
-                            out.println("</form>");
+                       
+                            out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
+                            //out.println("<form method='post' action='DownloadServlet'>");
+                              //  out.println("<button type='submit' value=" + pdfPath +" name='fileToDownload'>Download Exam</button>");
+                          //  out.println("</form>");
                        out.println("</td>");
                        //Exam
                        
                        if(role.equals("ES"))
                        {
-                            
                          
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUpload.jsp'>");
@@ -209,6 +214,7 @@ public class BrowseExamS extends HttpServlet {
                        }
                        else
                        {
+                           
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                             out.println("<input type='submit' value='Upload' name='backBtn' />");
@@ -216,22 +222,33 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<input type='hidden' name ='year'  value ="+year+">");
                             out.println("</form>");
                             out.println("</td>"); 
+                            
                        }
                        
                        //Exam reupload
+                       int id = rs.getInt("ExamID");
                        out.println("<td>");
+                      
                        String comPath = url + moduleCode + "\\"+year+"\\" + "comments.txt";
+                       int changes = rs.getInt("Changes");
                        out.println("<a href="+comPath+">"+moduleCode+" Comments</a>");
+                       
+                       if(role.equals("ES")){
+                        if (changes != 0){
+                            out.println("FUCK YOU!");
+                        }
+                       
+                       }
                             //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
                        //Exam comments
-                       
+                      
                        out.println("<td>");
-                            out.println("<form action='BrowseExamsSContainer' method='POST'>");
+                                out.println("<form action='BrowseExamsSContainer' method='POST'>");
                                 out.println("<input type=\"text\" name = 'inputbox'>");
                                 out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                                 out.println("<input type='hidden' name ='year'  value ="+year+">");
-                                
+                                out.println("<input type='hidden' name ='id'  value ="+id+">");
                                 out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
                        out.println("</td>");
                        
@@ -239,8 +256,11 @@ public class BrowseExamS extends HttpServlet {
                                 out.println("<input type=\"submit\" value='Add Comment'>");
                             out.println("</form>");
                        out.println("</td>");
-                       int id = rs.getInt("ExamID");
+         
+                       
+               
                        if(!role.equals("ES")){
+                           
                             out.println("<td>");
                                 if(signSig(role, username, id)){ //POLICE, THIS LINE RIGHT HERE
                                    out.println(signSig(role, username, id));
@@ -263,10 +283,13 @@ public class BrowseExamS extends HttpServlet {
                                 
                            out.println("</td>");
                        }
+           
                             out.println("<td width=25%>");
+                            
                     ExtS=rs.getBoolean("ExternalSign");
                     CmtS=rs.getBoolean("CommiteeSign");
                     IntS=rs.getBoolean("InternalSign");
+                    
                     if(ExtS){
                       
                     out.println("<div class=\"progress\">\n" +
@@ -302,7 +325,7 @@ public class BrowseExamS extends HttpServlet {
                                 "</div>");
                     }
                     out.println("</td>");
-                        
+                      
                     out.println("</tr>");
                 }
             }
@@ -357,13 +380,15 @@ public class BrowseExamS extends HttpServlet {
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username");
                 
+                out.println(username);
+                
                 out.println( "<div class ='img'>");
                 out.println("<a href='StaffDashboard.jsp'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
                 out.println("</a>");
                 out.println("</div>");
                 
-                ResultSet rs = getResultSet("ES", username);
+                 ResultSet rs = getResultSet("ES", username);
                 refactor(out, username, rs, "ES", url);
                 
                 ResultSet rs2 = getResultSet("IM", username);
@@ -381,295 +406,7 @@ public class BrowseExamS extends HttpServlet {
                 out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
                 out.println("</form>");  
                 out.println("</div>");
-                /*
-                out.println("<table style='width: 50%' border='1' align:'center' >");
-                out.println("<tr>");
-                out.println("<th>");
-                out.println("Module code");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Exam paper");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Comments");
-                out.println("</th>");
-               
-                out.println("<th>");
-                out.println("Input comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Send Comment");
-               
-                 out.println("</tr>");
-                while(setter.next()){
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println(setter.getString("ModuleCode"));
-                    out.println("</td>");
-                    String moduleCode = setter.getString("ModuleCode");
-                   
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
-                    out.println("</td>");
-                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"text\" name = 'inputbox'>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                    out.println("<input type='hidden' name ='role'  value ='Exam setter'>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                    out.println("</form>");
-                    
-                    out.println("</td>");
-                    out.println("</tr>");
-                    
-                }
-                out.println("<h1>Setter</h1>");
-                
-           
-                ResultSet internal = instance.listTableWhereD("Exam", "InternalSignID", username);
-                    
-                
-                out.println("<table style='width:50%' border='1'>");
-                out.println("<tr>");
-                out.println("<th>");
-                out.println("Module code");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Exam paper");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Comments");
-                out.println("</th>");
-               
-                out.println("<th>");
-                out.println("Input comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Send Comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Sign Exam");
-                out.println("</th>");
-                 out.println("</tr>");
-                while(internal.next()){
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println(internal.getString("ModuleCode"));
-                    out.println("</td>");
-                    String moduleCode = internal.getString("ModuleCode");
-                   
-                    int id = internal.getInt("ExamID");
-                    
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
-                    out.println("</td>");
-                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"text\" name = 'inputbox'>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                    out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
-                    out.println("</td>");
-                    
-                   
-                    out.println("<td>");
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                    out.println("</form>");
-                    out.println("<td>");
-                    if(!internal.getBoolean("InternalSign")){
-                        
-                    
-                        out.println("<form action='SignExamServlet' method='POST'>");
-                       
-                       out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-
-
-                       out.println("<input type=\"submit\" value='Sign'>");
-                       out.println("<input type='hidden' name ='id'  value ="+id+">");
-                       out.println("<input type='hidden' name ='role'  value ='Internal Moderator'>");
-                       out.println("</form>");
-                    }
-                    else{
-                        out.println("X");
-                    }
-                   out.println("</td>");
-                    out.println("</tr>");
-                    
-                }
-
-                out.println("<h1>Internal</h1>");
-                
-                ResultSet commitee = instance.listTableWhereD("Exam", "CommiteeSignID", username);
-
-              
-                out.println("<table style='width:50%' border='1'>");
-                out.println("<tr>");
-                out.println("<th>");
-                out.println("Module code");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Exam paper");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Comments");
-                out.println("</th>");
-               
-                out.println("<th>");
-                out.println("Input comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Send Comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Sign Exam");
-                out.println("</th>");
-                out.println("</tr>");
-                 
-                while(commitee.next()){
-                    if(commitee.getBoolean(("InternalSign"))){
-                        out.println("<tr>");
-                        out.println("<td>");
-                        out.println(commitee.getString("ModuleCode"));
-                        out.println("</td>");
-                        String moduleCode = commitee.getString("ModuleCode");
-                       int id = commitee.getInt("ExamID");
-                        out.println("<td>");
-                        out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                        out.println("</td>");
-                        out.println("<td>");
-                        out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
-                        out.println("</td>");
-                        out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                        out.println("<td>");
-                        out.println("<input type=\"text\" name = 'inputbox'>");
-                        out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                        out.println("<input type='hidden' name ='role'  value ='Exam Vetting Commitee'>");
-                        out.println("</td>");
-                        out.println("<td>");
-
-                        out.println("<input type=\"submit\" value='Add Comment'>");
-                        out.println("</form>");
-                        out.println("<td>");
-                        if(!commitee.getBoolean("CommiteeSign")){
-                            out.println("<form action='SignExamServlet' method='POST'>");
-                            
-                            
-                            
-                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-
-
-                            out.println("<input type=\"submit\" value='Sign'>");
-                            out.println("<input type='hidden' name ='role'  value ='Exam Commitee'>");
-                            out.println("<input type='hidden' name ='id'  value ="+id+">");
-                            out.println("</form>");
-                        }
-                        else{
-                            out.println("X");
-                        }
-                        out.println("</td>");
-                        out.println("</tr>");
-                    }
-                }
-
-                  out.println("<h1>Commitee</h1>");
-                
-                ResultSet external = instance.listTableWhereD("Exam", "ExternalSignID", username);
-
-               
-                out.println("<table style='width:50%' border='1'>");
-                out.println("<tr>");
-                out.println("<th>");
-                out.println("Module code");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Exam paper");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Comments");
-                out.println("</th>");
-               
-                out.println("<th>");
-                out.println("Input comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Send Comment");
-                out.println("</th>");
-                out.println("<th>");
-                out.println("Sign Exam");
-                out.println("</th>");
-                out.println("</tr>");
-                
-                while(external.next()){
-                    if(external.getBoolean(("CommiteeSign"))){
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println(external.getString("ModuleCode"));
-                    out.println("</td>");
-                    String moduleCode = external.getString("ModuleCode");
-                   int id = external.getInt("ExamID");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\"+moduleCode+".pdf'>"+moduleCode+" Exam</a>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<a href='http:\\\\silva.computing.dundee.ac.uk\\2018-agileteam3\\"+moduleCode+"\\2019\\comments.txt'>"+moduleCode+" Comments</a>");
-                    out.println("</td>");
-                    out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                    out.println("<td>");
-                    out.println("<input type=\"text\" name = 'inputbox'>");
-                    out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                    out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    
-                    out.println("<input type=\"submit\" value='Add Comment'>");
-                   out.println("</td>");
-                    out.println("</form>");
-                    
-                    out.println("<td>");
-                    if(!external.getBoolean("ExternalSign")){
-                        out.println("<form action='SignExamServlet' method='POST'>");
-                        
-                       
-                        
-                        out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                        out.println("<input type='hidden' name ='id'  value ="+id+">");
-
-                        out.println("<input type=\"submit\" value='Sign'>");
-                        out.println("<input type='hidden' name ='role'  value ='External Moderator'>");
-                        out.println("</form>");
-                    }
-                    else{
-                        out.println("X");
-                    }
-                    out.println("</td>");
-                    out.println("</tr>");  
-                    } 
-                    
-                }
-                //printExam(out, "Test");
-             
-                 out.println("<h1>External</h1>"); 
-           //out.print("TTTTTTTTTTTT");
-       
-            }catch (Exception e){
-                
-            }
-            
-            out.println("</body>");
-            
-            
-            out.println("</html>");    
-            
-            /* TODO output your page here. You may use following sample code. */
-            
+         
         }
         
        
