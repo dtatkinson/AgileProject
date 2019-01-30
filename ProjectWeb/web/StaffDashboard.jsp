@@ -42,7 +42,7 @@
       <li><a href="BrowseExamS">View my Exams</a></li>
       <li><a href="CreateResitExamDTL.jsp">Upload Resit Exam paper</a></li>
       <li><a href="BrowseExamResit">View Resit Exam papers</a></li>
-      <li><a href="#">View Past papers</a></li>
+      <li><a href="ViewPastPaper">View Past papers</a></li>
     </ul>
   </div>
 </nav>

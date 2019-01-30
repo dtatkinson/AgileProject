@@ -44,7 +44,7 @@ public class BrowseExamResit extends HttpServlet {
         
         DatabaseHandling conn = new DatabaseHandling();
         if(role.equals("IM")){ 
-            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            ResultSet rs = conn.listTableWhereI("Resit", "ExamID", id);
             try{
                 while(rs.next()){
                     if(rs.getBoolean("InternalSign")){
@@ -60,7 +60,7 @@ public class BrowseExamResit extends HttpServlet {
             }
         }
         else if(role.equals("EC")){
-            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            ResultSet rs = conn.listTableWhereI("Resit", "ExamID", id);
             try{
                 while(rs.next()){
                     if(rs.getBoolean("CommiteeSign")){
@@ -77,7 +77,7 @@ public class BrowseExamResit extends HttpServlet {
         }
         
         else if(role.equals("EX")){
-            ResultSet rs = conn.listTableWhereI("Exam", "ExamID", id);
+            ResultSet rs = conn.listTableWhereI("Resit", "ExamID", id);
             try{
                 while(rs.next()){
                 if(rs.getBoolean("ExternalSign")){
