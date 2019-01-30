@@ -43,29 +43,16 @@
   </div>
 </nav>
         
-     
-         <div>
-             <h1 align ="center"><u>Staff Dashboard</u></h1>
-    <div align="center" >
-        <h2>New</h2>
-        <form name="newButton" action="CreateExamDTL.jsp">
-        <input type="submit" value="Create a new exam" name="newbtn" />
-        </form>
-  
-        
-        <h2 align="center">My exams </h2>
-        <form name="viewForm" action="BrowseExamS">
-            <input type="submit" value="View my exams" name="viewbtn" />
-        </form>
-           
-        
-        <h2 align="center"> Options</h2>
-        <form name="Optionsbtn" action="compExams.jsp">
-            <input type="submit" value="Options" name="Optionsbtn" />
-        </form>
-           
-           
-    </div>
+        <div align="center">
+         <div class="btn btn-danger">
+             <p>
+                 You have no new notifications
+                 ------PLACEHOLDERTHING------
+                 
+             </p>
+         </div> 
+        </div>   
+    
         <div align="center" class="plain">
     <form  name="logoutForm" action="LogoutServlet">
         <input type="submit" value="Logout" name="logoutbtn">
@@ -74,8 +61,7 @@
         <input type="submit" value="New Lenard button" name="Lenard"/>
     </form>
         </div>
-     </div>
-    
+        
         <br>
         <div align = "center">
         <% out.print("Hello, "); out.print(session.getAttribute("username")); %>

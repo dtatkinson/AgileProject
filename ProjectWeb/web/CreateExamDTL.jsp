@@ -21,19 +21,19 @@
     </head>
     <body>
         <nav class="navbar fixed-bottom navbar-inverse" >
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="StaffDashboard.jsp">Staff Dashboard</a>
-              </div>
-              <ul class="nav navbar-nav">
-                <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
-                <li><a href="BrowseExamS">View my Exams</a></li>
-                <li><a href="#">Upload Resit Exam paper</a></li>
-                <li><a href="#">View Resit Exam papers</a></li>
-                <li><a href="#">View Past papers</a></li>
-              </ul>
-            </div>
-          </nav>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="StaffDashboard.jsp">Staff Dashboard</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
+      <li><a href="BrowseExamS">View my Exams</a></li>
+      <li><a href="CreateResitExamDTL.jsp">Upload Resit Exam paper</a></li>
+      <li><a href="BrowseExamResit">View Resit Exam papers</a></li>
+      <li><a href="#">View Past papers</a></li>
+    </ul>
+  </div>
+</nav>
         
         <div class ="img">
         
