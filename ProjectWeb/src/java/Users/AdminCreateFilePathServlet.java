@@ -75,11 +75,13 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                         "</nav>");
             
             
-          out.println("<div>");
+          out.println("<div align = 'center'>");
             out.println("<form action='AdminCreateFilePathServlet' method='POST'>");
                   out.println("<input type=\"text\" name = 'inputbox'>");
+                  out.println("<br>");
                    out.println("<input type=\"submit\" value='Create folders for this year'>");
                  out.println("</form>");
+                 out.println("</div>");
                  if (request.getParameter("inputbox") != null) {
             createPaths(request, response);
                  }
