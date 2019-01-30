@@ -19,27 +19,32 @@
         <title>School Office Dashboard</title>
     </head>
     <body>
-        <div class ="img">
-        <a href="SchoolOfficeDashboard.jsp">
-          <img src="DundeeUniLogo.png" width="100" height="125" alt="DundeeLogo" align=”left”    />
-        </a>
-        </div>
-           <h1 align ="center">School Office Dashboard</h1>
+        <nav class="navbar fixed-bottom navbar-inverse" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="SchoolOfficeDasboard.jsp">School Office Dashboard</a>
+    </div>
+    <ul class="nav navbar-nav">
+      
+    </ul>
+  </div>
+</nav>
+           <h1 align ="center" class="strokeme"">School Office Dashboard</h1>
     <div align="center" >
-        <h2>View Exams </h2>
+        <h2 class="strokeme">View Exams </h2>
         <form name="viewForm" action="SchoolOfficeViewExams">
-            <input type="submit" value="View & Downlaod Exams" name="viewbtn" />
+            <input class="btn btn-dark" type="submit" value="View & Download Exams" name="viewbtn" />
         </form>
     </div>
            <div align ="center">
-               <h2 > Options</h2>
+               <h2 class="strokeme"> Options</h2>
         <form name="Optionsbtn" action="compExams.jsp">
-            <input type="submit" value="Options" name="Optionsbtn" />
+            <input class="btn btn-dark" type="submit" value="Options" name="Optionsbtn" />
         </form>
         </div>
-           <<div align ="center">
+           <div align ="center">
            <form  name="logoutForm" action="index.jsp">
-        <input type="submit" value="Logout" name="logoutbtn"/>
+        <input class="btn btn-dark" type="submit" value="Logout" name="logoutbtn"/>
     </form>
            
     </div>
