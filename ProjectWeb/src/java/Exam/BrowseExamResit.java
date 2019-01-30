@@ -201,7 +201,7 @@ public class BrowseExamResit extends HttpServlet {
                        //Module
                        out.println("<td>");
                        String pdfPath = url + moduleCode + "\\"+rs.getString("AcademicYear")+"\\" + moduleCode + "Resit.pdf";
-                            out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
+                            out.println("<a href="+pdfPath + ">"+moduleCode+ " Resit Exam</a>");
                          
                             //out.println("<button type=\"submit\">Download!</button>");
                             //out.println("</form>");
