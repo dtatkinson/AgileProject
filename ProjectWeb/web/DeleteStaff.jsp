@@ -33,6 +33,7 @@
         <li><a href="ViewStaff.jsp">View Staff</a></li>
         <li><a href="AdminSetDeadlineServlet">Set Deadlines</a></li>
         <li><a href="AdminAssignToExam">Assign Staff to new exam</a></li>
+        <li><a href="AdminCreateFilePathServlet">Create folders for next year</a></li>
     </ul>
   </div>
 </nav>
@@ -57,15 +58,18 @@
 </script>
 
 
-<script>
+  <script>
              function resizeText(multiplier) {
   if (document.body.style.fontSize == "") {
     document.body.style.fontSize = "1.0em";
   }
-
   document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
-  
-
+   if(document.getElementById("font").style.fontSize== fontSize+0.2){
+        document.getElementById("font").style.fontSize= "1.0em";
+    } if(document.getElementById("font").style.fontSize= fontSize-0.2){
+        document.getElementById("font").style.fontSize= "1.2em"
+    }
+}
     </script>       
     <div class ="increase" align = "center" >      
         <i class="fas fa-search-plus" alt="Increase text size" onclick="resizeText(1)" ></i>
@@ -73,6 +77,7 @@
     <div class ="decrease" align ="center">
          <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
     </div>
+            
                   
     </body>
 </html>

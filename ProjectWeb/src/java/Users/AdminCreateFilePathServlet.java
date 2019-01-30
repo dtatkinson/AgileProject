@@ -60,7 +60,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
             out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
                         "  <div class=\"container-fluid\">\n" +
                         "    <div class=\"navbar-header\">\n" +
-                        "      <a class=\"navbar-brand\" href=\"#\">Admin Staff Dashboard</a>\n" +
+                        "      <a class=\"navbar-brand\" href=\"ViewNewExams\">Admin Staff Dashboard</a>\n" +
                         "    </div>\n" +
                         "    <ul class=\"nav navbar-nav\">\n" +
                         "      <li><a href=\"AddStaff.jsp\">Add Staff</a></li>\n" +
@@ -92,7 +92,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         }
           
                 
-        
+     
             
         
     }

@@ -34,6 +34,7 @@
       <li><a href="ViewStaff.jsp">View Staff</a></li>
       <li><a href="AdminSetDeadlineServlet">Set Deadlines</a></li>
       <li><a href="AdminAssignToExam">Assign Staff to new exam</a></li>
+      <li><a href="AdminCreateFilePathServlet">Create folders for next year</a></li>
     </ul>
   </div>
 </nav>
