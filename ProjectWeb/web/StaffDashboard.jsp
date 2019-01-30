@@ -31,7 +31,7 @@
     </head>
  
     <body>
-      
+     
         <nav class="navbar fixed-bottom navbar-inverse" >
   <div class="container-fluid">
     <div class="navbar-header">
@@ -85,5 +85,6 @@
         <div align = "center">
         <% out.print("Hello, "); out.print(session.getAttribute("username")); %>
         </div>
+        
     </body>
 </html>

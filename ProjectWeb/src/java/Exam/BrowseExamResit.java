@@ -141,8 +141,9 @@ public class BrowseExamResit extends HttpServlet {
         out.println("<body>");
         
         
-        out.println("<h1 align='center'>"+expandRole(role)+"</h1>");
-        out.println("<table style='width: 50%' border='4' align='center' >");
+        out.println("<h1 align='center' style='color:white;'>"+expandRole(role)+"</h1>");
+        out.println("<div align='center'>");
+        out.println("<table  border='4' align='center' class='btn btn-dark' >");
         
             out.println("<tr>");
             out.println("<th>");
@@ -199,9 +200,9 @@ public class BrowseExamResit extends HttpServlet {
                        out.println("</td>");
                        //Module
                        out.println("<td>");
-                       String pdfPath = url + moduleCode + "\\"+rs.getString("AcademicYear")+"\\" + moduleCode + ".pdf";
+                       String pdfPath = url + moduleCode + "\\"+rs.getString("AcademicYear")+"\\" + moduleCode + "Resit.pdf";
                             out.println("<a href="+pdfPath + ">"+moduleCode+ "Exam</a>");
-                            //out.println("<form method='get' action=" + fuck + ">");
+                         
                             //out.println("<button type=\"submit\">Download!</button>");
                             //out.println("</form>");
                        out.println("</td>");
@@ -210,7 +211,7 @@ public class BrowseExamResit extends HttpServlet {
                        if(role.equals("ES"))
                        {
                             out.println("<td>");
-                            out.println("<form name='Upload ' action='ReUpload.jsp'>");
+                            out.println("<form name='Upload ' action='ReUploadResit.jsp'>");
                             out.println("<input type='submit' value='Upload' name='backBtn' />");
                             out.println("</form>");
                             out.println("</td>");
@@ -319,6 +320,7 @@ public class BrowseExamResit extends HttpServlet {
                     out.println("</td>");
                         
                     out.println("</tr>");
+                    out.println("</div>");
                 }
             }
             catch(Exception e){
