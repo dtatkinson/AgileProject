@@ -72,6 +72,7 @@ public class ViewNewExams extends HttpServlet {
                         "      <li><a href=\"ViewStaff.jsp\">View Staff</a></li>\n" +
                         "      <li><a href=\"AdminSetDeadlineServlet\">Set Deadlines</a></li>\n" +
                         "      <li><a href=\"AdminAssignToExam\">Assign Staff to new exam</a></li>\n" +
+                        "      <li><a href=\"AdminCreateFilePathServlet\">Create folders for next year</a></li>\n" +
                         "    </ul>\n" +
                         "  </div>\n" +
                         "</nav>");
