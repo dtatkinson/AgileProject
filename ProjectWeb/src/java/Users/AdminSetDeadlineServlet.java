@@ -42,7 +42,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-             out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
+             out.println("         <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n" +
                         "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
                         "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
                         "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
@@ -63,7 +63,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
                         "      <li><a href=\"AssignStaff.jsp\">Assign Staff New role</a></li>\n" +
                         "      <li><a href=\"ViewStaff.jsp\">View Staff</a></li>\n" +
                         "      <li><a href=\"AdminSetDeadlineServlet\">Set Deadlines</a></li>\n" +
-                        "      <li><a href=\"AssignStaff.jsp\">Assign Staff to new exam</a></li>\n" +
+                        "      <li><a href=\"AdminAssignToExam\">Assign Staff to new exam</a></li>\n" +
                         "    </ul>\n" +
                         "  </div>\n" +
                         "</nav>");
@@ -109,7 +109,20 @@ public class AdminSetDeadlineServlet extends HttpServlet {
             
             out.println("<br>");
                 out.println("<br>");
-            
+            out.println("<script>\n" +
+"             function resizeText(multiplier) {\n" +
+"  if (document.body.style.fontSize == \"\") {\n" +
+"    document.body.style.fontSize = \"1.0em\";\n" +
+"  }\n" +
+"  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + \"em\";\n" +
+"}\n" +
+"</script>       \n" +
+"    <div class =\"increase\" align = \"center\" >      \n" +
+"        <i class=\"fas fa-search-plus\" alt=\"Increase text size\" onclick=\"resizeText(1)\" ></i>\n" +
+"    </div>\n" +
+"    <div class =\"decrease\" align =\"center\">\n" +
+"         <i class=\"fas fa-search-minus\" alt=\"Decrease text size\"  onclick=\"resizeText(-1)\" ></i> \n" +
+"    </div>        ");
             out.println("</body>");
             out.println("</html>");
         }
