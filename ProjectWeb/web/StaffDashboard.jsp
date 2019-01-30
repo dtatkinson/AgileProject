@@ -65,7 +65,7 @@
         <div align="center">
          <div class="btn btn-danger">
              <p>
-                 You have <% out.print(count); %> updates! 
+                 You have <% out.print(count); %> update(s)! 
                  
              </p>
          </div> 

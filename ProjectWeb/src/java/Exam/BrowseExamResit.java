@@ -141,7 +141,7 @@ public class BrowseExamResit extends HttpServlet {
         out.println("<body>");
         
         
-        out.println("<h1 align='center' style='color:white;'>"+expandRole(role)+"</h1>");
+        out.println("<h1 align='center' class='strokeme'>"+expandRole(role)+"</h1>");
         out.println("<div align='center'>");
         out.println("<table  border='4' align='center' class='btn btn-dark' >");
         

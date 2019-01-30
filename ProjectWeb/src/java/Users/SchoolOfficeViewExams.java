@@ -62,7 +62,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
                             "  <div class=\"container-fluid\">\n" +
                             "    <div class=\"navbar-header\">\n" +
-                            "      <a class=\"navbar-brand\" href=\"SchoolOfficeDasboard.jsp\">School Office Dashboard</a>\n" +
+                            "      <a class=\"navbar-brand\" href=\"SchoolOfficeViewExams\">School Office Dashboard</a>\n" +
                             "    </div>\n" +
                             "    <ul class=\"nav navbar-nav\">\n" +
                             "      \n" +

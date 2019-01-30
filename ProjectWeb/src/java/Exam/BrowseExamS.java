@@ -126,17 +126,31 @@ public class BrowseExamS extends HttpServlet {
         
         out.println("<html>");
  
-        out.println("<head>");
-        out.println("<link rel='stylesheet' href='CSS.css'>");
-        out.println("<!-- Latest compiled and minified CSS -->\n" +
-"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
+       out.println("<head>");
+       out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
+                        "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
+                        "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
+                        "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
+                        "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+                        "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
+                        "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+                        "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>");
+                        
         out.println("</head>");
         
         out.println("<body>");
+          
+               
+        out.println("<h1 align='center' class='strokeme'>"+expandRole(role)+"</h1>");
+                
         
-        out.println("<h1 align='center'>"+expandRole(role)+"</h1>");
-        out.println("<table style='width: 50%' border='4' align='center' >");
-        
+              
+        out.println("<div align='center'");
+                
+                
+        out.println("<br>");
+        out.println("<br>");
+        out.println("<table  border='4' align='center' class='btn btn-dark' >");
             out.println("<tr>");
             out.println("<th>");
                 out.println("Module code");
@@ -253,7 +267,7 @@ public class BrowseExamS extends HttpServlet {
                        
                        if(role.equals("ES")){
                         if (changes != 0){
-                            out.println("FUCK YOU!");
+                            out.println("Comment Requires Acknowledgement");
                         }
                        
                        }
@@ -345,13 +359,17 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                       
                     out.println("</tr>");
+                    out.println("</div>");
                 }
+                
             }
             catch(Exception e){
                 
             }
-      
+            
         out.println("</table>");
+        
+     
         out.println("</body>");
         out.println("</html>");
     }
@@ -398,13 +416,24 @@ public class BrowseExamS extends HttpServlet {
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username");
                 
-                out.println(username);
+             
                 
-                out.println( "<div class ='img'>");
-                out.println("<a href='StaffDashboard.jsp'>");
-                out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
-                out.println("</a>");
-                out.println("</div>");
+                out.println("<body>\n" +
+                    "      \n" +
+                    "        <nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
+                    "  <div class=\"container-fluid\">\n" +
+                    "    <div class=\"navbar-header\">\n" +
+                    "      <a class=\"navbar-brand\" href=\"StaffDashboard.jsp\">Staff Dashboard</a>\n" +
+                    "    </div>\n" +
+                    "    <ul class=\"nav navbar-nav\">\n" +
+                    "      <li><a href=\"CreateExamDTL.jsp\">Upload an Exam paper</a></li>\n" +
+                    "      <li><a href=\"BrowseExamS\">View my Exams</a></li>\n" +
+                    "      <li><a href=\"CreateResitExamDTL.jsp\">Upload Resit Exam paper</a></li>\n" +
+                    "      <li><a href=\"BrowseExamResit\">View Resit Exam papers</a></li>\n" +
+                    "      <li><a href=\"#\">View Past papers</a></li>\n" +
+                    "    </ul>\n" +
+                    "  </div>\n" +
+                    "</nav>");
                 
                  ResultSet rs = getResultSet("ES", username);
                 refactor(out, username, rs, "ES", url);
@@ -418,12 +447,7 @@ public class BrowseExamS extends HttpServlet {
                 ResultSet rs4 = getResultSet("EX", username);
                 refactor(out, username, rs4, "EX", url);
                 
-                out.println("<br>");
-                out.println("<div align='center'>");
-                out.println("<form name='Back ' action='StaffDashboard.jsp'>");
-                out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
-                out.println("</form>");  
-                out.println("</div>");
+                
          
         }
         

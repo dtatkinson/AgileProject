@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("StaffDashboard.jsp");
                         }
                         else if(rs.getString("Role").equals("SO")){
-                            response.sendRedirect("SchoolOfficeDashboard.jsp");
+                            response.sendRedirect("SchoolOfficeViewExams");
                         }
                         flag = true;
                         break;
