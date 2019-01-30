@@ -154,6 +154,13 @@ public class BrowseExamS extends HttpServlet {
                 out.println("Upload additonal");
             }
             out.println("</th>");
+            if(role.equals("ES"))
+            {
+                out.println("<th>");
+                out.println("Upload Solution paper");
+                out.println("</th>");
+            }
+            
             out.println("<th>");
                 out.println("Comments");
             out.println("</th>");
@@ -223,6 +230,17 @@ public class BrowseExamS extends HttpServlet {
                             out.println("</form>");
                             out.println("</td>"); 
                             
+                       }
+                       
+                       if(role.equals("ES"))
+                       {
+                           out.println("<td>");
+                           out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
+                           out.println("<input type='submit' value='Upload' name='backBtn' />");
+                           out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                           out.println("<input type='hidden' name ='year'  value ="+year+">");
+                           out.println("</form>");
+                           out.println("</td>"); 
                        }
                        
                        //Exam reupload

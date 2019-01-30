@@ -160,6 +160,12 @@ public class BrowseExamResit extends HttpServlet {
             {
                  out.println("Upload additonal");
             }
+              if(role.equals("ES"))
+            {
+                out.println("<th>");
+                out.println("Upload Solution paper");
+                out.println("</th>");
+            }
             out.println("</th>");
             out.println("<th>");
                 out.println("Comments");
@@ -185,6 +191,7 @@ public class BrowseExamResit extends HttpServlet {
             try{
                 while(rs.next()){
                     String moduleCode = rs.getString("ModuleCode");
+                     String year = rs.getString("AcademicYear");
                     out.println("<tr>");
                     
                        out.println("<td>");
@@ -215,6 +222,17 @@ public class BrowseExamResit extends HttpServlet {
                             out.println("<input type='submit' value='Upload' name='backBtn' />");
                             out.println("</form>");
                             out.println("</td>"); 
+                       }
+                       
+                        if(role.equals("ES"))
+                       {
+                           out.println("<td>");
+                           out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
+                           out.println("<input type='submit' value='Upload' name='backBtn' />");
+                           out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                           out.println("<input type='hidden' name ='year'  value ="+year+">");
+                           out.println("</form>");
+                           out.println("</td>"); 
                        }
                        
                        //Exam reupload
