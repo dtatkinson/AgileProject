@@ -44,27 +44,27 @@
              <div align ="center">
          <form name="Details Input Form" action="CreateExamServlet" method="POST">
             <h4>Module Name:</h4>
-            <input type="text" name="ModName" value="" />
+            <input type="text" name="ModName" value="" required/>
             </div>
         
             <div align ="center">
                 <h4>Module Code:</h4>
-            <input type="text" name="ModCode" value="" />
+            <input type="text" name="ModCode" value="" required/>
             </div>
             
             <div align ="center">
             <h4>Institution:</h4>
-            <input type="text" name="Inst" value="" />
+            <input type="text" name="Inst" value="" required/>
             </div>
                         
             <div align ="center">
             <h4>School:</h4>
-            <input type="text" name="School" value="" />
+            <input type="text" name="School" value="" required/>
             </div>
              
             <div align ="center">
             <h4>Academic Year:</h4>
-            <input type="text" name="Year" value="" />
+            <input type="text" name="Year" value="" required/>
             </div>
             <div align ="center">
             <input type="submit" value="Submit" name="examSubmit" />
