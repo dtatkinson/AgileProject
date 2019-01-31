@@ -70,7 +70,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 
                 out.println("<br>");
                 out.println("<br>");
-                out.println("<table  border='4' align='center' class='btn btn-dark' >");
+                out.println("<table style='width: 50%' border='1' align='center' class='table table-dark' >");
                 out.println("<tr>");
                 out.println("<th>");
                 out.println("Module Name");
@@ -133,7 +133,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 
                 out.println("<br>");
                 out.println("<br>");
-                out.println("<table  border='4' align='center' class='btn btn-dark' >");
+               out.println("<table style='width: 50%' border='1' align='center' class='table table-dark' >");
                 out.println("<tr>");
                 out.println("<th>");
                 out.println("Module Name");
