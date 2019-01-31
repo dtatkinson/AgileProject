@@ -47,18 +47,21 @@
         <% 
         String moduleCode = request.getParameter("modcode");
         String year = request.getParameter("year");
-        %>
+        out.println(moduleCode);
+        out.println(year);
+        //ServletContext context = session.getServletContext();
+        session.setAttribute("year",year);
+        session.setAttribute("moduleCode",moduleCode);
             
         
-        <form action="reprocess.jsp" method="post" enctype="multipart/form-data">
+        out.println("<form action='reprocess.jsp' method='post' enctype='multipart/form-data'>");
 
-            <b>Select File:</b> <input type="file" name="fname" accept="application/pdf"><br/>
-            <input type='hidden' name ='modcode'  value ="<%out.println(moduleCode);%>">
-            <input type='hidden' name ='year'  value ="<%out.println(year);%>">
-            <input type="submit" value="Upload">
+            out.println("<b>Select File:</b> <input type='file' name='fname' accept='application/pdf'>");
+          
+           out.println(" <input type='submit' value='Upload'>");
 
-        </form>
-
+        out.println("</form>");
+%>
     </body>
 
 </html> 
