@@ -60,7 +60,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
             out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
                         "  <div class=\"container-fluid\">\n" +
                         "    <div class=\"navbar-header\">\n" +
-                        "      <a class=\"navbar-brand\" href=\"#\">Admin Staff Dashboard</a>\n" +
+                        "      <a class=\"navbar-brand\" href=\"ViewNewExams\">Admin Staff Dashboard</a>\n" +
                         "    </div>\n" +
                         "    <ul class=\"nav navbar-nav\">\n" +
                         "      <li><a href=\"AddStaff.jsp\">Add Staff</a></li>\n" +
@@ -75,11 +75,13 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                         "</nav>");
             
             
-          out.println("<div>");
+          out.println("<div align = 'center'>");
             out.println("<form action='AdminCreateFilePathServlet' method='POST'>");
                   out.println("<input type=\"text\" name = 'inputbox'>");
+                  out.println("<br>");
                    out.println("<input type=\"submit\" value='Create folders for this year'>");
                  out.println("</form>");
+                 out.println("</div>");
                  if (request.getParameter("inputbox") != null) {
             createPaths(request, response);
                  }
@@ -92,7 +94,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         }
           
                 
-        
+     
             
         
     }

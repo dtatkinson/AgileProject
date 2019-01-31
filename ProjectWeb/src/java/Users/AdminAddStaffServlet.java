@@ -50,7 +50,7 @@ public class AdminAddStaffServlet extends HttpServlet {
         else
         {
         addStaff(username, name, password,role);
-        response.sendRedirect("AdminDashboard.jsp");
+        response.sendRedirect("ViewNewExams");
         }
     }
     

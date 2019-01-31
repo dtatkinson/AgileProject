@@ -9,7 +9,6 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -116,7 +115,7 @@ public class BrowseExamS extends HttpServlet {
         }
         return null;   
     }
-    public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url){
+    public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url, boolean sign){
         
                 Boolean ExtS;
                 Boolean CmtS;
@@ -144,7 +143,7 @@ public class BrowseExamS extends HttpServlet {
         out.println("<h1 align='center' class='strokeme'>"+expandRole(role)+"</h1>");
                 
         
-              
+         
         out.println("<div align='center'");
                 
                 
@@ -267,26 +266,38 @@ public class BrowseExamS extends HttpServlet {
                        
                        if(role.equals("ES")){
                         if (changes != 0){
-                            out.println("Comment Requires Acknowledgement");
+                            out.println("Exam has been signed/commented on");
                         }
                        
                        }
                             //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
                        //Exam comments
-                      
-                       out.println("<td>");
-                                out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                                out.println("<input type=\"text\" name = 'inputbox'>");
-                                out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='year'  value ="+year+">");
-                                out.println("<input type='hidden' name ='id'  value ="+id+">");
-                                out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
-                       out.println("</td>");
-                       
-                       out.println("<td>");
-                                out.println("<input type=\"submit\" value='Add Comment'>");
-                            out.println("</form>");
+                      boolean signedExam = signSig(role, username, id);
+                      if(signedExam || role.equals("ES")){
+                                    out.println("<td>");
+                                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
+                                             out.println("<input type=\"text\" name = 'inputbox'>");
+                                             out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                                             out.println("<input type='hidden' name ='year'  value ="+year+">");
+                                             out.println("<input type='hidden' name ='id'  value ="+id+">");
+                                             out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
+                                    out.println("</td>");
+
+                                    out.println("<td>");
+                               
+                                   out.println("<input type=\"submit\" value='Add Comment'>");
+                                   out.println("</form>");
+                    }
+                    else{
+                        out.println("<td>"); 
+                        out.println("You have already signed this exam");
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println("NA");
+                        out.println("</td>");
+                    }
+                            
                        out.println("</td>");
          
                        
@@ -434,18 +445,28 @@ public class BrowseExamS extends HttpServlet {
                     "    </ul>\n" +
                     "  </div>\n" +
                     "</nav>");
+                boolean sign = true;
+                if(session.getAttribute("validSign") != null){
+                   if((boolean) session.getAttribute("validSign") == false){
+                       sign = false;
+                    } 
+                }
+                session.setAttribute("validSign", true);
                 
-                 ResultSet rs = getResultSet("ES", username);
-                refactor(out, username, rs, "ES", url);
+                if(sign == false){
+                    out.println("Couldn't sign as the number of comments and acknowledgments are unequal");
+                }     
+                ResultSet rs = getResultSet("ES", username);
+                refactor(out, username, rs, "ES", url, sign);
                 
                 ResultSet rs2 = getResultSet("IM", username);
-                refactor(out, username, rs2, "IM", url);
+                refactor(out, username, rs2, "IM", url, sign);
                 
                 ResultSet rs3 = getResultSet("EC", username);
-                refactor(out, username, rs3, "EC", url);
+                refactor(out, username, rs3, "EC", url, sign);
                 
                 ResultSet rs4 = getResultSet("EX", username);
-                refactor(out, username, rs4, "EX", url);
+                refactor(out, username, rs4, "EX", url, sign);
                 
                 
          

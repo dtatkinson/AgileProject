@@ -125,7 +125,7 @@ public class SchoolOfficeViewExams extends HttpServlet {
                     out.println("</td>");
                     out.println("<td>");
                     String path = url +  moduleCode + "\\"+completed.getString("AcademicYear")+"\\" + moduleCode + ".pdf";
-                    out.println("<a href="+path+".pdf'>"+moduleCode+" Exam</a>");
+                    out.println("<a href="+path+">"+moduleCode+" Exam</a>");
                     out.println("</td>");             
                     out.println("</tr>");
                     
@@ -187,8 +187,8 @@ public class SchoolOfficeViewExams extends HttpServlet {
                     out.println(completedr.getString("PublishedBy"));
                     out.println("</td>");
                     out.println("<td>");
-                    String path = url +  moduleCode + "\\"+completedr.getString("AcademicYear")+"\\" + moduleCode + ".pdf";
-                    out.println("<a href="+path+".pdf'>"+moduleCode+" Exam</a>");
+                    String path = url +  moduleCode + "\\"+completedr.getString("AcademicYear")+"\\" + moduleCode + "Resit.pdf";
+                    out.println("<a href="+path+">"+moduleCode+" Exam</a>");
                     out.println("</td>");             
                     out.println("</tr>");
                     
