@@ -45,7 +45,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                 out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
+            out.println("         <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n" +
                         "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
                         "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
                         "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
@@ -76,12 +76,32 @@ public class AdminCreateFilePathServlet extends HttpServlet {
             
             
           out.println("<div align = 'center'>");
+          out.println("<div class='white'>");
             out.println("<form action='AdminCreateFilePathServlet' method='POST'>");
                   out.println("<input type=\"text\" name = 'inputbox'>");
                   out.println("<br>");
                    out.println("<input type=\"submit\" value='Create folders for this year'>");
                  out.println("</form>");
+                 
+                                 out.println("<script>\n" +
+                    "             function resizeText(multiplier) {\n" +
+                    "  if (document.body.style.fontSize == \"\") {\n" +
+                    "    document.body.style.fontSize = \"1.0em\";\n" +
+                    "  }\n" +
+                    "  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + \"em\";\n" +
+                    "}\n" +
+                    "</script>       \n" +
+                    "    <div class =\"increase\" align = \"center\" >      \n" +
+                    "        <i class=\"fas fa-search-plus\" alt=\"Increase text size\" onclick=\"resizeText(1)\" ></i>\n" +
+                    "    </div>\n" +
+                    "    <div class =\"decrease\" align =\"center\">\n" +
+                    "         <i class=\"fas fa-search-minus\" alt=\"Decrease text size\"  onclick=\"resizeText(-1)\" ></i> \n" +
+                    "    </div>        ");
                  out.println("</div>");
+               out.println("</div>");
+            
+            out.println("</body>");
+            out.println("</html>");
                  if (request.getParameter("inputbox") != null) {
             createPaths(request, response);
                  }
@@ -125,7 +145,7 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                     file.createDirectory(modCode+year, "additionalUploads");
                 }
                     }
-       
+          
         }catch(Exception e){}
 
     }

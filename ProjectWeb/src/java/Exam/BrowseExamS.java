@@ -149,7 +149,7 @@ public class BrowseExamS extends HttpServlet {
                 
         out.println("<br>");
         out.println("<br>");
-        out.println("<table  border='4' align='center' class='btn btn-dark' >");
+        out.println("<table class='table table-secondary'>");
             out.println("<tr>");
             out.println("<th>");
                 out.println("Module code");
@@ -327,7 +327,7 @@ public class BrowseExamS extends HttpServlet {
                            out.println("</td>");
                        }
            
-                            out.println("<td width=25%>");
+                            out.println("<td>");
                             
                     ExtS=rs.getBoolean("ExternalSign");
                     CmtS=rs.getBoolean("CommiteeSign");
