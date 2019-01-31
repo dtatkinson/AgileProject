@@ -70,7 +70,9 @@ public class CommentsTest {
         
          Comments instance = new Comments();
          boolean read;
+        
         read = instance.readComment(modCode, path,"2019");
+       
         if(read){
         assertTrue("acknowledged", read);
         }
@@ -86,6 +88,7 @@ public class CommentsTest {
         String signBy = "BIGarsingGDAVE";
         Comments instance = new Comments();
         instance.ackComments(modCode,comment,signBy, path,"2019");
+        instance.ackComments(modCode, comment, signBy, path,"2019",true);
     }
     
 }
