@@ -43,19 +43,22 @@ public class CommentsTest {
     /**
      * Test of writeComment method, of class Comments.
      * @throws java.io.IOException
+     * 
      */
     
     //fix this later
-    String path = "";
+    String path = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\";
+    String modCode = "MORTYTEST";
     
     @Test
     public void testWriteComment() throws IOException {
-        String modCode = "CommentsTestModule";
+      
         String comment = "test comment";
         String signBy = "Morty";
         System.out.println("writeComment");
         Comments instance = new Comments();
         instance.writeComment(modCode,comment,signBy, path,"2019");
+        instance.writeComment(modCode,comment,signBy, path,"2019",true);
     }
 
     /*
@@ -64,7 +67,7 @@ public class CommentsTest {
      */
     @Test
     public void testReadComment() throws IOException {
-        String modCode = "CommentsTestModule";
+        
          Comments instance = new Comments();
          boolean read;
         read = instance.readComment(modCode, path,"2019");
@@ -78,7 +81,7 @@ public class CommentsTest {
     
     @Test
     public void testAckComments() throws IOException{
-        String modCode = "CommentsTestModule";
+        
         String comment = "test ACK comment";
         String signBy = "BIGarsingGDAVE";
         Comments instance = new Comments();
