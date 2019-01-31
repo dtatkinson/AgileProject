@@ -341,7 +341,8 @@ public class BrowseExamS extends HttpServlet {
                                    out.println("</form>");
                                 }
                                 else{
-                                    out.println("X");
+                                    out.println("<div class='u'><h1 align=center>X</h1></div>");
+                                  
                                 }
                                 
                            out.println("</td>");
@@ -426,8 +427,9 @@ public class BrowseExamS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-  out.println("<style> div.h{width: 50px; height: 50px; border-radius: 50%;  background: red;  position: relative;  -webkit-animation: mymove 1s infinite; /* Safari 4.0 - 8.0 */  animation: mymove 5s infinite;}/* Safari 4.0 - 8.0 */@-webkit-keyframes mymove {  0%   {top: 0px; left: 0px; background: red;}25%  {top: 0px; left: 0px; background: orange;}}/* Standard syntax */@keyframes mymove {0%   {top: 0px; left: 0px; background: red;}  25%  {top: 0px; left: 0px; background: orange;}}</style>");
-                
+  out.println("<style> div.h{width: 50px; height: 50px; border-radius: 50%;  background: red;  position: relative;  -webkit-animation: mymove 1s infinite; /* Safari 4.0 - 8.0 */  animation: mymove 2s infinite;}/* Safari 4.0 - 8.0 */@-webkit-keyframes mymove {  0%   {top: 0px; left: 0px; background: red;}25%  {top: 0px; left: 0px; background: orange;}}/* Standard syntax */@keyframes mymove {0%   {top: 0px; left: 0px; background: red;}  25%  {top: 0px; left: 0px; background: orange;}}</style>");
+    out.println("<style> div.u{width: 50px; height: 50px; border-radius: 50%;  background: green;  position: relative;  -webkit-animation: mymove 1s infinite; /* Safari 4.0 - 8.0 */  animation: mymove 2s infinite;}/* Safari 4.0 - 8.0 */@-webkit-keyframes mymove {  0%   {top: 0px; left: 0px; background: green;}25%  {top: 0px; left: 0px; background: purple;}}/* Standard syntax */@keyframes mymove {0%   {top: 0px; left: 0px; background: green;}  25%  {top: 0px; left: 0px; background: purple;}}</style>");
+           
                 HttpSession session = request.getSession();
                 String username = (String) session.getAttribute("username");
                 
