@@ -47,8 +47,28 @@ public class AdminViewStaffServlet extends HttpServlet {
                 out.println("<link rel='stylesheet' href='CSS.css'>");
                 out.println("<!-- Latest compiled and minified CSS -->\n" +
 "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">");
+               out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>");
+                out.println("<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>");
+                out.println("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>");
                 out.println("</head>");
                 out.println("<body>");
+
+                out.println("<nav class='navbar fixed-bottom navbar-inverse' >");
+                out.println("<div class='container-fluid'>");
+                out.println("<div class='navbar-header'>");
+                out.println("<a class='navbar-brand' href='ViewNewExams'>Admin Staff Dashboard</a>");
+                out.println("</div>");
+                out.println("<ul class='nav navbar-nav'>");
+                out.println("<li><a href='AddStaff.jsp'>Add Staff</a></li>");
+                out.println("<li><a href='DeleteStaff.jsp'>Delete Staff</a></li>");
+                out.println("<li><a href='AssignStaff.jsp'>Assign Staff New role</a></li>");
+                out.println("<li><a href='ViewStaff.jsp'>View Staff</a></li>");
+                out.println("<li><a href='AdminSetDeadlineServlet'>Set Deadlines</a></li>");
+                out.println("<li><a href='AdminAssignToExam'>Assign Staff to new exam</a></li>");
+                out.println("<li><a href='AdminCreateFilePathServlet'>Create folders for next year</a></li>");
+                out.println("</ul>");
+                out.println("</div>");
+                out.println("</nav>");
 
                 
                 
@@ -89,15 +109,7 @@ public class AdminViewStaffServlet extends HttpServlet {
                     
                 }
                 out.println("</table>");
-                
-                out.println("<div align='center'>");
-                out.println("<form action='ManagementPage.jsp'>");
-                  out.println("<br>");
-                
-                out.println("<input type='submit' value='Back'>");
-                
-                out.println("</form>");
-                out.println("</div>");
+      
                 
                 out.println("</body>");
                 out.println("</html>");

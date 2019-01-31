@@ -212,7 +212,7 @@ public class BrowseExamResit extends HttpServlet {
                        {
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadResit.jsp'>");
-                            out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("<input type='submit' value='Upload' name='upladbtn' />");
                             out.println("</form>");
                             out.println("</td>");
                        }
@@ -220,7 +220,7 @@ public class BrowseExamResit extends HttpServlet {
                        {
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
-                            out.println("<input type='submit' value='Upload' name='backBtn' />");
+                            out.println("<input type='submit' value='Upload' name='upladbtn' />");
                             out.println("</form>");
                             out.println("</td>"); 
                        }
@@ -229,7 +229,7 @@ public class BrowseExamResit extends HttpServlet {
                        {
                            out.println("<td>");
                            out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
-                           out.println("<input type='submit' value='Upload' name='backBtn' />");
+                           out.println("<input type='submit' value='Upload' name='upladbtn' />");
                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
                            out.println("<input type='hidden' name ='year'  value ="+year+">");
                            out.println("</form>");

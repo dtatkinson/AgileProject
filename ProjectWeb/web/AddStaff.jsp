@@ -21,7 +21,7 @@
     </head>
  
     <body>
-      
+   
         <nav class="navbar fixed-bottom navbar-inverse" >
   <div class="container-fluid">
     <div class="navbar-header">
@@ -87,6 +87,6 @@
     <div class ="decrease" align ="center">
          <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
     </div>
-            
+           
     </body>
 </html>

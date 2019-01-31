@@ -40,9 +40,29 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' href='CSS.css'>");
-            out.println("</head>");
-            out.println("<body>");
-            
+           out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>");
+                out.println("<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>");
+                out.println("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>");
+                out.println("</head>");
+                out.println("<body>");
+
+                out.println("<nav class='navbar fixed-bottom navbar-inverse' >");
+                out.println("<div class='container-fluid'>");
+                out.println("<div class='navbar-header'>");
+                out.println("<a class='navbar-brand' href='ViewNewExams'>Admin Staff Dashboard</a>");
+                out.println("</div>");
+                out.println("<ul class='nav navbar-nav'>");
+                out.println("<li><a href='AddStaff.jsp'>Add Staff</a></li>");
+                out.println("<li><a href='DeleteStaff.jsp'>Delete Staff</a></li>");
+                out.println("<li><a href='AssignStaff.jsp'>Assign Staff New role</a></li>");
+                out.println("<li><a href='ViewStaff.jsp'>View Staff</a></li>");
+                out.println("<li><a href='AdminSetDeadlineServlet'>Set Deadlines</a></li>");
+                out.println("<li><a href='AdminAssignToExam'>Assign Staff to new exam</a></li>");
+                out.println("<li><a href='AdminCreateFilePathServlet'>Create folders for next year</a></li>");
+                out.println("</ul>");
+                out.println("</div>");
+                out.println("</nav>");
+                
             out.println( "<div class ='img'>");
             out.println("<a href='AdminDashboard.jsp'>");
             out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
@@ -88,10 +108,7 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("</form>");
             
             out.println("<br>");
-            out.println("<form name='Back ' action='ManagementPage.jsp'>");
-            out.println("<input type='submit' value='<- Go Back' name='backBtn' />");
-            out.println("</form>");
-                
+           
             out.println("</div>");
            
             out.println("</body>");
