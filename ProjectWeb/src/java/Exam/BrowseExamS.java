@@ -266,7 +266,7 @@ public class BrowseExamS extends HttpServlet {
                        
                        if(role.equals("ES")){
                         if (changes != 0){
-                            out.println("Comment Requires Acknowledgement");
+                            out.println("Exam has been signed/commented on");
                         }
                        
                        }
