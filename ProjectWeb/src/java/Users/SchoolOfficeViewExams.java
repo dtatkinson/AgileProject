@@ -195,6 +195,23 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 }
                 out.println("</table>");
                 out.println("</div>");
+                
+                out.println("<br>\n" +
+                            "        <div align=\"center\" class=\"plain\">\n" +
+                            "            <a href=\"index.jsp\">\n" +
+                            "            <form  name=\"logoutForm\" action=\"LogoutServlet\">\n" +
+                            "            <img src=\"Logout.png\" width=\"20\" height=\"20\" alt=\"Logout\"/>\n" +
+                            "             </a>\n" +
+                            "      \n" +
+                            "    </form>\n" +
+                            "               \n" +
+                            "      \n" +
+                            "            <br>\n" +
+                            
+                            "            ");
+                out.print("Hello, ");
+                out.print(session.getAttribute("username")); 
+                out.print("</body>");
              
             }
             catch(Exception e)

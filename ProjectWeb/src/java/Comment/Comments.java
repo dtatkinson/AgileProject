@@ -15,7 +15,7 @@ import java.util.Arrays;
  * reviewed by LenardGaunt
  */
 public class Comments {
-   
+   String commentFile = "comments.txt" ;
    /**
     * Method to write comments
     * @param modCode 
@@ -28,7 +28,7 @@ public class Comments {
     public void writeComment(String modCode,String comment, String signBy, String lenardsPath, String year) throws IOException{
         FileHandling instance = new FileHandling();
         //hard coded value okay for the comments file, however year will need to be dealt with during sprint2
-        String commentFile = "comments.txt" ;
+        //String commentFile = "comments.txt" ;
         String path = modCode + "\\"+year+"\\";
         String fullPath = path+commentFile;
         String commentR = "c." + comment;
@@ -66,7 +66,7 @@ public class Comments {
         String[] comment = null;
         FileHandling file = new FileHandling();
         file.defaultPath = lenardPath;
-        String commentFile = "comments.txt" ;
+        //String commentFile = "comments.txt" ;
         String path = modCode + "\\"+year+"\\";
         String fullPath = path+commentFile;
         if(file.checkIfFileExists(fullPath))
@@ -104,6 +104,7 @@ public class Comments {
     * @param comment
     * @param signBy
      * @param lenardPath
+     * @param year
     * @throws IOException 
     */
     //refactored code to write acknowledgement comments instead of normal comments
@@ -113,7 +114,7 @@ public class Comments {
         FileHandling file = new FileHandling();
         file.defaultPath = lenardPath;
         
-        String commentFile = "comments.txt" ;
+        //String commentFile = "comments.txt" ;
        
         String path = modCode + "\\"+year+"\\";
         
@@ -139,5 +140,26 @@ public class Comments {
            
         }
     }
+    public void writeComment(String modCode,String comment, String signBy, String lenardsPath, String year,boolean resit) throws IOException{
+            if(resit){
+            commentFile = "commentsResit.txt";
+            writeComment(modCode,comment,signBy,lenardsPath,year);
+            }
+    }
+    
+    public void ackComments(String modCode,String comment,String signBy, String lenardPath,String year,boolean resit) throws IOException{
+        if(resit){
+            commentFile = "commentsResit.txt";
+            ackComments(modCode, comment, signBy, lenardPath, year);
+        }
+    }
+
+    public void readComment(String modCode, String lenardPath,String year,boolean resit) throws IOException{
+        if(resit){
+            commentFile = "commentsResit.txt";
+            readComment(modCode,lenardPath, year);
+        }
+    }
 }
+
 
