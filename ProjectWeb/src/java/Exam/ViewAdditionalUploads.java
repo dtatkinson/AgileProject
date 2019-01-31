@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author camerontaylor
  */
-@WebServlet(name = "ViewAdditonalUploads", urlPatterns = {"/ViewAdditonalUploads"})
-public class ViewAdditonalUploads extends HttpServlet {
+@WebServlet(name = "ViewAdditionalUploads", urlPatterns = {"/ViewAdditionalUploads"})
+public class ViewAdditionalUploads extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,10 +55,11 @@ public class ViewAdditonalUploads extends HttpServlet {
         
         out.println("<body>");
           
-               
         
+        String modcode = request.getParameter("ModuleCode");
+        String year = request.getParameter("AcademicYear");
         FileHandling listoffile = new FileHandling();
-        List<String> results = listoffile.getListofFiles("AC131", "2019");
+        List<String> results = listoffile.getListofFiles(modcode, year);
         //String modcode = "AC131";
         
          
@@ -84,7 +85,8 @@ public class ViewAdditonalUploads extends HttpServlet {
             out.println(results.get(i));
             out.println("</th>");
             out.println("<th>");
-            out.println("name");
+            String pdfPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modcode+"\\"+year+"\\additonalUploads\\" + results.get(i);          
+            out.println("<a href="+pdfPath + " download>"+results.get(i)+"</a>");
             out.println("</th>");
             out.println("</tr>");
           

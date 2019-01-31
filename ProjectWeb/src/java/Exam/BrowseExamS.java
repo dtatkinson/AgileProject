@@ -181,6 +181,10 @@ public class BrowseExamS extends HttpServlet {
                 out.println("</th>");
             }
             
+             out.println("<th>");
+                out.println("View Additonal");
+                out.println("</th>");
+            
             out.println("<th>");
                 out.println("Comments");
             out.println("</th>");
@@ -262,6 +266,15 @@ public class BrowseExamS extends HttpServlet {
                            out.println("</form>");
                            out.println("</td>"); 
                        }
+                       
+                        
+                           out.println("<td>");
+                           out.println("<form name='Uploadd ' action='ViewAdditionalUploads'>");
+                           out.println("<input type='submit' value='View' name='upladbtn' />");
+                           out.println("<input type='hidden' name ='ModuleCode'  value ='"+moduleCode+"'>");
+                           out.println("<input type='hidden' name ='AcademicYear'  value ='"+year+"'>");
+                           out.println("</form>");
+                           out.println("</td>"); 
                        
                        //Exam reupload
                        int id = rs.getInt("ExamID");
