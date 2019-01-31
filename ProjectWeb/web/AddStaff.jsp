@@ -46,7 +46,7 @@
                         <li class="nav-item">
                           <a class="nav-link" href="AdminAssignToExam">Assign Staff To New Exam</a>
                         </li>
-                        <li class=\nav-item">
+                        <li class="nav-item">
                           <a class="nav-link" href="AdminCreateFilePathServlet">Create Folders</a> 
                         </li>
                         </ul>
