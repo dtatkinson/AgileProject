@@ -70,11 +70,7 @@
          
             </form>
                  
-             <div align ="center">
-             <form name="Back " action="StaffDashboard.jsp">
-                <input type="submit" value="<- Go Back" name="backBtn" /> 
-            </form>
-                 </div>
+           
              
     </body>
 </html>
