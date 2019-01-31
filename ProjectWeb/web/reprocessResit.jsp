@@ -16,7 +16,6 @@
     
     MultipartRequest m = new MultipartRequest(request,uploadpath );
     out.println("Successfully Uploaded..The PDf will auto change to "+modulecode+".pdf");
-    
     String fileName = m.getOriginalFileName("fname");
     File oldName = new File(uploadpath+fileName);
     File newName = new File(uploadpath+ modulecode+"Resit.pdf");
@@ -40,7 +39,7 @@
         </a>
      </div>
         
-        <h1>Do this later 3</h1>
+   
         
         <form action="StaffDashboard.jsp">
             <input type="submit" value="Next->" />
