@@ -6,7 +6,7 @@
 <%
     ServletContext context = session.getServletContext();
     String modulecode = (String)session.getAttribute("moduleCode");
-    String year = (String)session.getAttribute("year");
+    String year = (String)session.getAttribute("newYear");
     String realContextPath = context.getRealPath("/");
     String uploadpath = realContextPath+"\\"+modulecode+"\\"+year+"\\";
     MultipartRequest m = new MultipartRequest(request,uploadpath );
