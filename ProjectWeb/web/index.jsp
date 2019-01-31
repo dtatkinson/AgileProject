@@ -25,15 +25,17 @@ and open the template in the editor.
     </head>
  
     <body>
-
+   
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
-    <div class="fadeIn first">
+    <div class="fadeIn">
+      
       <img src="DundeeUniLogo.png" id="icon" width="50%" height="50%" alt="User Icon" />
+      
     </div>
 
     <!-- Login Form -->
