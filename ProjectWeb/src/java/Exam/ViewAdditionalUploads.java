@@ -44,19 +44,43 @@ public class ViewAdditionalUploads extends HttpServlet {
         out.println("<html>");
  
        out.println("<head>");
-       out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
+       out.println("  <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
                         "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
-                        "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
+                        "        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n" +
                         "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
                         "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                        "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
-                        "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-                        "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>");
+                        "  <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n" +
+                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n" +
+                        "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>");
                         
         out.println("</head>");
         
         out.println("<body>");
-          
+           out.println(" <nav class=\"navbar navbar-expand-lg bg-dark navbar-dark sticky-top\">\n" +
+"                          <a class=\"navbar-brand\" href=\"StaffDashboard.jsp\">Staff Dashboard</a>\n" +
+"                        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
+"                            <span class=\"navbar-toggler-icon\"></span>\n" +
+"                          </button>\n" +
+"                        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n" +
+"                        <ul class=\"navbar-nav\">\n" +
+"                        <li class=\"nav-item\">\n" +
+"                          <a class=\"nav-link\" href=\"CreateExamDTL.jsp\">Upload Exam Paper</a>\n" +
+"                        </li>\n" +
+"                        <li class=\"nav-item\">\n" +
+"                          <a class=\"nav-link\" href=\"BrowseExamS\">View My Exams</a>\n" +
+"                        </li>\n" +
+"                        <li class=\"nav-item\">\n" +
+"                          <a class=\"nav-link\" href=\"CreateResitExamDTL.jsp\">Upload Resit Exam</a>\n" +
+"                        </li>\n" +
+"                        <li class=\"nav-item\">\n" +
+"                          <a class=\"nav-link\" href=\"BrowseExamResit\">View Resit Exams</a>\n" +
+"                        </li>\n" +
+"                        <li class=\"nav-item\">\n" +
+"                          <a class=\"nav-link\" href=\"ViewPastPaper\">View Past Papers</a>\n" +
+"                        </li>\n" +
+"                        </ul>\n" +
+"                        </div>\n" +
+"                        </nav> ");
         
         String modcode = request.getParameter("ModuleCode");
         String year = request.getParameter("AcademicYear");
@@ -71,7 +95,7 @@ public class ViewAdditionalUploads extends HttpServlet {
                 
         out.println("<br>");
         out.println("<br>");
-        out.println("<table>");
+         out.println("<table style='width: 50%' border='1' align='center' class='table table-dark' >");
         out.println("<tr>");
         out.println("<th>");
         out.println("File Name");
