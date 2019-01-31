@@ -51,10 +51,12 @@ public class SetDeadlineServlet extends HttpServlet {
             conn.internalAssignExamDeadline(id, IMdeadline);
             conn.examCommiteeAssignExamDeadline(id, ECdeadline);
             conn.externalAssignExamDeadline(id, EMdeadline);
+            
             }
             catch(Exception e){
                 
             }
+            response.sendRedirect("ViewNewExams");
             //ResultSet exam = conn.listTableWhere(deadline, Module, Module)
         }
     }

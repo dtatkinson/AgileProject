@@ -30,7 +30,7 @@
     <ul class="nav navbar-nav">
       <li><a href="AddStaff.jsp">Add Staff</a></li>
       <li><a href="DeleteStaff.jsp">Delete Staff</a></li>
-      <li><a href="AssignStaff.jsp">Assign Staff New role</a></li>
+      <li><a href="AdminAssignStaffServlet">Assign Staff New role</a></li>
       <li><a href="ViewStaff.jsp">View Staff</a></li>
       <li><a href="AdminSetDeadlineServlet">Set Deadlines</a></li>
       <li><a href="AdminAssignToExam">Assign Staff to new exam</a></li>

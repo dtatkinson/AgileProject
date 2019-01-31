@@ -55,7 +55,7 @@ public class AssignToExamServlet extends HttpServlet {
             catch(Exception e){
                 
             }
-            response.sendRedirect("ManagementPage.jsp");
+            response.sendRedirect("ViewNewExams");
             //ResultSet exam = conn.listTableWhere(deadline, Module, Module)
         }
     }
