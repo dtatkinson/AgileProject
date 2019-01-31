@@ -32,7 +32,7 @@
                 </div>
         </div>
         
-        <form name="Back " action="AdminDashboard.jsp">
+        <form name="Back " action="ViewNewExams">
                 <input type="submit" value="<- Go Back" name="backBtn" />   
             </form>
         

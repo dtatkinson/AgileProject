@@ -38,7 +38,7 @@ public class RemoveStaffContainerServlet extends HttpServlet {
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-                response.sendRedirect("AdminDashboard.jsp");
+                response.sendRedirect("ViewNewExams");
         }
         DatabaseHandling conn = new DatabaseHandling();
         

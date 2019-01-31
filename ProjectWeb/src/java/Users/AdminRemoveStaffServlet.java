@@ -64,7 +64,7 @@ public class AdminRemoveStaffServlet extends HttpServlet {
                 out.println("</nav>");
                 
                 out.println( "<div class ='img'>");
-                out.println("<a href='AdminDashboard.jsp'>");
+                out.println("<a href='ViewNewExams'>");
                 out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
                 out.println("</a>");
                 out.println("</div>");
