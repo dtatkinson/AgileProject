@@ -212,7 +212,28 @@ input[type=text]:placeholder {
     transform: none;
   }
 }
+div.hello{
+  width: 10px;
+  height: 10px;
+  background: red;
+  position: relative;
+  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 3s infinite;
+}
 
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0%   {top: 0px; left: 0px; background: red;}
+  25%  {top: 0px; left: 0px; background: yellow;}
+
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  0%   {top: 0px; left: 0px; background: red;}
+  25%  {top: 0px; left: 0px; background: yellow;}
+ 
+}
 /* Simple CSS3 Fade-in Animation */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
