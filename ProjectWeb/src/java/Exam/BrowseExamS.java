@@ -9,6 +9,7 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -96,21 +97,27 @@ public class BrowseExamS extends HttpServlet {
     }
     
     public ResultSet getResultSet(String role, String username){
+        Calendar cal = Calendar.getInstance();
+        int iYear = cal.get(Calendar.YEAR);
+        String year = String.valueOf(iYear);
+        //System.out.println(year);
+        
+        
         DatabaseHandling conn = new DatabaseHandling();
         if(role.equals("ES")){
-            ResultSet rs = conn.listTableWhereD("Exam", "PublishedBy", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "PublishedBy", username, year);
             return rs;
         }
         else if(role.equals("IM")){
-            ResultSet rs = conn.listTableWhereD("Exam", "InternalSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "InternalSignID", username, year);
             return rs;
         }
         else if(role.equals("EC")){
-            ResultSet rs = conn.listTableWhereD("Exam", "CommiteeSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "CommiteeSignID", username, year);
             return rs;
         }
         else if(role.equals("EX")){
-            ResultSet rs = conn.listTableWhereD("Exam", "ExternalSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "ExternalSignID", username, year);
             return rs;
         }
         return null;   
