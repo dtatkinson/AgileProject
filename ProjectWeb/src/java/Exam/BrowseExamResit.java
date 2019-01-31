@@ -375,7 +375,7 @@ public class BrowseExamResit extends HttpServlet {
                 String username = (String) session.getAttribute("username");
                 
                 out.println("<nav class=\"navbar navbar-expand-lg bg-dark navbar-dark sticky-top\">\n" +
-"                          <a class=\"navbar-brand\" href=\"StaffDashboard.jsp\">Admin Staff Dashboard</a>\n" +
+"                          <a class=\"navbar-brand\" href=\"StaffDashboard.jsp\">Staff Dashboard</a>\n" +
 "                        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
 "                            <span class=\"navbar-toggler-icon\"></span>\n" +
 "                          </button>\n" +
