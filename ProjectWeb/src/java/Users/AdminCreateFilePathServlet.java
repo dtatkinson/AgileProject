@@ -114,12 +114,17 @@ public class AdminCreateFilePathServlet extends HttpServlet {
                     file.createDirectory(modCode,year);
                     file.createDirectory(modCode+year, "additionalUploads");
                     file.createFile(modCode+year, "comments.txt");
+                    file.createFile(modCode+year, "commentsResit.txt");
                 }else if (file.checkIfFileExists(modCode) && !file.checkIfFileExists(modCode+year)){ //Checks if the folder with the year exists inside of the mod code folder
                     file.createDirectory(modCode, year);
                     file.createFile(modCode+year, "comments.txt");
+                    file.createFile(modCode+year, "commentsResit.txt");
                     file.createDirectory(modCode+year, "additionalUploads");
-                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"comments.txt")){ //Checks if the comments file exists inside the year folder
+                }else if(file.checkIfFileExists(modCode+year) && !file.checkIfFileExists(modCode+year+"comments.txt") && !file.checkIfFileExists(modCode+year+"commentsResit.txt")){ //Checks if the comments file exists inside the year folder
                     file.createFile(modCode+year, "comments.txt");
+                    file.createFile(modCode+year, "commentsResit.txt");
+                }else if(file.checkIfFileExists(modCode+year) && file.checkIfFileExists(modCode+year+"comments.txt") && !file.checkIfFileExists(modCode+year+"commentsResit.txt")){
+                    file.createFile(modCode+year, "commentsResit.txt");
                 }
                 if(file.checkIfFileExists(modCode+year)&& !file.checkIfFileExists(modCode+year+"additionalUploads")){ //Checks if the aditional uploads folder exists inside year
                     file.createDirectory(modCode+year, "additionalUploads");
