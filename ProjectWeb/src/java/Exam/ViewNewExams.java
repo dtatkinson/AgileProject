@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author oliversimpson
@@ -76,7 +77,10 @@ public class ViewNewExams extends HttpServlet {
                         "    </ul>\n" +
                         "  </div>\n" +
                         "</nav>");
-                ResultSet newones = instance.listTable("Exam");
+                Date today = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(today);
+                ResultSet newones = instance.listTableWhere("Exam","AcademicYear",""+cal.get(Calendar.YEAR));
                 
                 Boolean ExtS;
                 Boolean CmtS;

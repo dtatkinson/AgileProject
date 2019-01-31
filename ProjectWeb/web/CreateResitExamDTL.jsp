@@ -52,7 +52,7 @@
             
             <div align ="center">
             <h4>Institution:</h4>
-            <input type="text" name="Inst" value="" required/>
+            <input type="text" name="Inst" value="" required/> 
             </div>
                         
             <div align ="center">
