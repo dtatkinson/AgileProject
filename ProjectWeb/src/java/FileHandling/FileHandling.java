@@ -155,27 +155,32 @@ public class FileHandling {
         Files.createDirectories(Paths.get(fullPath));
     }
      
-     public List getListofFiles (String modcode, String year) throws IOException
-     {
-         List<String> results = new ArrayList<String>();
-         
-         //code to pass test 1
-         //File[] files = new File("\\\\"+defaultPath+"\\"+modcode+"\\"+year\\).listFiles();
-         //code to pass test 2
-         //File[] files = new File(defaultPath+"\\"+modcode+"\\"+year\\).listFiles();
+     //we need to develop a new method that will get us a list of files in a directory
+     //We need to develop it test driven
+     
+    public List getListofFiles(String moduleCode, String year)
+    {
+        List<String> results = new ArrayList<String>();
         
-         File[] files = new File(defaultPath+"\\"+modcode+"\\"+year+"\\additionalUploads\\").listFiles();
-        //If this pathname does not denote a directory, then listFiles() returns null. 
-
-        for (File file : files) {
-            if (file.isFile()) {
-                results.add(file.getName());
+        //path to the file we are looking for
+        File[] files = new File(defaultPath+"\\"+moduleCode+"\\"+year+"\\").listFiles();
+        //create a list of files in the directory
+        //now we just have to pass on to our results
+        
+        
+        //for each file in our file set, get their name and add to our results
+        for(File file: files)
+        {
+            if(file.isFile())
+            {
+                results.add(""+file.getName());
             }
-            
         }
+        
+        
+        
         return results;
-     }
-    
+    }
 }
 
 

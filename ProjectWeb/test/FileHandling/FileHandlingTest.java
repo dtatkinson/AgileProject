@@ -178,42 +178,45 @@ public class FileHandlingTest {
         instance.createDirectory(path, folderName);
     }
    
-    //Test driven devleopment time
-    //Need a function that returns a list of files in directory 
+   //first test, does it return a list
     @Test
-    public void H_testifreturnsempty() throws IOException{
+    public void H_test1() throws IOException{
         FileHandling instance = new FileHandling();
-        String moduleCode = "AC131";
-        String year = "2019";
-        List<String> results = instance.getListofFiles(moduleCode, year);
-        boolean hope = results.isEmpty();
-        assertFalse(hope);
-        
+        List<String> results = instance.getListofFiles("AC131","2019");
+        assertFalse(results.isEmpty());
     }
     
-    //we have a list that holds the file names
-    //now we need to check if they are correct
-    //Test both if comments and AC131 are in there
-     @Test
-    public void I_testifFileNamesAreCorrect() throws IOException{
+    //hooray we have an empty list
+    //now we need to populate it with names of files
+    //we can check if the list contains these elements
+    
+        @Test
+    public void H_test2() throws IOException{
         FileHandling instance = new FileHandling();
-        String moduleCode = "AC131";
-        String year = "2019";
-        List<String> results = instance.getListofFiles(moduleCode, year);
-        assertTrue(results.contains("testr.txt"));   
+        List<String> results = instance.getListofFiles("AC131","2019");
+        assertTrue(results.contains("comments.txt"));
     }
     
-    //we know it contains what we want but does it also pick up directories?
-    
-         @Test
-    public void J_testifFileNamesAreCorrect2() throws IOException{
+        @Test
+    public void H_test3() throws IOException{
         FileHandling instance = new FileHandling();
-        String moduleCode = "AC131";
-        String year = "2019";
-        List<String> results = instance.getListofFiles(moduleCode, year);
-        assertFalse(results.size() > 2);   
+        List<String> results = instance.getListofFiles("AC131","2019");
+        assertTrue(results.contains("AC131.pdf"));
     }
-    //it does not however during testing we found that you must sufix the file type on the end to find it
+    
+        @Test
+    public void H_test4() throws IOException{
+        FileHandling instance = new FileHandling();
+        List<String> results = instance.getListofFiles("AC131","2019");
+        assertFalse(results.contains("additonalUploads"));
+    }
+    
+    //great, we have most of what we neede, however we must ensure that we do not mistake directories as files
+    //almost there, now we need to take the hardcoding out of our function
+    //still one last bit of hard coding to improve upon as it would mess with the webserver
+    //the code we wrote only works localhost side
+    //there we go
+    
     
     
 }

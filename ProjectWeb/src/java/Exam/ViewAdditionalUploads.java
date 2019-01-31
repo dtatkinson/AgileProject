@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  *
@@ -62,9 +63,9 @@ public class ViewAdditionalUploads extends HttpServlet {
         FileHandling listoffile = new FileHandling();
         listoffile.defaultPath = getPath();
         List<String> results = listoffile.getListofFiles(modcode, year);
-        //String modcode = "AC131";
         
-         
+        
+        
         out.println("<div align='center'>");
                 
                 
