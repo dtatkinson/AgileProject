@@ -38,6 +38,7 @@
   </div>
 </nav>
         <div align="center">
+            <div class ="white">
             <h1><u>REMOVE STAFF MEMBER</u></h1>
             <br>
             <p>Enter the name of the staff member you wish to delete from the system</p><font color ="red">Please note that this action cannot be reverted</font><br><font color ="red">Leave empty to view all Staff</font>
@@ -77,7 +78,8 @@
     <div class ="decrease" align ="center">
          <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
     </div>
-            
+            </div>
+        </div>
                   
     </body>
 </html>

@@ -36,6 +36,7 @@
   </div>
 </nav>
         <div align ="center">
+        <div class ="white">
         <h1>Staff Members:</h1>
         <br>
         <p>Click search with the search bar empty to get a full list of staff members and their roles, <br> otherwise begin type down name of staff member you wish to view and click search</p>
@@ -44,7 +45,7 @@
             <input type="submit" value="Search"/>
         </form>
         <br>
-        </div>
+        
 <script>
              function resizeText(multiplier) {
   if (document.body.style.fontSize == "") {
@@ -59,6 +60,7 @@
     <div class ="decrease" align ="center">
          <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
     </div>        
-
+        </div>
+        </div>
     </body>  
 </html>
