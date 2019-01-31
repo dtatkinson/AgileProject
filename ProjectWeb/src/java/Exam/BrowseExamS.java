@@ -203,7 +203,11 @@ public class BrowseExamS extends HttpServlet {
             out.println("<th>");
                 out.println("Progress");
             out.println("</th>");
-            
+            if (!role.equals("ES")){
+            out.println("<th>");
+                out.println("Progress");
+            out.println("</th>");
+            }
             out.println("</tr>");
             //Table headings
             
@@ -212,6 +216,10 @@ public class BrowseExamS extends HttpServlet {
                 while(rs.next()){
                    
                     String moduleCode = rs.getString("ModuleCode");
+                    String imdeadline = rs.getString("InternalSignDeadlineDate");
+                    String ecdeadline = rs.getString("CommiteeSignDeadlineDate");
+                    String exdeadline = rs.getString("ExternalSignDeadlineDate");
+                    
                     //out.println(moduleCode);
                     String year = rs.getString("AcademicYear");
                     
@@ -389,7 +397,16 @@ public class BrowseExamS extends HttpServlet {
                                 "</div>");
                     }
                     out.println("</td>");
-                      
+                    
+                    if(role.equals("IM")){
+                        out.println("<td>"+imdeadline+"</td>");
+                    }
+                    else if(role.equals("EC")){
+                        out.println("<td>"+ecdeadline+"</td>");
+                    }
+                    else if(role.equals("EX")){
+                        out.println("<td>"+exdeadline+"</td>");
+                    }
                     out.println("</tr>");
                     out.println("</div>");
                 }
