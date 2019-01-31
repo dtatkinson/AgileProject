@@ -33,7 +33,7 @@ div.Exam{
 }
 
 body {
-  background: lightblue url("queen-mother-building large.jpg") no-repeat fixed center;
+  background: white url("queen-mother-building large.jpg") no-repeat fixed center;
    background-size: 1920px 970px;
    
 }
@@ -58,19 +58,7 @@ div.plain{
 
     }
 
-    div.border{
-        width: auto;
-        height: auto;
-        border-left-style: solid ;
-        border-left-color: powderblue;
-        border-right-style: solid ;
-        border-right-color: powderblue;
-        border-width: 50px;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        display: block;
-    }
+  
     
     div.footer{
         position:fixed;
