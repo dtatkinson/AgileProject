@@ -77,7 +77,7 @@ public class ViewAdditionalUploads extends HttpServlet {
         out.println("Download");
         out.println("</th>");
         out.println("</tr>");
-        
+        String relativePath = getServletContext().getRealPath("");
         for(int i = 0; i < results.size();i++)
         {
             out.println("<tr>");
@@ -85,7 +85,7 @@ public class ViewAdditionalUploads extends HttpServlet {
             out.println(results.get(i));
             out.println("</th>");
             out.println("<th>");
-            String pdfPath = "\\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\"+modcode+"\\"+year+"\\additonalUploads\\" + results.get(i);          
+            String pdfPath = relativePath+modcode+"\\"+year+"\\additonalUploads\\" + results.get(i);          
             out.println("<a href="+pdfPath + " download>"+results.get(i)+"</a>");
             out.println("</th>");
             out.println("</tr>");
