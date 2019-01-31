@@ -11,7 +11,6 @@
     String uploadpath = realContextPath+"\\"+modulecode+"\\"+year+"\\";
     MultipartRequest m = new MultipartRequest(request,uploadpath );
     out.println("Successfully Uploaded..The PDf will auto change to "+modulecode+".pdf");
-    out.println(uploadpath);
     String fileName = m.getOriginalFileName("fname");
     File oldName = new File(uploadpath+fileName);
     File newName = new File(uploadpath+ modulecode+".pdf");

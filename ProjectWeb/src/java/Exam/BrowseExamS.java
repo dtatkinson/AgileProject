@@ -9,6 +9,7 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -96,21 +97,27 @@ public class BrowseExamS extends HttpServlet {
     }
     
     public ResultSet getResultSet(String role, String username){
+        Calendar cal = Calendar.getInstance();
+        int iYear = cal.get(Calendar.YEAR);
+        String year = String.valueOf(iYear);
+        //System.out.println(year);
+        
+        
         DatabaseHandling conn = new DatabaseHandling();
         if(role.equals("ES")){
-            ResultSet rs = conn.listTableWhereD("Exam", "PublishedBy", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "PublishedBy", username, year);
             return rs;
         }
         else if(role.equals("IM")){
-            ResultSet rs = conn.listTableWhereD("Exam", "InternalSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "InternalSignID", username, year);
             return rs;
         }
         else if(role.equals("EC")){
-            ResultSet rs = conn.listTableWhereD("Exam", "CommiteeSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "CommiteeSignID", username, year);
             return rs;
         }
         else if(role.equals("EX")){
-            ResultSet rs = conn.listTableWhereD("Exam", "ExternalSignID", username);
+            ResultSet rs = conn.listTableWhereDY("Exam", "ExternalSignID", username, year);
             return rs;
         }
         return null;   
@@ -149,7 +156,7 @@ public class BrowseExamS extends HttpServlet {
                 
         out.println("<br>");
         out.println("<br>");
-        out.println("<table  border='4' align='center' class='btn btn-dark' >");
+        out.println("<table class='table table-secondary'>");
             out.println("<tr>");
             out.println("<th>");
                 out.println("Module code");
@@ -225,10 +232,10 @@ public class BrowseExamS extends HttpServlet {
                        {
                          
                             out.println("<td>");
-                            out.println("<form name='Upload ' action='ReUpload.jsp'>");
+                            out.println("<form name='Upload ' action='ReUpload.jsp' method='post'>");
                             out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                            out.println("<input type='hidden' name ='year'  value ="+year+">");
+                            out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                            out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                             out.println("</form>");
                             out.println("</td>");
                        }
@@ -238,8 +245,8 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                             out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                            out.println("<input type='hidden' name ='year'  value ="+year+">");
+                            out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                            out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                             out.println("</form>");
                             out.println("</td>"); 
                             
@@ -250,8 +257,8 @@ public class BrowseExamS extends HttpServlet {
                            out.println("<td>");
                            out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                            out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                           out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                           out.println("<input type='hidden' name ='year'  value ="+year+">");
+                           out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                           out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                            out.println("</form>");
                            out.println("</td>"); 
                        }
@@ -327,7 +334,7 @@ public class BrowseExamS extends HttpServlet {
                            out.println("</td>");
                        }
            
-                            out.println("<td width=25%>");
+                            out.println("<td>");
                             
                     ExtS=rs.getBoolean("ExternalSign");
                     CmtS=rs.getBoolean("CommiteeSign");

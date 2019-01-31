@@ -143,6 +143,19 @@ public class DatabaseHandling {
       return null;
   }
   
+  public ResultSet listTableWhereDY(String tableName, String columnName, String where, String year){
+      try{
+        java.sql.Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName + " WHERE " + columnName + "='" + where + "' AND AcademicYear='" + year + "'");
+        return rs;
+      }
+      catch(Exception e){
+          
+      }
+      
+      return null;
+  }
+  
   public ResultSet test(String tableName, String columnName, boolean where){
       try{
         java.sql.Statement stmt = con.createStatement();

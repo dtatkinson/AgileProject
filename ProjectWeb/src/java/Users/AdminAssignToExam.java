@@ -51,6 +51,7 @@ public class AdminAssignToExam extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
+            out.println("<div align='center'>");
             out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
                         "  <div class=\"container-fluid\">\n" +
                         "    <div class=\"navbar-header\">\n" +
@@ -73,7 +74,7 @@ public class AdminAssignToExam extends HttpServlet {
                
                 ResultSet moduleList = conn.listTableWhere("Exam", "ExamStatus", "new"); //Gets all of the exams that are new
                 out.println("<div align='center'>");
-                
+                out.println("<div class='white'>");
                  out.println("<h2>Assign Staff To Exam</h2>");
                 
             out.println("<form action='AssignToExamServlet' method='POST'>");
@@ -163,6 +164,7 @@ public class AdminAssignToExam extends HttpServlet {
 "    <div class =\"decrease\" align =\"center\">\n" +
 "         <i class=\"fas fa-search-minus\" alt=\"Decrease text size\"  onclick=\"resizeText(-1)\" ></i> \n" +
 "    </div>        ");
+                 out.println("</div>");
                 out.println("</div>");
             out.println("</body>");
             out.println("</html>");
