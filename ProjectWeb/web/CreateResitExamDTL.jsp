@@ -34,10 +34,10 @@
               </ul>
             </div>
           </nav>
+        <div  align='center'>
+        <div class='white' >
         
-        <div class ="img">
-        
-        </div>
+       
         <h1 align ="center"><u>Create Resit Exam</u></h1>    
              <div align ="center">
          <form name="Details Input Form" action="CreateResitExamServlet" method="POST">
@@ -69,8 +69,8 @@
             </div>
          
             </form>
-                 
-           
+               </div>   
+           </div>
              
     </body>
 </html>
