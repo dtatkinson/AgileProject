@@ -225,10 +225,10 @@ public class BrowseExamS extends HttpServlet {
                        {
                          
                             out.println("<td>");
-                            out.println("<form name='Upload ' action='ReUpload.jsp'>");
+                            out.println("<form name='Upload ' action='ReUpload.jsp' method='post'>");
                             out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                            out.println("<input type='hidden' name ='year'  value ="+year+">");
+                            out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                            out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                             out.println("</form>");
                             out.println("</td>");
                        }
@@ -238,8 +238,8 @@ public class BrowseExamS extends HttpServlet {
                             out.println("<td>");
                             out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                             out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                            out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                            out.println("<input type='hidden' name ='year'  value ="+year+">");
+                            out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                            out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                             out.println("</form>");
                             out.println("</td>"); 
                             
@@ -250,8 +250,8 @@ public class BrowseExamS extends HttpServlet {
                            out.println("<td>");
                            out.println("<form name='Upload ' action='ReUploadAdditonal.jsp'>");
                            out.println("<input type='submit' value='Upload' name='upladbtn' />");
-                           out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                           out.println("<input type='hidden' name ='year'  value ="+year+">");
+                           out.println("<input type='hidden' name ='modcode'  value ='"+moduleCode+"'>");
+                           out.println("<input type='hidden' name ='year'  value ='"+year+"'>");
                            out.println("</form>");
                            out.println("</td>"); 
                        }

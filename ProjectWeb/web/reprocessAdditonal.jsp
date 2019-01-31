@@ -5,11 +5,12 @@
 <%@page import="javax.servlet.http.HttpSession"  %>
 <%
     ServletContext context = session.getServletContext();
-    String modulecode = (String)session.getAttribute("moduleCode");
-    String StaffName = (String)session.getAttribute("ReUploadName");
-    String year = (String)session.getAttribute("year");
+   
+    
+       String moduleCode = (String)session.getAttribute("moduleCode");
+        String year = (String)session.getAttribute("year");
     String realContextPath = context.getRealPath("/");
-    String uploadpath = realContextPath+"\\"+modulecode+"\\"+year+"\\additonalUploads\\";
+    String uploadpath = realContextPath+"\\"+moduleCode+"\\"+year+"\\additonalUploads\\";
     MultipartRequest m = new MultipartRequest(request,uploadpath );
    
   
