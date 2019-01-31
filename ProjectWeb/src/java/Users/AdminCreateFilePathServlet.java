@@ -10,6 +10,7 @@ import FileHandling.FileHandling;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -124,7 +125,8 @@ public class AdminCreateFilePathServlet extends HttpServlet {
         FileHandling file = new FileHandling();
         String modCode;
         String year = "\\"+yearE+"\\";  //Only accepts 2019 as the year
-        
+        String lenardPath = getPath();
+        file.defaultPath = lenardPath;
         try{
             
             ResultSet moduleList = conn.listTable("Exam");
@@ -153,6 +155,14 @@ public class AdminCreateFilePathServlet extends HttpServlet {
           
         }catch(Exception e){}
 
+    }
+    
+    public String getPath()
+    { 
+        String rightPath = getServletContext().getRealPath("/");
+        rightPath = rightPath + "/";
+        out.println(rightPath);
+        return rightPath;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
