@@ -55,24 +55,43 @@ public class ViewNewExams extends HttpServlet {
                         "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
                         "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                         "  <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n" +
-"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n" +
-"<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>");
-                        
+                        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n" +
+                        "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>"
+            );
+
             out.println("</head>");
             out.println("<body>");
             
-            out.println(" <nav class=\"navbar navbar-expand-sm bg-dark navbar-dark sticky-top\">\n" +
+            out.println(" <nav class=\"navbar navbar-expand-lg bg-dark navbar-dark sticky-top\">\n" +
                         "  <a class=\"navbar-brand\" href=\"#\">Admin Staff Dashboard</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"AddStaff.jsp\">Add Staff</a>\n" +
-                          "  <a class=\"navbar-brand\" href=\"DeleteStaff.jsp\">Delete Staff</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"AdminAssignStaffServlet\">Assign Staff New Role</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"ViewStaff.jsp \">View Staff</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"AdminSetDeadlineServlet\">Set Deadlines</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"AdminAssignToExam\">Assign Staff To New Exam</a>\n" +
-                        "  <a class=\"navbar-brand\" href=\"AdminCreateFilePathServlet\">Create Folders</a>\n" +
-
-                       
-                    "  ...\n" +
+                        "<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n" +
+                        "    <span class=\"navbar-toggler-icon\"></span>\n" +
+                        "  </button>"+
+                        "<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n"+
+                        "<ul class=\"navbar-nav\">"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"AddStaff.jsp\">Add Staff</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"DeleteStaff.jsp\">Delete Staff</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"AdminAssignStaffServlet\">Assign Staff New Role</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"ViewStaff.jsp \">View Staff</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"AdminSetDeadlineServlet\">Set Deadlines</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"AdminAssignToExam\">Assign Staff To New Exam</a>\n" +
+                        "</li>"+
+                        "<li class=\"nav-item\">"+
+                        "  <a class=\"nav-link\" href=\"AdminCreateFilePathServlet\">Create Folders</a>\n" +
+                        "</li>"+
+                        "</ul>"+
+                        "</div>"+
                         "</nav> ");
                 Date today = new Date();
                 Calendar cal = Calendar.getInstance();
@@ -85,7 +104,7 @@ public class ViewNewExams extends HttpServlet {
                 
               
                 
-                out.println("<h1 align='center'><u>Exam Progress</u></h1>");
+                out.println("<h1 class='strokeme' align='center'><u>Exam Progress</u></h1>");
                 
                 out.println("<table style='width: 50%' border='1' align='center' class='table table-dark' >");
                 out.println("<tr>");
