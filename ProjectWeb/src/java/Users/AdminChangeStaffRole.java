@@ -38,7 +38,7 @@ public class AdminChangeStaffRole extends HttpServlet {
             String role = request.getParameter("NewStaffRoles");
             
             editStaffRole(name, role);
-            response.sendRedirect("AdminDashboard.jsp");
+            response.sendRedirect("ViewNewExams");
         }
     }
 
