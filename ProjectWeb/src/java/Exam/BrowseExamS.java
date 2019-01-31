@@ -9,7 +9,6 @@ import Database.DatabaseHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -116,7 +115,7 @@ public class BrowseExamS extends HttpServlet {
         }
         return null;   
     }
-    public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url){
+    public void refactor(PrintWriter out, String username, ResultSet rs, String role, String url, boolean sign){
         
                 Boolean ExtS;
                 Boolean CmtS;
@@ -144,7 +143,7 @@ public class BrowseExamS extends HttpServlet {
         out.println("<h1 align='center' class='strokeme'>"+expandRole(role)+"</h1>");
                 
         
-              
+         
         out.println("<div align='center'");
                 
                 
@@ -434,18 +433,28 @@ public class BrowseExamS extends HttpServlet {
                     "    </ul>\n" +
                     "  </div>\n" +
                     "</nav>");
+                boolean sign = true;
+                if(session.getAttribute("validSign") != null){
+                   if((boolean) session.getAttribute("validSign") == false){
+                       sign = false;
+                    } 
+                }
+                session.setAttribute("validSign", true);
                 
-                 ResultSet rs = getResultSet("ES", username);
-                refactor(out, username, rs, "ES", url);
+                if(sign == false){
+                    out.println("Couldn't sign as the number of comments and acknowledgments are unequal");
+                }     
+                ResultSet rs = getResultSet("ES", username);
+                refactor(out, username, rs, "ES", url, sign);
                 
                 ResultSet rs2 = getResultSet("IM", username);
-                refactor(out, username, rs2, "IM", url);
+                refactor(out, username, rs2, "IM", url, sign);
                 
                 ResultSet rs3 = getResultSet("EC", username);
-                refactor(out, username, rs3, "EC", url);
+                refactor(out, username, rs3, "EC", url, sign);
                 
                 ResultSet rs4 = getResultSet("EX", username);
-                refactor(out, username, rs4, "EX", url);
+                refactor(out, username, rs4, "EX", url, sign);
                 
                 
          

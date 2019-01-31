@@ -52,10 +52,14 @@ public class SignExamServlet extends HttpServlet {
         out.println(role);
         if(role.equals("Internal Moderator")){
             try{
-                out.print(id);
+                
                 if(comment.readComment(modcode, getPath(), year)){
-                    out.print(id);
+                    
                     conn.internalSignExam(id);
+                    session.setAttribute("validSign", true);
+                }
+                else{
+                    session.setAttribute("validSign", false);
                 }
             }
             catch(Exception e){
@@ -66,6 +70,10 @@ public class SignExamServlet extends HttpServlet {
             try{
                 if(comment.readComment(modcode, getPath(), year)){
                     conn.examCommiteeSignExam(id);
+                    session.setAttribute("validSign", true);
+                }
+                else{
+                    session.setAttribute("validSign", false);
                 }
                 
             }
@@ -79,6 +87,10 @@ public class SignExamServlet extends HttpServlet {
                     conn.externalSignExam(id);
                 //set exam with 3 signs to complete
                 conn.editExamStatus(id, "Completed");
+                session.setAttribute("validSign", true);
+                }
+                else{
+                    session.setAttribute("validSign", false);
                 }
                 
             }
