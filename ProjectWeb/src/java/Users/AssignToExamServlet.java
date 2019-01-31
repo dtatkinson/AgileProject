@@ -51,6 +51,11 @@ public class AssignToExamServlet extends HttpServlet {
             conn.examCommiteeAssignExam(id, ECStaffName);
             conn.externalAssignExam(id, EMStaffName);
             conn.editExamStatus(id, "In Progress");
+            
+            conn.internalAssignResitExam(id, IMStaffName);
+            conn.examCommiteeAssignResitExam(id, ECStaffName);
+            conn.externalAssignResitExam(id, EMStaffName);
+            conn.editResitExamStatus(id, "In Progress");
             }
             catch(Exception e){
                 

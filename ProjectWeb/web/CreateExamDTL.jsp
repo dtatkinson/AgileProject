@@ -25,6 +25,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="StaffDashboard.jsp">Staff Dashboard</a>
     </div>
+      
     <ul class="nav navbar-nav">
       <li><a href="CreateExamDTL.jsp">Upload an Exam paper</a></li>
       <li><a href="BrowseExamS">View my Exams</a></li>
@@ -35,9 +36,10 @@
   </div>
 </nav>
         
-        <div class ="img">
+        <div align='center'>
         
-        </div>
+        
+        <div class ="white" 
         <h1 align ="center"><u>Create Exam</u></h1>    
              <div align ="center">
          <form name="Details Input Form" action="CreateExamServlet" method="POST">
@@ -67,8 +69,25 @@
             <div align ="center">
             <input type="submit" value="Submit" name="examSubmit" />
             </div>
+            <br>
+            
          </form>
-                 
+                 <script>
+             function resizeText(multiplier) {
+  if (document.body.style.fontSize == "") {
+    document.body.style.fontSize = "1.0em";
+  }
+  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
+}
+    </script>       
+    <div class ="increase" align = "center" >      
+        <i class="fas fa-search-plus" alt="Increase text size" onclick="resizeText(1)" ></i>
+    </div>
+    <div class ="decrease" align ="center">
+         <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
+    </div>
+             </div>
+            </div>     
              
              
     </body>
