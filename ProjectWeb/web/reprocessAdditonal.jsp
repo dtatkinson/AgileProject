@@ -10,7 +10,7 @@
        String moduleCode = (String)session.getAttribute("moduleCode");
         String year = (String)session.getAttribute("year");
     String realContextPath = context.getRealPath("/");
-    String uploadpath = realContextPath+"\\"+moduleCode+"\\"+year+"\\additonalUploads\\";
+    String uploadpath = realContextPath+"\\"+moduleCode+"\\"+year+"\\additionalUploads\\";
     MultipartRequest m = new MultipartRequest(request,uploadpath );
    
   
