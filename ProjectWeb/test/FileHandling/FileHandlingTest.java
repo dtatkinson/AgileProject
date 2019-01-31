@@ -6,6 +6,7 @@
 package FileHandling;
 
 import java.io.IOException;
+import java.util.List;
 
 import java.util.Objects;
 import org.junit.After;
@@ -14,6 +15,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 /**
  * testDirectory   \\\\silva.computing.dundee.ac.uk\\webapps\\2018-agileteam3\\test\\
@@ -45,7 +50,7 @@ public class FileHandlingTest {
      * @throws java.io.IOException
      */
     @Test
-    public void testCreateFile() throws IOException {
+    public void A_testCreateFile() throws IOException {
         FileHandling instance = new FileHandling();
         String newFile = "test\\";
         String fileName = "testcreate.txt";
@@ -55,6 +60,7 @@ public class FileHandlingTest {
         }else{
         assertTrue("the File is created",create);
         }
+       
      }
 
     /**
@@ -62,7 +68,7 @@ public class FileHandlingTest {
      * @throws java.io.IOException
      */
     @Test
-    public void testWriteToFile() throws IOException {
+    public void B_testWriteToFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
          path = "test\\";
@@ -86,7 +92,7 @@ public class FileHandlingTest {
      * Test of checkIfFileExists method, of class FileHandling.
      */
     @Test
-    public void testCheckIfFileExists() {
+    public void C_testCheckIfFileExists() {
         FileHandling instance = new FileHandling();
         String path = "test";
         boolean exist = instance.checkIfFileExists(path);
@@ -98,7 +104,7 @@ public class FileHandlingTest {
      * 
      * Test of appendToFile method, of class FileHandling
      */
-    public void testAppendToFile() throws IOException{
+    public void D_testAppendToFile() throws IOException{
         FileHandling instance = new FileHandling();
         String path = "test\\";
         String fileName = "append.txt";
@@ -129,7 +135,7 @@ public class FileHandlingTest {
      * @throws java.io.IOException
      */
     @Test
-    public void testReadFromFile() throws IOException {
+    public void E_testReadFromFile() throws IOException {
          FileHandling instance = new FileHandling();
          String path;
          path = "test\\";
@@ -156,7 +162,7 @@ public class FileHandlingTest {
      * @throws java.io.IOException
      */
     @Test
-    public void testDeleteFile() throws IOException {
+    public void F_testDeleteFile() throws IOException {
         FileHandling instance = new FileHandling();
         String newFile = "test\\";
         instance.createFile(newFile, "delete.txt");
@@ -165,11 +171,50 @@ public class FileHandlingTest {
     }
     
     @Test
-    public void testCreateDirectory() throws IOException{
+    public void G_testCreateDirectory() throws IOException{
         FileHandling instance = new FileHandling();
         String path = "test\\";
         String folderName = "bigcamobOI";
         instance.createDirectory(path, folderName);
     }
    
+    //Test driven devleopment time
+    //Need a function that returns a list of files in directory 
+    @Test
+    public void H_testifreturnsempty() throws IOException{
+        FileHandling instance = new FileHandling();
+        String moduleCode = "AC131";
+        String year = "2019";
+        List<String> results = instance.getListofFiles(moduleCode, year);
+        boolean hope = results.isEmpty();
+        assertFalse(hope);
+        
+    }
+    
+    //we have a list that holds the file names
+    //now we need to check if they are correct
+    //Test both if comments and AC131 are in there
+     @Test
+    public void I_testifFileNamesAreCorrect() throws IOException{
+        FileHandling instance = new FileHandling();
+        String moduleCode = "AC131";
+        String year = "2019";
+        List<String> results = instance.getListofFiles(moduleCode, year);
+        assertTrue(results.contains("testr.txt"));   
+    }
+    
+    //we know it contains what we want but does it also pick up directories?
+    
+         @Test
+    public void J_testifFileNamesAreCorrect2() throws IOException{
+        FileHandling instance = new FileHandling();
+        String moduleCode = "AC131";
+        String year = "2019";
+        List<String> results = instance.getListofFiles(moduleCode, year);
+        assertFalse(results.size() > 2);   
+    }
+    //it does not however during testing we found that you must sufix the file type on the end to find it
+    
+    
 }
+

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -154,7 +154,30 @@ public class FileHandling {
         String fullPath = defaultPath + path + folderName;
         Files.createDirectories(Paths.get(fullPath));
     }
+     
+     public List getListofFiles (String modcode, String year) throws IOException
+     {
+         List<String> results = new ArrayList<String>();
+         
+         //code to pass test 1
+         //File[] files = new File("\\\\"+defaultPath+"\\"+modcode+"\\"+year\\).listFiles();
+         //code to pass test 2
+         //File[] files = new File(defaultPath+"\\"+modcode+"\\"+year\\).listFiles();
+        
+         File[] files = new File(defaultPath+"\\"+modcode+"\\"+year+"\\additionalUploads\\").listFiles();
+        //If this pathname does not denote a directory, then listFiles() returns null. 
+
+        for (File file : files) {
+            if (file.isFile()) {
+                results.add(file.getName());
+            }
+            
+        }
+        return results;
+     }
     
 }
+
+
     
 
