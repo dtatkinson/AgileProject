@@ -73,10 +73,13 @@ public class AdminSetDeadlineServlet extends HttpServlet {
                 year  = ""+Year.now().getValue();
              
                 ResultSet moduleList = conn.listTableWhere("Exam", "AcademicYear", year);
-                
-            out.println("<h2 align='center'>Assign Exam Deadlines</h2>");
+                   out.println("<div align='center'>");
+            out.println("<div class='white'>");
+            
+              out.println("<h2>Assign Exam Deadlines</h2>");
             
             out.println("<div align='center'>");
+      
             out.println("<form action='SetDeadlineServlet' method='POST'>");
                 out.println("<h4>Modules:</h4>");
                 out.println("<select name='Modules' width='150'>");
@@ -124,6 +127,7 @@ public class AdminSetDeadlineServlet extends HttpServlet {
 "    <div class =\"decrease\" align =\"center\">\n" +
 "         <i class=\"fas fa-search-minus\" alt=\"Decrease text size\"  onclick=\"resizeText(-1)\" ></i> \n" +
 "    </div>        ");
+             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -40,9 +40,11 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' href='CSS.css'>");
+           out.println ("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n");
            out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>");
                 out.println("<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>");
                 out.println("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>");
+                 out.println("<link rel='stylesheet' href='CSS.css'>");
                 out.println("</head>");
                 out.println("<body>");
 
@@ -63,16 +65,11 @@ public class AdminAssignStaffServlet extends HttpServlet {
                 out.println("</div>");
                 out.println("</nav>");
                 
-            out.println( "<div class ='img'>");
-            out.println("<a href='ViewNewExams'>");
-            out.println("<img src='DundeeUniLogo.png' width='100' height='125' alt='DundeeLogo' vertical-align='center' ></img>");
-            out.println("</a>");
-            out.println("</div>");
             
             DatabaseHandling conn = new DatabaseHandling();
            
                 out.println("<div align='center'>");
-            
+                out.println("<div class='white'>");
                 out.println("<h2>Assign Staff New Role</h2>");
                 
                 
@@ -108,7 +105,24 @@ public class AdminAssignStaffServlet extends HttpServlet {
             out.println("</form>");
             
             out.println("<br>");
+                                  out.println("<script>\n" +
+                    "             function resizeText(multiplier) {\n" +
+                    "  if (document.body.style.fontSize == \"\") {\n" +
+                    "    document.body.style.fontSize = \"1.0em\";\n" +
+                    "  }\n" +
+                    "  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + \"em\";\n" +
+                    "}\n" +
+                    "</script>       \n" +
+                    "    <div class =\"increase\" align = \"center\" >      \n" +
+                    "        <i class=\"fas fa-search-plus\" alt=\"Increase text size\" onclick=\"resizeText(1)\" ></i>\n" +
+                    "    </div>\n" +
+                    "    <div class =\"decrease\" align =\"center\">\n" +
+                    "         <i class=\"fas fa-search-minus\" alt=\"Decrease text size\"  onclick=\"resizeText(-1)\" ></i> \n" +
+                    "    </div>        ");
+            
            
+            out.println("</div>");
+            out.println("</div>");
             out.println("</div>");
            
             out.println("</body>");

@@ -40,6 +40,7 @@
 </nav>
     
         <div align="center">
+            <div class ="white">
             <h1><u>Add Staff Member</u></h1>
             
          <form name="Details Input Form" action="AdminAddStaffServlet" method="POST">
@@ -87,6 +88,7 @@
     <div class ="decrease" align ="center">
          <i class="fas fa-search-minus" alt="Decrease text size"  onclick="resizeText(-1)" ></i> 
     </div>
-           
+            </div>
+        </div>
     </body>
 </html>
