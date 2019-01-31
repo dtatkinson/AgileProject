@@ -42,7 +42,6 @@
         </a>
      </div>
         
-        <h1>Do this later 3</h1>
         
         <form action="StaffDashboard.jsp">
             <input type="submit" value="Next->" />
