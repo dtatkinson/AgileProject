@@ -9,6 +9,7 @@ import Database.DatabaseHandling;
 import FileHandling.FileHandling;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -59,6 +60,7 @@ public class ViewAdditionalUploads extends HttpServlet {
         String modcode = request.getParameter("ModuleCode");
         String year = request.getParameter("AcademicYear");
         FileHandling listoffile = new FileHandling();
+        listoffile.defaultPath = getPath();
         List<String> results = listoffile.getListofFiles(modcode, year);
         //String modcode = "AC131";
         
@@ -68,7 +70,7 @@ public class ViewAdditionalUploads extends HttpServlet {
                 
         out.println("<br>");
         out.println("<br>");
-        out.println("<table class='table table-secondary'>");
+        out.println("<table>");
         out.println("<tr>");
         out.println("<th>");
         out.println("File Name");
@@ -85,21 +87,28 @@ public class ViewAdditionalUploads extends HttpServlet {
             out.println(results.get(i));
             out.println("</th>");
             out.println("<th>");
-            String pdfPath = relativePath+modcode+"\\"+year+"\\additonalUploads\\" + results.get(i);          
-            out.println("<a href="+pdfPath + " download>"+results.get(i)+"</a>");
+            String pdfPath = modcode+"\\"+year+"\\additonalUploads\\" + results.get(i);          
+            out.println("<a href="+pdfPath +">"+results.get(i)+"</a>");
             out.println("</th>");
             out.println("</tr>");
           
             
         }
           out.println("</table>");
-            out.println("</div>");
+          out.println("</div>");
         }
         
         catch(Exception e)
         {
             
         }
+    }
+    public String getPath()
+    { 
+        String rightPath = getServletContext().getRealPath("/");
+        rightPath = rightPath + "/";
+        out.println(rightPath);
+        return rightPath;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
