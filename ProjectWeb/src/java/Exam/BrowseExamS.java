@@ -273,19 +273,31 @@ public class BrowseExamS extends HttpServlet {
                             //out.println("<a href=" + getPath()  + moduleCode+"\\2019\\comments.txt>"+moduleCode+" Comments</a>");
                        out.println("</td>");
                        //Exam comments
-                      
-                       out.println("<td>");
-                                out.println("<form action='BrowseExamsSContainer' method='POST'>");
-                                out.println("<input type=\"text\" name = 'inputbox'>");
-                                out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
-                                out.println("<input type='hidden' name ='year'  value ="+year+">");
-                                out.println("<input type='hidden' name ='id'  value ="+id+">");
-                                out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
-                       out.println("</td>");
-                       
-                       out.println("<td>");
-                                out.println("<input type=\"submit\" value='Add Comment'>");
-                            out.println("</form>");
+                      boolean signedExam = signSig(role, username, id);
+                      if(signedExam || role.equals("ES")){
+                                    out.println("<td>");
+                                             out.println("<form action='BrowseExamsSContainer' method='POST'>");
+                                             out.println("<input type=\"text\" name = 'inputbox'>");
+                                             out.println("<input type='hidden' name ='modcode'  value ="+moduleCode+">");
+                                             out.println("<input type='hidden' name ='year'  value ="+year+">");
+                                             out.println("<input type='hidden' name ='id'  value ="+id+">");
+                                             out.println("<input type='hidden' name ='role'  value ='"+ expandRole(role) + "'>");
+                                    out.println("</td>");
+
+                                    out.println("<td>");
+                               
+                                   out.println("<input type=\"submit\" value='Add Comment'>");
+                                   out.println("</form>");
+                    }
+                    else{
+                        out.println("<td>"); 
+                        out.println("You have already signed this exam");
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println("NA");
+                        out.println("</td>");
+                    }
+                            
                        out.println("</td>");
          
                        

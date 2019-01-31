@@ -56,6 +56,7 @@ public class SignExamServlet extends HttpServlet {
                 if(comment.readComment(modcode, getPath(), year)){
                     
                     conn.internalSignExam(id);
+                    conn.setChanges(1,id);
                     session.setAttribute("validSign", true);
                 }
                 else{
@@ -70,6 +71,7 @@ public class SignExamServlet extends HttpServlet {
             try{
                 if(comment.readComment(modcode, getPath(), year)){
                     conn.examCommiteeSignExam(id);
+                    conn.setChanges(1,id);
                     session.setAttribute("validSign", true);
                 }
                 else{
@@ -87,6 +89,7 @@ public class SignExamServlet extends HttpServlet {
                     conn.externalSignExam(id);
                 //set exam with 3 signs to complete
                 conn.editExamStatus(id, "Completed");
+                conn.setChanges(1,id);
                 session.setAttribute("validSign", true);
                 }
                 else{
