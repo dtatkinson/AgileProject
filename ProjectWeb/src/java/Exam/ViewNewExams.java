@@ -61,10 +61,19 @@ public class ViewNewExams extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            out.println(" <nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
-"  <a class=\"navbar-brand\" href=\"#\">Logo</a>\n" +
-"  ...\n" +
-"</nav> ");
+            out.println(" <nav class=\"navbar navbar-expand-sm bg-dark navbar-dark sticky-top\">\n" +
+                        "  <a class=\"navbar-brand\" href=\"#\">Admin Staff Dashboard</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"AddStaff.jsp\">Add Staff</a>\n" +
+                          "  <a class=\"navbar-brand\" href=\"DeleteStaff.jsp\">Delete Staff</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"AdminAssignStaffServlet\">Assign Staff New Role</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"ViewStaff.jsp \">View Staff</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"AdminSetDeadlineServlet\">Set Deadlines</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"AdminAssignToExam\">Assign Staff To New Exam</a>\n" +
+                        "  <a class=\"navbar-brand\" href=\"AdminCreateFilePathServlet\">Create Folders</a>\n" +
+
+                       
+                    "  ...\n" +
+                        "</nav> ");
                 Date today = new Date();
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(today);
