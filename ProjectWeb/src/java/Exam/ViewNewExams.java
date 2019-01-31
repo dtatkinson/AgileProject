@@ -51,32 +51,20 @@ public class ViewNewExams extends HttpServlet {
             out.println("<head>");
             out.println(" <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/regular.css\" integrity=\"sha384-aubIA90W7NxJ+Ly4QHAqo1JBSwQ0jejV75iHhj59KRwVjLVHjuhS3LkDAoa/ltO4\" crossorigin=\"anonymous\">\n" +
                         "        <link rel=\"stylesheet\" href=\"CSS.css\">\n" +
-                        "        <link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
+                        "        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n" +
                         "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
                         "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                        "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
-                        "  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-                        "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>");
+                        "  <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n" +
+"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\" integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\" crossorigin=\"anonymous\"></script>\n" +
+"<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\" integrity=\"sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl\" crossorigin=\"anonymous\"></script>");
                         
             out.println("</head>");
             out.println("<body>");
             
-            out.println("<nav class=\"navbar fixed-bottom navbar-inverse\" >\n" +
-                        "  <div class=\"container-fluid\">\n" +
-                        "    <div class=\"navbar-header\">\n" +
-                        "      <a class=\"navbar-brand\" href=\"#\">Admin Staff Dashboard</a>\n" +
-                        "    </div>\n" +
-                        "    <ul class=\"nav navbar-nav\">\n" +
-                        "      <li><a href=\"AddStaff.jsp\">Add Staff</a></li>\n" +
-                        "      <li><a href=\"DeleteStaff.jsp\">Delete Staff</a></li>\n" +
-                        "      <li><a href=\"AdminAssignStaffServlet\">Assign Staff New role</a></li>\n" +
-                        "      <li><a href=\"ViewStaff.jsp\">View Staff</a></li>\n" +
-                        "      <li><a href=\"AdminSetDeadlineServlet\">Set Deadlines</a></li>\n" +
-                        "      <li><a href=\"AdminAssignToExam\">Assign Staff to new exam</a></li>\n" +
-                        "      <li><a href=\"AdminCreateFilePathServlet\">Create folders for next year</a></li>\n" +
-                        "    </ul>\n" +
-                        "  </div>\n" +
-                        "</nav>");
+            out.println(" <nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n" +
+"  <a class=\"navbar-brand\" href=\"#\">Logo</a>\n" +
+"  ...\n" +
+"</nav> ");
                 Date today = new Date();
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(today);
@@ -90,7 +78,7 @@ public class ViewNewExams extends HttpServlet {
                 
                 out.println("<h1 align='center'><u>Exam Progress</u></h1>");
                 
-                out.println("<table style='width: 50%' border='4' align='center' >");
+                out.println("<table style='width: 50%' border='1' align='center' class='table table-dark' >");
                 out.println("<tr>");
                 out.println("<th>");
                 out.println("Module Name");
@@ -151,7 +139,7 @@ public class ViewNewExams extends HttpServlet {
                     if(ExtS){
                       
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:100%\">\n" +
                                 "    Completed\n" +
                                 "  </div>\n" +
@@ -160,7 +148,7 @@ public class ViewNewExams extends HttpServlet {
                     else if(CmtS){
                       
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:75%\">\n" +
                                 "    75%\n" +
                                 "  </div>\n" +
@@ -168,7 +156,7 @@ public class ViewNewExams extends HttpServlet {
                     }else if(IntS){
                        
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-warning\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:50%\">\n" +
                                 "    50%\n" +
                                 "  </div>\n" +
@@ -176,7 +164,7 @@ public class ViewNewExams extends HttpServlet {
                     }else{
                         
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-danger\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:25%\">\n" +
                                 "    25%\n" +
                                 "  </div>\n" +
