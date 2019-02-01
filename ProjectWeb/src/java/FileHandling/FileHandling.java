@@ -163,7 +163,7 @@ public class FileHandling {
         List<String> results = new ArrayList<String>();
         
         //path to the file we are looking for
-        File[] files = new File(defaultPath+"\\"+moduleCode+"\\"+year+"\\").listFiles();
+        File[] files = new File(defaultPath+"\\"+moduleCode+"\\"+year+"\\additionalUploads").listFiles();
         //create a list of files in the directory
         //now we just have to pass on to our results
         
@@ -176,8 +176,6 @@ public class FileHandling {
                 results.add(""+file.getName());
             }
         }
-        
-        
         
         return results;
     }
