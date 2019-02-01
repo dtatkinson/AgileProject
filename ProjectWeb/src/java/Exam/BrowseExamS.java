@@ -20,7 +20,11 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author David Atkinson
+ * @author Orignal by David Atkinson, refactored by Lenard Gaunt
+ * 
+ * Refactoring details:
+ * Originally the 4 tables were printed individually, this made it difficult to change the tables as all of them had to be changed and this caused bugs. Lenard Gaunt created the refactor method 
+ * that prints the 4 tables in the one method so only it needs to be changed to add a column. This made it easier to add/remove features from the page
  */
 @WebServlet(name = "BrowseExamS", urlPatterns = {"/BrowseExamS"})
 public class BrowseExamS extends HttpServlet {
