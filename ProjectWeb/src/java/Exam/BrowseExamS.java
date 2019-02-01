@@ -205,7 +205,7 @@ public class BrowseExamS extends HttpServlet {
             out.println("</th>");
             if (!role.equals("ES")){
             out.println("<th>");
-                out.println("Progress");
+                out.println("Deadline");
             out.println("</th>");
             }
             out.println("</tr>");
@@ -399,13 +399,28 @@ public class BrowseExamS extends HttpServlet {
                     out.println("</td>");
                     
                     if(role.equals("IM")){
+                        if (imdeadline == null){
+                        out.println("no deadline been set");
+                        }
+                        else{
                         out.println("<td>"+imdeadline+"</td>");
                     }
+                    }
                     else if(role.equals("EC")){
+                         if (ecdeadline == null){
+                        out.println("no deadline been set");
+                        }
+                        else{
                         out.println("<td>"+ecdeadline+"</td>");
                     }
+                    }
                     else if(role.equals("EX")){
+                         if (exdeadline == null){
+                        out.println("no deadline been set");
+                        }
+                        else{
                         out.println("<td>"+exdeadline+"</td>");
+                    }
                     }
                     out.println("</tr>");
                     out.println("</div>");
