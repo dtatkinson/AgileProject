@@ -369,7 +369,7 @@ public class BrowseExamS extends HttpServlet {
                     if(ExtS){
                       
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-success\" role=\"progressbar\" aria-valuenow=\"100\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:100%\">\n" +
                                 "    Completed\n" +
                                 "  </div>\n" +
@@ -378,7 +378,7 @@ public class BrowseExamS extends HttpServlet {
                     else if(CmtS){
                       
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-info\" role=\"progressbar\" aria-valuenow=\"75\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:75%\">\n" +
                                 "    75%\n" +
                                 "  </div>\n" +
@@ -386,7 +386,7 @@ public class BrowseExamS extends HttpServlet {
                     }else if(IntS){
                        
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-warning\" role=\"progressbar\" aria-valuenow=\"50\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:50%\">\n" +
                                 "    50%\n" +
                                 "  </div>\n" +
@@ -394,7 +394,7 @@ public class BrowseExamS extends HttpServlet {
                     }else{
                         
                     out.println("<div class=\"progress\">\n" +
-                                "  <div class=\"progress-bar progress-bar-info\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
+                                "  <div class=\"progress-bar progress-bar-striped progress-bar-animated bg-danger\" role=\"progressbar\" aria-valuenow=\"25\"\n" +
                                 "  aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width:25%\">\n" +
                                 "    25%\n" +
                                 "  </div>\n" +

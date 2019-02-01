@@ -190,7 +190,8 @@ public class SchoolOfficeViewExams extends HttpServlet {
                 out.println("</div>");
                 
                 out.println("<br>\n" +
-                            "        <div align=\"center\" class=\"plain\">\n" +
+                            "          <div align='center'>\n" + 
+                            "        <div align=\"center\" class=\"btn btn-danger center-block\">\n" +
                             "            <a href=\"index.jsp\">\n" +
                             "            <form  name=\"logoutForm\" action=\"LogoutServlet\">\n" +
                             "            <img src=\"Logout.png\" width=\"20\" height=\"20\" alt=\"Logout\"/>\n" +
@@ -200,10 +201,13 @@ public class SchoolOfficeViewExams extends HttpServlet {
                             "               \n" +
                             "      \n" +
                             "            <br>\n" +
+                           
                             
                             "            ");
                 out.print("Hello, ");
-                out.print(session.getAttribute("username")); 
+                out.print(session.getAttribute("username"));
+                out.println("</div>");
+                out.println("</div>");
                 out.print("</body>");
              
             }
